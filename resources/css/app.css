@@ -1,0 +1,51 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+@import 'components/navbar.css';
+@import 'components/footer.css';
+
+
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.site-footer {
+    flex-shrink: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+.sticky-whatsapp {
+    position: fixed;
+    right: -15px;
+    top: 65%;
+    transform: translateY(-50%);
+    z-index: 9999;
+    display: block;
+    width: 180px;
+    transition: transform 0.3s ease;
+}
+
+.sticky-whatsapp:hover {
+    transform: translateY(-50%) translateX(-5px);
+}
