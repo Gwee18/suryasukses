@@ -102,7 +102,7 @@
     transition: max-height 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease;
     z-index: 1020;
     pointer-events: none;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .mega-nav-item.is-open .mega-dropdown {
@@ -133,7 +133,7 @@
     margin: 0;
 }
 
-.mega-list li + li {
+.mega-list li+li {
     margin-top: 0.65rem;
 }
 
@@ -171,7 +171,7 @@
     padding-left: 0;
 }
 
-.mega-inline-list li + li::before {
+.mega-inline-list li+li::before {
     content: '';
     position: absolute;
     left: 0;
@@ -224,7 +224,7 @@
         align-items: flex-start;
     }
 
-    .mega-inline-list li + li::before {
+    .mega-inline-list li+li::before {
         display: none;
     }
 }

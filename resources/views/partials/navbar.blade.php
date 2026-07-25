@@ -99,10 +99,10 @@
                         <div class="mega-dropdown mega-dropdown-inline">
                             <div class="container">
                                 <ul class="mega-inline-list">
-                                    <li><a href="#">Who We Are</a></li>
-                                    <li><a href="#">Our Values</a></li>
-                                    <li><a href="#">Quality Statement</a></li>
-                                    <li><a href="#">Career</a></li>
+                                    <li><a href="{{ route('about') }}">Who We Are</a></li>
+                                    <li><a href="{{ route('about.values') }}">Our Values</a></li>
+                                    <li><a href="{{ route('about.quality') }}">Quality Statement</a></li>
+                                    <li><a href="{{ route('about.career') }}">Career</a></li>
                                 </ul>
                             </div>
                         </div>
