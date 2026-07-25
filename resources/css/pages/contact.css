@@ -50,11 +50,18 @@
 
 @media (max-width: 767.98px) {
     .contact-hero {
-        height: 220px;
+        height: 240px;
+        min-height: 240px;
+        align-items: flex-end;
+        padding-bottom: 34px;
+    }
+
+    .contact-hero-eyebrow {
+        font-size: 15px;
     }
 
     .contact-hero-title {
-        font-size: 1.5rem;
+        font-size: 1.85rem;
     }
 }
 
@@ -327,7 +334,7 @@
     }
 
     .contact-hero-eyebrow {
-        font-size: 14px;
+        font-size: 15px;
         text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
     }
 
