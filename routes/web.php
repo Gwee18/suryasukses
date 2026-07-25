@@ -20,9 +20,10 @@ Route::get('/market', function () {
     return view('market.index');
 })->name('market');
 
-Route::get('/solutions', function () {
-    return view('solutions.index');
-})->name('solutions');
+use App\Http\Controllers\SolutionController;
+
+Route::get('/solutions', [SolutionController::class, 'index'])->name('solutions');
+Route::get('/capabilities', [SolutionController::class, 'capabilities'])->name('capabilities');
 
 Route::get('/about', function () {
     return view('about.index');
