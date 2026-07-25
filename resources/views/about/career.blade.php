@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'About - Company History')
+@section('title', 'About - Career')
 
 @push('styles')
     @vite('resources/css/pages/about.css')
@@ -17,7 +17,7 @@
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#" style="cursor: default;">About Us</a></li>
-                                <li class="breadcrumb-item active" aria-current="page"><a href="#">Company History</a></li>
+                                <li class="breadcrumb-item active" aria-current="page"><a href="#">Career</a></li>
                             </ol>
                         </nav>
                         <div class="block-back-link">
@@ -29,46 +29,38 @@
         </div>
     </section>
 
-    <section class="sol_blue-sec-1">
+    <section class="about-location-sec-1 contents_abouts_sec1">
         <div class="prelative container">
             <div class="row">
                 <div class="col-md-15">
                     <div class="box-konten-kiri">
                         <h5>About Us</h5>
                         <ol>
-                            <li class="active"><a href="{{ route('about') }}">Who We Are</a></li>
+                            <li><a href="{{ route('about') }}">Who We Are</a></li>
                             <li><a href="{{ route('about.values') }}">Our Values</a></li>
                             <li><a href="{{ route('about.quality') }}">Quality Statement</a></li>
-                            <li><a href="{{ route('about.career') }}">Career</a></li>
+                            <li class="active"><a href="{{ route('about.career') }}">Career</a></li>
                         </ol>
                     </div>
                 </div>
                 <div class="col-md-45">
-                    <h4>About Us</h4>
-                    <h3>Who We Are</h3>
-                    <img src="{{ asset('assets/images/about/bca40e3401new.jpg') }}" alt="Who We Are" class="img img-fluid pb-5">
-                    
-                    <div class="row">
-                        <div class="col-md-30">
-                            <p>At Suryasukses, we take pride in our heritage and the company we've become today. Throughout our history, it has been the dedication of our team members that has allowed us to grow into a leading plastic manufacturing company.</p>
-                            <p>Our history is rich in product innovation, customer focus, and strategic growth. With roots as a small, hometown company based in Surabaya, Indonesia, Suryasukses Group has come a long way since it was established in 1985 under the name Multindo Plastics. Starting with few injection machines, and now we have over 10,000 international and local customers</p>
-                            <p>From houseware manufacturer we diversify our business to rigid plastic packaging, starting from thermoforming cups to printing, then preform, bottles, and closures, serving home industries to well established food and beverage companies. We further expand our market with nonwoven products to cater hygiene, agriculture, and industrial markets. Lastly, with deep knowledge of breakthrough materials and backed with professionals with decades of experience, Amari Upvc Roofing will surely satisfies the market with strong, consistent, unique and competitive products.</p>
-                            <p>We take great pride in the company we have developed and the products and services we offer. Our ability to support our customers at every stage of the product development process-including expertise in consumer insights, ideation and design, manufacturing and research and development-is what has allowed us to become a leader in the industry</p>
-                        </div>
-                        <div class="col-md-30">
-                            <div class="row no-gutters">
-                                <div class="col-md-60">
-                                    <img class="img img-fluid w-100" src="{{ asset('assets/images/about/248abe37b4banners_whowe.jpg') }}" alt="Who We Are Image">
-                                </div>
-                            </div>
-                        </div>
+                    <div class="content-top cont_career">
+                        <h3>Come Grow With Us</h3>
+                        <img src="{{ asset('assets/images/about/3b5fb3dfb6_OPS6411.jpg') }}" alt="" class="img img-fluid pb-4 mb-2">
+                        
+                        <p>We attribute our success on hiring and maintaining a positive and productive workforce.</p>
+                        <p>SuryaSukses Group has established a reputation in the industry for being trustworthy and reliable, Our corporate culture is dynamic, creative, and innovative. Learn more about our career and opportunities.</p>
+                        
+                        <a class="btn join-team-btn pl-3 pr-3" target="_blank" href="https://id.jobstreet.com/companies/suryasukses-group-168535852924657">Join Our Team</a>
+                        
+                        <div class="clear clearfix"></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="home-corp-video">
+    <section class="home-corp-video mt-5">
         <div class="home-corp-container">
             <div class="home-corp-video-inner">
                 <video class="home-corp-media" muted loop playsinline>

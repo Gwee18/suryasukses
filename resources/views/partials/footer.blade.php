@@ -3,7 +3,9 @@
         <div class="row footer-row gy-4">
 
             <div class="col-lg-auto col-6 footer-logo-col">
-                <img src="{{ asset('assets/images/logo/logo-header.png') }}" alt="Surya Sukses Logo">
+                <a href="{{ route('home') }}">
+                    <img src="{{ asset('assets/images/logo/logo-header.png') }}" alt="Surya Sukses Logo">
+                </a>
             </div>
 
             <div class="col-lg-auto col-6">
@@ -17,11 +19,11 @@
             <div class="col-lg-auto col-6">
                 <h6 class="footer-heading">Get To Know Us</h6>
                 <ul class="footer-links">
-                    <li><a href="#">Who We Are</a></li>
-                    <li><a href="#">Our Values</a></li>
-                    <li><a href="#">Quality Statement</a></li>
+                    <li><a href="{{ route('about') }}">Who We Are</a></li>
+                    <li><a href="{{ route('about.values') }}">Our Values</a></li>
+                    <li><a href="{{ route('about.quality') }}">Quality Statement</a></li>
                     <li><a href="{{ route('news') }}">News and Articles</a></li>
-                    <li><a href="#">Career</a></li>
+                    <li><a href="{{ route('about.career') }}">Career</a></li>
                 </ul>
             </div>
 
