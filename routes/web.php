@@ -24,10 +24,6 @@ Route::get('/solutions', function () {
     return view('solutions.index');
 })->name('solutions');
 
-Route::get('/about', function () {
-    return view('about.index');
-})->name('about');
-
 Route::get('/news', function () {
     return view('news.index');
 })->name('news');

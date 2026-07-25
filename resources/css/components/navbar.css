@@ -4,46 +4,24 @@
     --navbar-bg: #ffffff;
     --navbar-text: #a9a9a9;
     --navbar-text-active: #1a1a1a;
-    --navbar-accent: #e4002b;
+    --navbar-accent: #C52026;
     --navbar-border: #ececec;
-}
-
-.site-navbar {
-    position: relative;
-    z-index: 1030;
-    background-color: var(--navbar-bg);
-    border-bottom: 1px solid var(--navbar-border);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .site-navbar .navbar-inner {
     display: flex;
     align-items: center;
     min-height: var(--navbar-height);
-    padding-left: 2.5rem;
+    padding-left: calc(2.8rem - 15px);   /* dari 5px, dinaikin ke 15px dulu buat tes */
     padding-right: 2.5rem;
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
-}
-
-.navbar-logo {
-    height: 65px;
-    width: auto;
-}
-
-.navbar-iso {
-    margin-top: 15px;
-}
-
-.navbar-iso img {
-    height: 35px;
-    width: auto;
+    padding-top: 0.5rem;
+    padding-bottom: 0.6rem;
 }
 
 .main-menu {
-    gap: 1.5rem;
-    margin-left: 2rem;
-    margin-top: 15px;
+    gap: 2.25rem;              /* dari 1.5rem, jarak antar item lebih lega */
+    margin-left: 2rem;         /* dari 2rem, jarak dari logo lebih jauh */
+    align-items: bottom left;
 }
 
 .main-menu .nav-link {
@@ -51,20 +29,49 @@
     align-items: center;
     font-family: 'Fira Sans', sans-serif;
     color: var(--navbar-text);
-    font-size: 14px;
-    font-weight: 800;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
     text-transform: uppercase;
     padding: 0.5rem 0;
+    transform: translateY(4px);   /* ini yang bikin teks beneran turun */
+}
+
+.navbar-iso {
+    margin-left: 2rem;         /* kasih jarak dari menu terakhir */
+}
+
+.navbar-iso img {
+    height: 40px;               /* dari 35px, sedikit lebih besar */
+    width: auto;
+}
+
+.main-menu {
+    gap: 1rem;
+    margin-left: 1.25rem;      /* dari 3rem, biar nempel deket ke logo */
+    align-items: center;
+}
+
+.main-menu .nav-link {
+    display: flex;
+    align-items: center;
+    font-family: 'Fira Sans', sans-serif;
+    color: var(--navbar-text);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    padding: 0.5rem 0;
+    transform: translateY(10px);   /* dari 4px, biar makin turun ke bawah */
 }
 
 .main-menu .nav-link.active {
-    color: var(--navbar-text-active);
+    color: var(--navbar-text);
 }
 
 .main-menu .nav-link:hover {
-    color: var(--navbar-accent);
+    color: var(--navbar-text-active);
 }
-
 
 .mega-nav-item {
     position: static;
