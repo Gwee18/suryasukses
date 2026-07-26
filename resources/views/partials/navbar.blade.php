@@ -9,10 +9,13 @@
             </button>
             <div class="collapse navbar-collapse" id="mainNavbar">
                 <ul class="navbar-nav main-menu">
+                    <li class="nav-item d-lg-none">
+                        <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">HOME</a>
+                    </li>
 
                     <li class="nav-item mega-nav-item">
                         <a class="nav-link mega-toggle {{ request()->routeIs('product') ? 'active' : '' }}" href="{{ route('product') }}">
-                            Products
+                            PRODUCTS
                         </a>
                         <div class="mega-dropdown mega-dropdown-columns">
                             <div class="container">
@@ -61,7 +64,7 @@
 
                     <li class="nav-item mega-nav-item">
                         <a class="nav-link mega-toggle {{ request()->routeIs('market') ? 'active' : '' }}" href="{{ route('market') }}">
-                            Markets
+                            MARKET
                         </a>
                         <div class="mega-dropdown mega-dropdown-inline">
                             <div class="container">
@@ -80,13 +83,13 @@
 
                     <li class="nav-item mega-nav-item">
                         <a class="nav-link mega-toggle {{ request()->routeIs('solutions') ? 'active' : '' }}" href="{{ route('solutions') }}">
-                            Solutions
+                            SOLUTIONS
                         </a>
                         <div class="mega-dropdown mega-dropdown-inline">
                             <div class="container">
                                 <ul class="mega-inline-list">
-                                    <li><a href="#">Suryasukses Studio</a></li>
-                                    <li><a href="#">Capabilities</a></li>
+                                    <li><a href="{{ route('solutions') }}">Suryasukses Studio</a></li>
+                                    <li><a href="{{ route('capabilities') }}">Capabilities</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -94,7 +97,7 @@
 
                     <li class="nav-item mega-nav-item">
                         <a class="nav-link mega-toggle {{ request()->routeIs('about') ? 'active' : '' }}" href="{{ route('about') }}">
-                            About Us
+                            ABOUT US
                         </a>
                         <div class="mega-dropdown mega-dropdown-inline">
                             <div class="container">
@@ -109,10 +112,10 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('news') ? 'active' : '' }}" href="{{ route('news') }}">News</a>
+                        <a class="nav-link {{ request()->routeIs('news') ? 'active' : '' }}" href="{{ route('news') }}">NEWS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">Contact Us</a>
+                        <a class="nav-link {{ request()->routeIs('contact') ? 'active' : '' }}" href="{{ route('contact') }}">CONTACT US</a>
                     </li>
                 </ul>
             </div>

@@ -11,7 +11,7 @@ class SolutionController extends Controller
      */
     public function index()
     {
-        return view('solutions');
+        return view('solutions.index');
     }
 
     /**
@@ -19,6 +19,6 @@ class SolutionController extends Controller
      */
     public function capabilities()
     {
-        return view('capabilities');
+        return view('solutions.capabilities');
     }
 }
