@@ -1,9 +1,8 @@
 :root {
     --footer-bg: #f2f2f2;
-    --footer-heading: #14213d;
-    --footer-link: #4a6a95;
-    --footer-link-hover: #14213d;
-    --footer-social-bg: #c9c9cf;
+    --footer-heading: #3b3b3b;
+    --footer-link: #6a6a6a;
+    --footer-social-bg: #c9c9c9;
     --footer-social-icon: #ffffff;
 }
 
@@ -24,21 +23,26 @@
     align-items: flex-start;
     column-gap: 5.5rem;
     row-gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-logo-col {
+    margin-right: 1rem;
 }
 
 .footer-logo-col img {
-    height: 42px;
+    height: 46px;
     width: auto;
 }
 
 .footer-heading {
     color: var(--footer-heading);
     font-family: 'Fira Sans', sans-serif;
-    font-weight: 700;
-    font-size: 0.85rem;
+    font-weight: 600;
+    font-size: 15px;
     text-transform: uppercase;
-    letter-spacing: 0.03em;
-    margin-bottom: 1rem;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.6rem;
 }
 
 .footer-links {
@@ -48,35 +52,34 @@
 }
 
 .footer-links li+li {
-    margin-top: 0.6rem;
+    margin-top: 0.125rem;
 }
 
 .footer-links a {
     color: var(--footer-link);
     font-family: 'Fira Sans', sans-serif;
     font-weight: 400;
-    font-size: 0.95rem;
+    font-size: 14px;
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
     color: var(--footer-link-hover);
-    text-decoration: underline;
 }
 
 .footer-social {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1.125rem;
 }
 
 .footer-social a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background-color: var(--footer-social-bg);
     color: var(--footer-social-icon);
@@ -84,9 +87,14 @@
 }
 
 .footer-social a svg {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
     fill: currentColor;
+}
+
+.footer-social a[aria-label="YouTube"] svg path {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
 }
 
 .footer-social a:hover {
@@ -104,4 +112,4 @@
         justify-content: flex-start;
         margin-top: 1rem;
     }
-}
+} 

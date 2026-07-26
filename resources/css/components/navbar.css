@@ -4,46 +4,31 @@
     --navbar-bg: #ffffff;
     --navbar-text: #a9a9a9;
     --navbar-text-active: #1a1a1a;
-    --navbar-accent: #e4002b;
+    --navbar-accent: #C52026;
     --navbar-border: #ececec;
 }
 
 .site-navbar {
+    box-shadow: 0 5px 9px rgba(0, 0, 0, 0.25), 0 1px 0 rgba(0, 0, 0, 0.05);
     position: relative;
-    z-index: 1030;
-    background-color: var(--navbar-bg);
-    border-bottom: 1px solid var(--navbar-border);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    z-index: 10;
 }
 
 .site-navbar .navbar-inner {
     display: flex;
     align-items: center;
     min-height: var(--navbar-height);
-    padding-left: 2.5rem;
+    padding-left: calc(2.8rem - 15px); 
     padding-right: 2.5rem;
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
-}
-
-.navbar-logo {
-    height: 65px;
-    width: auto;
-}
-
-.navbar-iso {
-    margin-top: 15px;
-}
-
-.navbar-iso img {
-    height: 35px;
-    width: auto;
+    padding-top: 0.5rem;
+    padding-bottom: 0.6rem;
 }
 
 .main-menu {
-    gap: 1.5rem;
-    margin-left: 2rem;
-    margin-top: 15px;
+    gap: 0;
+    margin-left: 1.25rem !important;
+    padding-top: 0rem;
+    padding-bottom: 0.5rem;
 }
 
 .main-menu .nav-link {
@@ -51,20 +36,54 @@
     align-items: center;
     font-family: 'Fira Sans', sans-serif;
     color: var(--navbar-text);
-    font-size: 14px;
-    font-weight: 800;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
     text-transform: uppercase;
     padding: 0.5rem 0;
+    transform: translateY(16px);   /* dari 4px, biar makin turun ke bawah */
 }
 
 .main-menu .nav-link.active {
-    color: var(--navbar-text-active);
+    color: var(--navbar-text);
 }
 
 .main-menu .nav-link:hover {
-    color: var(--navbar-accent);
+    color: var(--navbar-text-active);
 }
 
+@media (min-width: 992px) {
+    .main-menu {
+        gap: 0.85rem;
+    }
+}
+
+.navbar-toggler {
+    border: none;
+    padding: 0.4rem 0.6rem;
+    box-shadow: none !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.navbar-toggler-icon {
+    width: 1.3em;
+    height: 1.3em;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(26,26,26,1)' stroke-width='2.5' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-iso {
+    margin-left: 2rem;    
+    margin-right: -0.1rem;
+    transform: translateY(6px);     
+}
+
+.navbar-iso img {
+    height: 35px;              
+    width: auto;
+}
 
 .mega-nav-item {
     position: static;
@@ -99,7 +118,6 @@
     overflow: hidden;
     max-height: 0;
     opacity: 0;
-    transition: max-height 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease;
     z-index: 1020;
     pointer-events: none;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -127,6 +145,11 @@
     margin-bottom: 1.1rem;
 }
 
+.mega-heading a {
+    color: inherit;
+    text-decoration: none;
+}
+
 .mega-list {
     list-style: none;
     padding: 0;
@@ -143,7 +166,6 @@
     font-weight: 400;
     font-size: 1.05rem;
     text-decoration: none;
-    transition: opacity 0.2s ease;
 }
 
 .mega-list a:hover {
@@ -195,6 +217,14 @@
 }
 
 @media (max-width: 991.98px) {
+    .navbar-collapse {
+        transition: height 0.35s ease;
+    }
+
+    .navbar-collapse.collapsing {
+        transition: height 0.35s ease;
+    }
+
     .site-navbar .navbar-toggler {
         border: none !important;
         outline: none !important;
@@ -204,17 +234,23 @@
 
     .site-navbar .navbar-inner {
         min-height: 64px;
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
     .navbar-logo {
-        height: 36px;
+        height: 46px;
     }
 
     .main-menu {
         gap: 0;
-        margin-left: 0 !important;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        margin-left: -0.4rem !important;
+        padding-top: 0rem;
+        padding-bottom: 0.8rem;
+    }
+
+    .navbar-nav.main-menu {
+        align-items: flex-start;
     }
 
     .site-navbar .main-menu .nav-item {
@@ -234,15 +270,14 @@
         color: #8c8c8c !important;
         font-weight: 500 !important;
         font-size: 14.5px !important;
-        padding: 0.75rem 1rem !important;
+        padding: 0.25rem 1rem !important;
         text-transform: uppercase !important;
         letter-spacing: 0.3px;
     }
 
-    .site-navbar .main-menu .nav-link.active,
     .site-navbar .main-menu .nav-link:hover,
     .site-navbar .mega-nav-item.is-open .mega-toggle {
-        color: #6a6a6a !important;
+        color: #1a1a1a !important;
         font-weight: 500 !important;
     }
 
@@ -251,18 +286,107 @@
         width: auto;
         max-height: 0;
         pointer-events: auto;
+        background-color: #ffffff;
+        box-shadow: none;
     }
 
     .mega-nav-item.is-open .mega-dropdown {
-        max-height: var(--panel-max-height, 1000px);
+        max-height: var(--panel-max-height, 700px);
     }
 
+    .mega-dropdown-columns .container {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .mega-dropdown-inline .container {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .mega-dropdown-columns .mega-list {
+        display: none;
+    }
+
+    .mega-dropdown-columns .row {
+        row-gap: 0 !important;
+        --bs-gutter-y: 0;
+        margin: 0 !important;
+        padding-top: 0.4rem;
+    }
+
+    .mega-dropdown-columns .row > div {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* ===== Item dropdown tipe "columns" (contoh: Products) ===== */
+    .mega-heading {
+        color: var(--navbar-text-active);
+        font-size: 15px;
+        font-weight: 600;
+        text-transform: none;
+        letter-spacing: normal;
+        margin: 0;
+        padding: 0;
+    }
+
+    .mega-heading a {
+        display: block;
+        font-weight: 400;
+        color: var(--navbar-text-active);
+        padding: 0.25rem 0 0.25rem 2rem;
+        border-radius: 4px;
+    }
+
+    .mega-heading a:hover {
+        background-color: #f2f2f2;
+    }
+
+    .mega-heading a:active,
+    .mega-heading a.active {
+        background-color: #1a56db;
+    }
+
+    /* ===== Item dropdown tipe "inline" (contoh: Market, Solutions) ===== */
     .mega-inline-list {
         flex-direction: column;
         align-items: flex-start;
     }
 
+    .mega-inline-list li {
+        padding: 0;
+        width: 100%;
+    }
+
     .mega-inline-list li+li::before {
         display: none;
+    }
+
+    .mega-inline-list a {
+        display: block;
+        width: 100%;
+        color: var(--navbar-text-active);
+        font-weight: 400;
+        font-size: 15px;
+        padding: 0.25rem 0 0.25rem 2rem;
+        border-radius: 4px;
+    }
+
+    .mega-inline-list a:hover {
+        opacity: 1;
+        background-color: #f2f2f2;
+    }
+
+    .mega-inline-list a:active,
+    .mega-inline-list a.active {
+        opacity: 1;
+        background-color: #1a56db;
     }
 }

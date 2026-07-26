@@ -18,8 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     items.forEach((item) => {
         const toggle = item.querySelector('.mega-toggle');
-        const panel = item.querySelector('.mega-dropdown');
-        const inner = panel.querySelector('.container');
 
         toggle.addEventListener('click', (e) => {
             e.preventDefault();
@@ -27,8 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
             closeAll();
             if (!isOpen) {
                 setNavbarOffset();
-                const contentHeight = inner.scrollHeight;
-                panel.style.setProperty('--panel-max-height', `${contentHeight}px`);
                 item.classList.add('is-open');
             }
         });
