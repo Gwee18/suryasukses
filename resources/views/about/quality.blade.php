@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'About - Company History')
+@section('title', 'About - Quality Statement')
 
 @push('styles')
     @vite('resources/css/pages/about.css')
@@ -17,7 +17,7 @@
                             <ol class="breadcrumb mb-0">
                                 <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
                                 <li class="breadcrumb-item"><a href="#" style="cursor: default;">About Us</a></li>
-                                <li class="breadcrumb-item active" aria-current="page"><a href="#">Company History</a></li>
+                                <li class="breadcrumb-item active" aria-current="page"><a href="#">Quality Statement</a></li>
                             </ol>
                         </nav>
                         <div class="block-back-link">
@@ -29,46 +29,74 @@
         </div>
     </section>
 
-    <section class="sol_blue-sec-1">
+    <section class="about-location-sec-1">
         <div class="prelative container">
             <div class="row">
                 <div class="col-md-15">
                     <div class="box-konten-kiri">
                         <h5>About Us</h5>
                         <ol>
-                            <li class="active"><a href="{{ route('about') }}">Who We Are</a></li>
+                            <li><a href="{{ route('about') }}">Who We Are</a></li>
                             <li><a href="{{ route('about.values') }}">Our Values</a></li>
-                            <li><a href="{{ route('about.quality') }}">Quality Statement</a></li>
+                            <li class="active"><a href="{{ route('about.quality') }}">Quality Statement</a></li>
                             <li><a href="{{ route('about.career') }}">Career</a></li>
                         </ol>
                     </div>
                 </div>
                 <div class="col-md-45">
-                    <h4>About Us</h4>
-                    <h3>Who We Are</h3>
-                    <img src="{{ asset('assets/images/about/bca40e3401new.jpg') }}" alt="Who We Are" class="img img-fluid pb-5">
+                    <h4>Our culture of perfections</h4>
+                    <h3>Quality Statement</h3>
                     
-                    <div class="row">
+                    <p>Quality products and on time delivery are the things that made us different. With hairline precision production and exceptional discipline in time management, Suryasukses Group has managed to be on top when it comes to quality.</p>
+                    <p>The Suryasukses Group puts strong emphasis on quality. The best manufacturing practice in Suryasukses Group is centrally coordinated and implemented at each plant to ensure superior quality. The best manufacturing practice is continuously pushed up to lift the quality level further. All Suryasukses Group plants are ISO 9000 certified and following the intense and strict interntional safety standard regulation.<br></p>
+                    
+                    <div class="row no-gutters py-4 align-items-center">
                         <div class="col-md-30">
-                            <p>At Suryasukses, we take pride in our heritage and the company we've become today. Throughout our history, it has been the dedication of our team members that has allowed us to grow into a leading plastic manufacturing company.</p>
-                            <p>Our history is rich in product innovation, customer focus, and strategic growth. With roots as a small, hometown company based in Surabaya, Indonesia, Suryasukses Group has come a long way since it was established in 1985 under the name Multindo Plastics. Starting with few injection machines, and now we have over 10,000 international and local customers</p>
-                            <p>From houseware manufacturer we diversify our business to rigid plastic packaging, starting from thermoforming cups to printing, then preform, bottles, and closures, serving home industries to well established food and beverage companies. We further expand our market with nonwoven products to cater hygiene, agriculture, and industrial markets. Lastly, with deep knowledge of breakthrough materials and backed with professionals with decades of experience, Amari Upvc Roofing will surely satisfies the market with strong, consistent, unique and competitive products.</p>
-                            <p>We take great pride in the company we have developed and the products and services we offer. Our ability to support our customers at every stage of the product development process-including expertise in consumer insights, ideation and design, manufacturing and research and development-is what has allowed us to become a leader in the industry</p>
+                            <div class="content pr-5">
+                                <div class="content-inner">
+                                    <div class="title">
+                                        <p></p>
+                                    </div>
+                                    <div class="isi">
+                                        <p>The quality control team at Suryasukses group continually assessed for precision without tolerance. Our test lab are fully equipped with the highest technology available to ensure quality checking. This attention to detail is reflected in the end product that our customer receive.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-30">
-                            <div class="row no-gutters">
-                                <div class="col-md-60">
-                                    <img class="img img-fluid w-100" src="{{ asset('assets/images/about/248abe37b4banners_whowe.jpg') }}" alt="Who We Are Image">
+                            <img class="w-100" src="{{ asset('assets/images/about/b1b1e898fbLayer-43.jpg') }}" alt="">
+                        </div>
+                    </div>
+            
+                    <div class="row no-gutters py-4 align-items-center">
+                        <div class="col-md-30">
+                            <img class="w-100" src="{{ asset('assets/images/about/ea8e93cbf2Layer-44.jpg') }}" alt="">
+                        </div>
+                        <div class="col-md-30">
+                            <div class="content pl-5">
+                                <div class="content-inner">
+                                    <div class="title">
+                                        <p>When Technology Meets Human Skill</p>
+                                    </div>
+                                    <div class="isi">
+                                        <p>It is our quality standard that high-end production result still need to be final checked in batches, it is the harmony between high tech and skilled human resource with eye for detail. Blending the human capability with precision machinery will bring consistency to the whole process and finished products.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+            
+                    <div class="hr-garis-about-quality"></div>
+                    
+                    <h5 class="quality-section-title mb-3">Our Quality Certfications</h5>
+                    <img src="{{ asset('assets/images/about/f8f77a1e23Layer-42.png') }}" alt="Our Quality Certifications" class="img-fluid" style="max-height: 80px;">
+
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="home-corp-video">
+    <section class="home-corp-video mt-5">
         <div class="home-corp-container">
             <div class="home-corp-video-inner">
                 <video class="home-corp-media" muted loop playsinline>

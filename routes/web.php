@@ -24,13 +24,8 @@ Route::get('/solutions', function () {
     return view('solutions.index');
 })->name('solutions');
 
-Route::get('/about', function () {
-    return view('about.index');
-})->name('about');
-
-Route::get('/news', function () {
-    return view('news.index');
-})->name('news');
+require __DIR__.'/about.php';
+require __DIR__.'/news.php';
 
 Route::get('/contact', function () {
     return view('contact.index');

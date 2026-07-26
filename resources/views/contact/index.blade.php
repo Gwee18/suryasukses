@@ -38,7 +38,7 @@
                 'name' => 'Suryasukses Group Jakarta',
                 'phone' => '021 386 1333',
                 'address' => 'Jakarta<br>Jl. Cideng Timur No. 70E dan F<br>Jakarta Pusat - Indonesia',
-                'map' => 'https://goo.gl/maps/RmAtJontTNyMtMuZ6',
+                'map' => 'https://maps.app.goo.gl/zoNV8ckCL8zGQuDf6',
             ],
             [
                 'name' => 'Suryasukses Group Bekasi',

@@ -18,7 +18,7 @@
                             <div class="container">
                                 <div class="row gy-4">
                                     <div class="col-lg-3 col-md-6">
-                                        <h6 class="mega-heading">Packaging</h6>
+                                        <h6 class="mega-heading"><a href="{{ route('product') }}#packaging">Packaging</a></h6>
                                         <ul class="mega-list">
                                             <li><a href="#">Preform</a></li>
                                             <li><a href="#">Bottles</a></li>
@@ -29,14 +29,14 @@
                                         </ul>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
-                                        <h6 class="mega-heading">Specialty Nonwoven</h6>
+                                        <h6 class="mega-heading"><a href="{{ route('product') }}#specialty-nonwoven">Specialty Nonwoven</a></h6>
                                         <ul class="mega-list">
                                             <li><a href="#">Spunbond Polypropylene</a></li>
                                             <li><a href="#">Meltblown</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
-                                        <h6 class="mega-heading">Housewares</h6>
+                                        <h6 class="mega-heading"><a href="{{ route('product') }}#housewares">Housewares</a></h6>
                                         <ul class="mega-list">
                                             <li><a href="#">Storage</a></li>
                                             <li><a href="#">Sealware</a></li>
@@ -49,7 +49,7 @@
                                         </ul>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
-                                        <h6 class="mega-heading">Roofing</h6>
+                                        <h6 class="mega-heading"><a href="{{ route('product') }}#roofing">Roofing</a></h6>
                                         <ul class="mega-list">
                                             <li><a href="#">UPVC</a></li>
                                         </ul>
@@ -99,10 +99,10 @@
                         <div class="mega-dropdown mega-dropdown-inline">
                             <div class="container">
                                 <ul class="mega-inline-list">
-                                    <li><a href="#">Who We Are</a></li>
-                                    <li><a href="#">Our Values</a></li>
-                                    <li><a href="#">Quality Statement</a></li>
-                                    <li><a href="#">Career</a></li>
+                                    <li><a href="{{ route('about') }}">Who We Are</a></li>
+                                    <li><a href="{{ route('about.values') }}">Our Values</a></li>
+                                    <li><a href="{{ route('about.quality') }}">Quality Statement</a></li>
+                                    <li><a href="{{ route('about.career') }}">Career</a></li>
                                 </ul>
                             </div>
                         </div>
