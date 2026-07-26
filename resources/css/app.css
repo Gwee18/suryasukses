@@ -49,3 +49,9 @@ img {
 .sticky-whatsapp:hover {
     transform: translateY(-50%) translateX(-5px);
 }
+
+@media (max-width: 768px) {
+    .sticky-whatsapp {
+        display: none !important;
+    }
+}

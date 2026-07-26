@@ -1,0 +1,322 @@
+/* resources/css/pages/news.css
+   Nilai warna, font, dan spacing di file ini diambil LANGSUNG dari CSS asli
+   suryasukses.com (screen.css / styles.css / media.style.css asli mereka),
+   disesuaikan ke class Bootstrap 5 yang dipakai project ini. */
+
+/* ===== Breadcrumb ===== */
+.breadcrumb-det {
+    padding: 2.5rem 0 0;
+    margin-bottom: 2rem;
+}
+
+.breadcrumb-det .row {
+    display: flex;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.breadcrumb-det .row > div:first-child {
+    width: auto;
+    flex: 1 1 auto;
+}
+
+.breadcrumb-det .row > div:last-child {
+    width: auto;
+    flex: 0 0 auto;
+}
+
+.breadcrumb-det .block-back-link {
+    text-align: right !important;
+}
+
+.breadcrumb-det .row::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: calc(var(--bs-gutter-x, 1.5rem) * 0.5);
+    right: calc(var(--bs-gutter-x, 1.5rem) * 0.5);
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+.breadcrumb-det .breadcrumb {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.breadcrumb-det .breadcrumb-item a {
+    color: #6a6a6a; /* asli: #6a6a6a, bukan #888 */
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.breadcrumb-det .breadcrumb-item.active a {
+    color: #232323; /* asli: #232323, bukan #555 */
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.breadcrumb-det .block-back-link a {
+    color: #000; /* asli: hitam, bukan abu-abu */
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/* ===== Sidebar "News & Articles" ===== */
+.product-sec-1 {
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 80px;
+}
+
+.product-sec-1 .box-konten-kiri {
+    background-color: #f4f4f4;
+    padding: 25px; /* asli: 25px, bukan 30px 25px */
+    position: relative;
+}
+
+.product-sec-1 .box-konten-kiri h5 {
+    color: #c52026; /* WARNA ASLI — koreksi dari #c8232c */
+    font-weight: 600; /* asli: 600, bukan 700 */
+    font-size: 22px; /* asli: 22px, bukan 20px */
+    margin-bottom: 25px;
+    text-transform: none;
+}
+
+/* Sidebar tinggi mengikuti tinggi konten (nilai asli 1000px itu fixed-height
+   khusus untuk desain lama mereka yang list menu-nya panjang; di project
+   kita cukup pakai height:100% biar otomatis menyesuaikan) */
+@media (min-width: 768px) {
+    .product-sec-1 .box-konten-kiri {
+        min-height: 100%;
+    }
+}
+
+/* ===== Konten Utama (List Berita) ===== */
+.rights_cont_def {
+    padding-left: 30px;
+    padding-top: 30px;
+}
+
+.product-sec-1 .box-content {
+    padding: 0 0 50px; /* asli: padding bawah 50px, bukan margin-bottom 40px */
+}
+
+.product-sec-1 .box-content .image {
+    margin-bottom: 20px;
+}
+
+.product-sec-1 .box-content .image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.product-sec-1 .box-content .title {
+    margin-bottom: 0;
+}
+
+.product-sec-1 .box-content .title p {
+    font-size: 20px; /* asli: 20px, bukan 16px */
+    color: #c52026;  /* WARNA ASLI */
+    font-weight: 600; /* asli: 600, bukan 700 */
+    line-height: 1.4;
+    padding-bottom: 20px;
+    margin: 0;
+}
+
+.product-sec-1 .box-content .title a {
+    text-decoration: none;
+}
+
+.product-sec-1 .box-content .title a:hover p {
+    color: #a01a22;
+}
+
+/* ===== Tombol "Read More" ===== */
+.product-sec-1 .box-content .klik a {
+    color: #000;
+    text-decoration: none; /* asli: underline di layar kecil, none di desktop */
+}
+
+.product-sec-1 .box-content .klik a p {
+    font-size: 15px;
+    font-weight: 700; /* asli: 700, bukan 600 */
+    margin: 0;
+}
+
+.product-sec-1 .box-content .klik a:hover {
+    color: #c52026;
+}
+
+/* ===== Judul & Tanggal Halaman Detail Artikel ===== */
+.rights_cont_def h3.detail-title {
+    color: #c52026;   /* WARNA ASLI */
+    font-weight: 600; /* asli: 600, bukan 700 */
+    font-size: 45px;  /* asli: 45px (desktop), jauh lebih besar dari 24px sebelumnya */
+    margin-bottom: 40px;
+    line-height: 1.3;
+}
+
+.rights_cont_def .dates {
+    color: #6a6a6a;
+    display: inline-block;
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+/* ===== Isi Artikel ===== */
+.contents_det_blog p,
+.contents_det_blog ol,
+.contents_det_blog ul,
+.contents_det_blog li {
+    font-size: 15px;   /* asli: 15px, bukan 16px */
+    font-weight: 300;  /* asli: 300 (light), bukan default */
+    color: #6a6a6a;    /* asli: #6a6a6a, bukan #555 */
+    line-height: 1.6;
+}
+
+.contents_det_blog p {
+    padding-bottom: 20px;
+    margin-bottom: 0;
+}
+
+.contents_det_blog h2 {
+    color: #333333;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 1.3;
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+
+.contents_det_blog h3 {
+    color: #c52026;
+    font-weight: 600;
+    font-size: 45px;
+    line-height: 1.3;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.contents_det_blog ol,
+.contents_det_blog ul {
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
+
+.contents_det_blog li {
+    margin-bottom: 15px;
+}
+
+.contents_det_blog a {
+    color: #c52026;    /* asli: merah brand, bukan biru */
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.contents_det_blog a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Pagination ===== */
+.textaboveheader-landing.page {
+    margin-top: 40px;
+}
+
+.page .pagination {
+    justify-content: flex-start;
+}
+
+.page .pagination .page-item .page-link {
+    color: #0e509e; /* WARNA ASLI biru pager mereka, bukan #007bff */
+    border: none;
+    padding: 0 6px;
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    background: transparent;
+}
+
+.page .pagination .page-item.active .page-link {
+    background-color: transparent;
+    color: #2e6ab1; /* WARNA ASLI biru saat halaman aktif */
+    font-weight: 700;
+}
+
+.page .pagination .page-item .page-link:hover {
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+/* ===== Responsive (breakpoint asli mereka: max-width 768px) ===== */
+@media (max-width: 768px) {
+    .breadcrumb-det {
+        padding: 1.2rem 0 0;
+        margin-bottom: 1.2rem;
+    }
+
+    .breadcrumb-det .breadcrumb-item a,
+    .breadcrumb-det .breadcrumb-item.active a,
+    .breadcrumb-det .block-back-link a {
+        font-size: 13.5px;
+    }
+
+    .product-sec-1 {
+        padding-bottom: 30px;
+    }
+
+    .product-sec-1 .box-konten-kiri {
+        min-height: 0;
+        padding: 28px 20px !important;
+        margin-bottom: 20px !important;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .product-sec-1 .box-konten-kiri h5 {
+        margin: 0 !important;
+        line-height: 1.2 !important;
+    }
+
+    .rights_cont_def {
+        padding-left: calc(var(--bs-gutter-x, 1.5rem) * 0.5);
+        padding-right: calc(var(--bs-gutter-x, 1.5rem) * 0.5);
+        padding-top: 10px;
+    }
+
+    .rights_cont_def h3.detail-title,
+    .contents_det_blog h3 {
+        font-size: 33px; /* asli: turun ke 33px di mobile */
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .contents_det_blog h2 {
+        font-size: 24px;
+        margin-top: 25px;
+        margin-bottom: 20px;
+    }
+
+    .product-sec-1 .box-content .title p {
+        padding-bottom: 10px;
+    }
+
+    .product-sec-1 .box-content .klik a {
+        text-decoration: underline; /* asli: underline muncul lagi di mobile */
+    }
+}
+
+@media (min-width: 992px) {
+    .content-align-logo {
+        padding-left: 50px;
+    }
+    .breadcrumb-det .row::after {
+        left: 50px;
+    }
+}
