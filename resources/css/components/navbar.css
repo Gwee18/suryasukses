@@ -19,9 +19,10 @@
 }
 
 .main-menu {
-    gap: 1rem;
-    margin-left: 1.25rem;      /* dari 3rem, biar nempel deket ke logo */
-    align-items: center;
+    gap: 0;
+    margin-left: 1.25rem !important;
+    padding-top: 0rem;
+    padding-bottom: 0.5rem;
 }
 
 .main-menu .nav-link {
@@ -105,7 +106,6 @@
     overflow: hidden;
     max-height: 0;
     opacity: 0;
-    transition: max-height 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.5s ease;
     z-index: 1020;
     pointer-events: none;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -154,7 +154,6 @@
     font-weight: 400;
     font-size: 1.05rem;
     text-decoration: none;
-    transition: opacity 0.2s ease;
 }
 
 .mega-list a:hover {
@@ -231,11 +230,11 @@
         height: 46px;
     }
 
-.main-menu {
+    .main-menu {
         gap: 0;
-        margin-left: 0 !important;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        margin-left: -0.4rem !important;
+        padding-top: 0rem;
+        padding-bottom: 0.8rem;
     }
 
     .navbar-nav.main-menu {
@@ -259,15 +258,14 @@
         color: #8c8c8c !important;
         font-weight: 500 !important;
         font-size: 14.5px !important;
-        padding: 0.75rem 1rem !important;
+        padding: 0.25rem 1rem !important;
         text-transform: uppercase !important;
         letter-spacing: 0.3px;
     }
 
-    .site-navbar .main-menu .nav-link.active,
     .site-navbar .main-menu .nav-link:hover,
     .site-navbar .mega-nav-item.is-open .mega-toggle {
-        color: #6a6a6a !important;
+        color: #1a1a1a !important;
         font-weight: 500 !important;
     }
 
@@ -281,12 +279,18 @@
     }
 
     .mega-nav-item.is-open .mega-dropdown {
-        max-height: var(--panel-max-height, 1000px);
+        max-height: var(--panel-max-height, 700px);
     }
 
-    .mega-dropdown-columns .container,
+    .mega-dropdown-columns .container {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     .mega-dropdown-inline .container {
-        padding-top: 0;
+        padding-top: 0.5rem;
         padding-bottom: 0.5rem;
         padding-left: 0;
         padding-right: 0;
@@ -299,48 +303,53 @@
     .mega-dropdown-columns .row {
         row-gap: 0 !important;
         --bs-gutter-y: 0;
-        margin-left: 0;
-        margin-right: 0;
+        margin: 0 !important;
+        padding-top: 0.4rem;
     }
 
     .mega-dropdown-columns .row > div {
         flex: 0 0 100%;
         max-width: 100%;
-        margin-top: 0 !important;
-        padding-left: 0;
-        padding-right: 0;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
+    /* ===== Item dropdown tipe "columns" (contoh: Products) ===== */
     .mega-heading {
         color: var(--navbar-text-active);
         font-size: 15px;
         font-weight: 600;
         text-transform: none;
         letter-spacing: normal;
-        margin-bottom: 0;
+        margin: 0;
         padding: 0;
     }
 
     .mega-heading a {
         display: block;
         font-weight: 400;
-        padding: 0.55rem 0;
+        color: var(--navbar-text-active);
+        padding: 0.25rem 0 0.25rem 2rem;
         border-radius: 4px;
-        transition: background-color 0.15s ease;
     }
 
-    .mega-heading a:hover,
-    .mega-heading a:active {
+    .mega-heading a:hover {
         background-color: #f2f2f2;
     }
 
+    .mega-heading a:active,
+    .mega-heading a.active {
+        background-color: #1a56db;
+    }
+
+    /* ===== Item dropdown tipe "inline" (contoh: Market, Solutions) ===== */
     .mega-inline-list {
         flex-direction: column;
         align-items: flex-start;
     }
 
     .mega-inline-list li {
-        padding: 0.4rem 0;
+        padding: 0;
         width: 100%;
     }
 
@@ -349,8 +358,23 @@
     }
 
     .mega-inline-list a {
-        color: var(--navbar-text);
+        display: block;
+        width: 100%;
+        color: var(--navbar-text-active);
         font-weight: 400;
         font-size: 15px;
+        padding: 0.25rem 0 0.25rem 2rem;
+        border-radius: 4px;
+    }
+
+    .mega-inline-list a:hover {
+        opacity: 1;
+        background-color: #f2f2f2;
+    }
+
+    .mega-inline-list a:active,
+    .mega-inline-list a.active {
+        opacity: 1;
+        background-color: #1a56db;
     }
 }

@@ -111,7 +111,7 @@
                         </div>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item d-none d-lg-block">
                         <a class="nav-link {{ request()->routeIs('news') ? 'active' : '' }}" href="{{ route('news') }}">NEWS</a>
                     </li>
                     <li class="nav-item">

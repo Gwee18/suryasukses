@@ -77,3 +77,46 @@ img {
         text-decoration: underline;
     }
 }
+
+@media (max-width: 767.98px) {
+    .sticky-whatsapp {
+        display: none !important;
+    }
+
+    .whatsapp-mobile-container {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 0 !important;
+        background-color: #ffffff;
+        border-top: 1px solid #ececec;
+        padding: 4px 0;
+        z-index: 1030;
+        box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .whatsapp-mobile-link {
+        color: #1a1a1a;
+        font-family: 'Fira Sans', sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .whatsapp-mobile-link:hover,
+    .whatsapp-mobile-link:active {
+        color: #1a1a1a;
+        text-decoration: underline;
+    }
+
+    .whatsapp-mobile-icon {
+        width: 18px;
+        height: 18px;
+        margin-right: 6px;
+        fill: #48c757;
+    }
+
+    main {
+        padding-bottom: 44px;
+    }
+}
