@@ -18,7 +18,7 @@
     display: flex;
     align-items: center;
     min-height: var(--navbar-height);
-    padding-left: calc(2.8rem - 15px); 
+    padding-left: calc(2.8rem - 15px);
     padding-right: 2.5rem;
     padding-top: 0.5rem;
     padding-bottom: 0.6rem;
@@ -41,7 +41,7 @@
     letter-spacing: 0.3px;
     text-transform: uppercase;
     padding: 0.5rem 0;
-    transform: translateY(16px);   /* dari 4px, biar makin turun ke bawah */
+    transform: translateY(16px);
 }
 
 .main-menu .nav-link.active {
@@ -75,13 +75,13 @@
 }
 
 .navbar-iso {
-    margin-left: 2rem;    
+    margin-left: 2rem;
     margin-right: -0.1rem;
-    transform: translateY(6px);     
+    transform: translateY(6px);
 }
 
 .navbar-iso img {
-    height: 35px;              
+    height: 35px;
     width: auto;
 }
 
@@ -92,22 +92,19 @@
 .mega-toggle::after {
     content: '';
     display: inline-block;
+    width: 8px;
+    height: 5px;
+    flex-shrink: 0;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
     border-top: 5px solid var(--navbar-accent);
     margin-left: 0.4rem;
     vertical-align: middle;
-    transition: transform 0.6s ease;
-}
-
-.mega-nav-item.is-open .mega-toggle::after {
-    transform: rotate(180deg);
 }
 
 .mega-nav-item.is-open .mega-toggle {
     color: var(--navbar-text-active);
 }
-
 
 .mega-dropdown {
     position: absolute;
@@ -124,13 +121,12 @@
 @media (min-width: 992px) {
     .mega-dropdown {
         max-height: var(--panel-max-height, 600px);
-        transform: scaleY(0);
-        transform-origin: top;
-        transition: transform 0.85s cubic-bezier(0.65, 0, 0.35, 1);
+        clip-path: inset(0 0 100% 0);
+        transition: clip-path 0.85s cubic-bezier(0.65, 0, 0.35, 1);
     }
 
     .mega-nav-item.is-open .mega-dropdown {
-        transform: scaleY(1);
+        clip-path: inset(0 0 0% 0);
         pointer-events: auto;
     }
 }
@@ -142,26 +138,32 @@
     padding-bottom: 2rem;
 }
 
+@media (min-width: 992px) {
+    .mega-dropdown-columns .container,
+    .mega-dropdown-inline .container {
+        transform: translateY(-24px);
+        transition: transform 0.85s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    .mega-nav-item.is-open .mega-dropdown-columns .container,
+    .mega-nav-item.is-open .mega-dropdown-inline .container {
+        transform: translateY(0);
+    }
+}
+
 .mega-heading {
     color: #fff;
     font-family: 'Fira Sans', sans-serif;
     font-weight: 700;
     font-size: 1.3rem;
-    margin: 0 0 1rem 0;
-}
-
-.mega-dropdown-columns .row > div {
-    flex: 0 0 100%;
-    max-width: 100%;
-    margin: 0 !important;
-    margin-bottom: 1rem !important;   /* override khusus jarak bawah */
-    padding: 0 !important;
+    margin-bottom: 1.1rem;
 }
 
 .mega-heading a {
     color: inherit;
     text-decoration: none;
-    margin-bottom: 0rem;
+    display: inline-block;
+    padding-bottom: 0.5rem;
 }
 
 .mega-list {
@@ -183,7 +185,6 @@
 }
 
 .mega-list a:hover {
-    opacity: 0.75;
     text-decoration: underline;
 }
 
@@ -227,7 +228,24 @@
 }
 
 .mega-inline-list a:hover {
-    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* ============================================================
+   FIX: paksa grid 4 kolom di desktop, anti kesenggol rule lain
+   (menjawab bug kolom PRODUCTS numpuk jadi 1 kolom di halaman
+   /markets/beverage padahal harusnya 4 kolom sejajar)
+   ============================================================ */
+@media (min-width: 992px) {
+    .mega-dropdown-columns .row {
+        display: flex !important;
+        flex-wrap: wrap !important;
+    }
+
+    .mega-dropdown-columns .row > div {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
 }
 
 @media (max-width: 991.98px) {
@@ -302,10 +320,12 @@
         pointer-events: auto;
         background-color: #ffffff;
         box-shadow: none;
+        transition: max-height 0.4s ease;
     }
 
     .mega-nav-item.is-open .mega-dropdown {
         max-height: var(--panel-max-height, 700px);
+        pointer-events: auto;
     }
 
     .mega-dropdown-columns .container {
@@ -347,7 +367,7 @@
         font-weight: 600;
         text-transform: none;
         letter-spacing: normal;
-        margin: 0;
+        margin: 0 0 1rem 0;
         padding: 0;
     }
 
