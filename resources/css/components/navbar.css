@@ -150,14 +150,6 @@
     margin: 0 0 1rem 0;
 }
 
-.mega-dropdown-columns .row > div {
-    flex: 0 0 100%;
-    max-width: 100%;
-    margin: 0 !important;
-    margin-bottom: 1rem !important;   /* override khusus jarak bawah */
-    padding: 0 !important;
-}
-
 .mega-heading a {
     color: inherit;
     text-decoration: none;

@@ -1,0 +1,330 @@
+/*
+==========================================================
+Product Page — styled to match the official suryasukses.com
+Product page (color palette, type scale and spacing taken
+from the live site).
+==========================================================
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.product-page {
+    font-family: 'Fira Sans', sans-serif;
+    color: #6a6a6a;
+}
+
+.product-page__container {
+    width: 100%;
+    max-width: 1260px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+/* Breadcrumb */
+.product-page__breadcrumb-sec {
+    padding: 2.5rem 0 0.3rem;
+    margin-bottom: 2.5rem;
+}
+
+.product-page__breadcrumb-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f4f4f4;
+}
+
+.product-page__breadcrumb-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    font-size: 15px;
+}
+
+.product-page__breadcrumb-item + .product-page__breadcrumb-item::before {
+    content: "/";
+    padding: 0 0.5rem;
+    color: #6a6a6a;
+}
+
+.product-page__breadcrumb-link {
+    color: #6a6a6a;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.product-page__breadcrumb-item--active .product-page__breadcrumb-link {
+    color: #232323;
+}
+
+.product-page__back-link {
+    color: #000;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.product-page__back-link:hover,
+.product-page__breadcrumb-link:hover {
+    text-decoration: underline;
+}
+
+/* Layout: sidebar + content */
+.product-page__layout {
+    display: flex;
+    gap: 2.5rem;
+    /* Sengaja tidak diset flex-start: sidebar harus meregang (stretch,
+       default flexbox) supaya background abu-abunya memanjang penuh
+       mengikuti tinggi kolom konten di sebelahnya, sama seperti
+       website resmi — bukan cuma setinggi daftar link-nya sendiri. */
+    padding-bottom: 80px;
+}
+
+.product-page__sidebar {
+    flex: 0 0 300px;
+    max-width: 300px;
+    background-color: #f4f4f4;
+    padding: 25px;
+}
+
+.product-page__sidebar-title {
+    font-size: 22px;
+    font-weight: 600;
+    color: #c52026;
+    margin-bottom: 25px;
+}
+
+.product-page__sidebar-nav,
+.product-page__sidebar-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.product-page__sidebar-nav > li {
+    padding: 0.2rem 0;
+}
+
+.product-page__sidebar-nav > li > a {
+    font-size: 15px;
+    font-weight: 400;
+    color: #6a6a6a;
+    text-decoration: none;
+}
+
+.product-page__sidebar-nav > li > a:hover {
+    color: #232323;
+}
+
+.product-page__sidebar-nav ul {
+    padding-left: 0.65rem;
+    margin-top: 0.1rem;
+}
+
+.product-page__sidebar-nav ul li {
+    padding: 0.1rem 0;
+}
+
+.product-page__sidebar-nav ul li a {
+    font-size: 14px;
+    color: #9f9f9f;
+    text-decoration: none;
+}
+
+.product-page__sidebar-nav ul li a:hover {
+    color: #232323;
+}
+
+.product-page__sidebar-nav > li > ul {
+    display: none;
+}
+
+.product-page__sidebar-nav > li:hover > ul,
+.product-page__sidebar-nav > li:focus-within > ul,
+.product-page__sidebar-nav > li.is-active > ul {
+    display: block;
+}
+
+.product-page__sidebar-nav > li.is-active > a {
+    font-weight: 700;
+    color: #232323;
+}
+
+.product-page__content {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Category */
+.product-page__category {
+    padding-top: 30px;
+    scroll-margin-top: 110px;
+}
+
+.product-page__category + .product-page__category {
+    margin-top: 60px;
+    border-top: 1px solid #eee;
+}
+
+.product-page__category-title {
+    font-size: 45px;
+    font-weight: 600;
+    color: #c52026;
+    margin-bottom: 40px;
+}
+
+.product-page__category-media {
+    margin-bottom: 25px;
+}
+
+.product-page__category-image {
+    width: 100%;
+    display: block;
+}
+
+.product-page__carousel .carousel-indicators {
+    position: static;
+    justify-content: flex-start;
+    margin: 10px 0 0;
+}
+
+.product-page__carousel .carousel-indicators [data-bs-target] {
+    width: 22px;
+    height: 4px;
+    border-radius: 3px;
+    background-color: #d7d7d7;
+    border: 0;
+    opacity: 1;
+    margin: 0 4px 0 0;
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+}
+
+.product-page__carousel .carousel-indicators [data-bs-target]:hover {
+    background-color: #d40025;
+}
+
+.product-page__carousel .carousel-indicators .active {
+    background-color: #d40025;
+}
+
+.product-page__category-text {
+    font-size: 15px;
+    font-weight: 300;
+    color: #6a6a6a;
+    padding-bottom: 20px;
+    max-width: 760px;
+}
+
+.product-page__catalog-link {
+    display: inline-block;
+    font-size: 15px;
+    font-weight: 600;
+    color: #c52026;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+
+.product-page__catalog-link:hover {
+    color: #6a6a6a;
+    text-decoration: underline;
+}
+
+/* Cards grid */
+.product-page__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.875rem;
+    margin-top: 30px;
+}
+
+.product-page__card {
+    padding-bottom: 50px;
+    scroll-margin-top: 110px;
+}
+
+.product-page__card-image-wrapper {
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* Label kategori kecil di atas judul pada halaman detail sub-produk */
+.product-page__detail-eyebrow {
+    font-size: 15px;
+    font-weight: 600;
+    color: #6a6a6a;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+}
+
+.product-page__card-image {
+    width: 100%;
+    display: block;
+}
+
+.product-page__card-title {
+    font-size: 20px;
+    color: #c52026;
+    font-weight: 600;
+    padding-bottom: 20px;
+}
+
+.product-page__card-text {
+    font-weight: 300;
+    font-size: 15px;
+    color: #6a6a6a;
+    max-width: 296px;
+    padding-bottom: 20px;
+}
+
+.product-page__card-link {
+    font-size: 15px;
+    font-weight: 700;
+    color: #232323;
+    text-decoration: underline;
+}
+
+.product-page__card-link:hover {
+    color: #c52026;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .product-page__layout {
+        gap: 1.5rem;
+    }
+
+    .product-page__sidebar {
+        flex: 0 0 260px;
+        max-width: 260px;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .product-page__breadcrumb-sec {
+        padding: 1.5rem 0 0.3rem;
+    }
+
+    .product-page__layout {
+        flex-direction: column;
+    }
+
+    .product-page__sidebar {
+        width: 100%;
+        max-width: none;
+    }
+
+    .product-page__category-title {
+        font-size: 33px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .product-page__grid {
+        grid-template-columns: 1fr;
+    }
+}
