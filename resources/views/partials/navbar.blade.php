@@ -65,7 +65,7 @@
                     <!-- SECTION MARKET (SUDAH DISAMBUNGKAN) -->
                     <li class="nav-item mega-nav-item">
                         <a class="nav-link mega-toggle {{ request()->routeIs('markets.*') ? 'active' : '' }}" href="#">
-                            MARKET
+                            MARKETS
                         </a>
                         <div class="mega-dropdown mega-dropdown-inline">
                             <div class="container">
