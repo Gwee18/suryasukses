@@ -1,0 +1,245 @@
+/* Container Width Fix for 1:1 ratio with suryasukses.com */
+.prelative.container { max-width: 1260px !important; }
+
+/* Force 1260px container width 1:1 with suryasukses.com across all breakpoints */
+.prelative.container,
+div.prelative.container,
+html body .prelative.container {
+    max-width: 1260px !important;
+    width: 100% !important;
+}
+
+@media (min-width: 1200px) {
+    .prelative.container,
+    div.prelative.container,
+    html body .prelative.container {
+        max-width: 1260px !important;
+    }
+}
+
+@media (min-width: 1400px) {
+    .prelative.container,
+    div.prelative.container,
+    html body .prelative.container {
+        max-width: 1260px !important;
+    }
+}
+/* 60-Column Grid Helpers for 1:1 layout with suryasukses.com */
+@media (min-width: 768px) {
+    .col-md-12 { flex: 0 0 20% !important; max-width: 20% !important; }
+    .col-md-15 { flex: 0 0 25% !important; max-width: 25% !important; }
+    .col-md-18 { flex: 0 0 30% !important; max-width: 30% !important; }
+    .col-md-20 { flex: 0 0 33.333333% !important; max-width: 33.333333% !important; }
+    .col-md-24 { flex: 0 0 40% !important; max-width: 40% !important; }
+    .col-md-30 { flex: 0 0 50% !important; max-width: 50% !important; }
+    .col-md-36 { flex: 0 0 60% !important; max-width: 60% !important; }
+    .col-md-40 { flex: 0 0 66.666667% !important; max-width: 66.666667% !important; }
+    .col-md-42 { flex: 0 0 70% !important; max-width: 70% !important; }
+    .col-md-45 { flex: 0 0 75% !important; max-width: 75% !important; }
+    .col-md-48 { flex: 0 0 80% !important; max-width: 80% !important; }
+    .col-md-60 { flex: 0 0 100% !important; max-width: 100% !important; }
+}
+/* MARKET MODULE SPECIFIC OVERRIDES */
+@media (min-width: 768px) {
+    section.product-sec-1 .row,
+    section.product-range-sec-1 .row {
+        display: flex !important;
+        align-items: stretch !important;
+    }
+
+    section.product-sec-1 .col-md-15,
+    section.product-range-sec-1 .col-md-15 {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    section.product-sec-1 .box-konten-kiri,
+    section.product-range-sec-1 .box-konten-kiri,
+    .box-konten-kiri {
+        height: 100% !important;
+        min-height: 100% !important;
+        flex: 1 1 auto !important;
+    }
+}
+
+/* MARKET SPACING - 1:1 with suryasukses.com */
+section.product-sec-1,
+section.product-range-sec-1 {
+    padding-bottom: 80px !important;
+    margin-bottom: 0px !important;
+}
+
+section.product-sec-1 .box-konten-kiri,
+section.product-range-sec-1 .box-konten-kiri {
+    margin-bottom: 0px !important;
+    padding-bottom: 30px !important;
+}
+
+/* ====== MARKET LINK & BUTTON FIXES ====== */
+
+/* Remove underline from sidebar left menu links (Beverage, Healthcare, etc.) */
+ul.lefts_submenu_product li a,
+ul.lefts_submenu_product li a:hover,
+ul.lefts_submenu_product li a:focus,
+ul.list-unstyled.lefts_submenu_product li a,
+.box-konten-kiri ul li a,
+.box-konten-kiri ul li a:hover,
+.box-konten-kiri ul li a:focus {
+    text-decoration: none !important;
+}
+
+/* ====== INQUIRE BUTTON - Referensi folder inisuryasukses ====== */
+.klik {
+    margin-top: 15px !important;
+}
+
+.klik a,
+.klik a.btn,
+.klik a.btn-danger,
+section.product-sec-1 .klik a,
+section.product-sec-1 .klik a.btn-danger,
+section.product-range-sec-1 .klik a.btn-danger {
+    display: inline-block !important;
+    background-color: #dc3545 !important;
+    border: 1px solid #dc3545 !important;
+    color: #ffffff !important;
+    padding: 0.375rem 0.75rem !important;
+    font-size: 14px !important;
+    border-radius: 0.25rem !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out !important;
+}
+
+.klik a:hover,
+.klik a.btn:hover,
+.klik a.btn-danger:hover,
+section.product-sec-1 .klik a:hover,
+section.product-sec-1 .klik a.btn-danger:hover {
+    background-color: #bb2d3b !important;
+    border-color: #b02a37 !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
+
+.klik a p,
+.klik a.btn p,
+.klik a.btn-danger p,
+section.product-sec-1 .klik a p,
+section.product-sec-1 .btn-danger p {
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #ffffff !important;
+    font-size: 14px !important;
+    text-decoration: none !important;
+}
+
+/* ====================================================
+   FOOTER FULL RESET - Market Pages
+   Mirrors exactly: resources/css/components/footer.css
+   Overrides Blueprint CSS reset that bleeds from
+   asset/css/styles.css loaded on market pages.
+   ==================================================== */
+
+.site-footer {
+    background-color: #f2f2f2 !important;
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    margin-top: 0 !important;
+}
+
+.site-footer .container {
+    max-width: 1240px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+
+.site-footer .footer-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    column-gap: 5.5rem !important;
+    row-gap: 2rem !important;
+}
+
+.site-footer .footer-logo-col img {
+    height: 42px !important;
+    width: auto !important;
+}
+
+.site-footer .footer-heading {
+    color: #14213d !important;
+    font-family: 'Fira Sans', sans-serif !important;
+    font-weight: 700 !important;
+    font-size: 0.85rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.03em !important;
+    margin-bottom: 1rem !important;
+}
+
+.site-footer .footer-links {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.site-footer .footer-links li + li {
+    margin-top: 0.6rem !important;
+}
+
+.site-footer .footer-links a,
+.site-footer .footer-links a:visited {
+    color: #4a6a95 !important;
+    font-family: 'Fira Sans', sans-serif !important;
+    font-weight: 400 !important;
+    font-size: 0.95rem !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease !important;
+}
+
+.site-footer .footer-links a:hover {
+    color: #14213d !important;
+    text-decoration: underline !important;
+}
+
+.site-footer .footer-social {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+}
+
+.site-footer .footer-social a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    background-color: #c9c9cf !important;
+    color: #ffffff !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s ease, color 0.2s ease !important;
+}
+
+.site-footer .footer-social a:hover {
+    background-color: #e4002b !important;
+    color: #fff !important;
+}
+
+.site-footer .footer-social a svg {
+    width: 18px !important;
+    height: 18px !important;
+    fill: currentColor !important;
+}
+
+@media (max-width: 991.98px) {
+    .site-footer .footer-row {
+        gap: 2rem !important;
+    }
+    .site-footer .footer-social {
+        width: 100% !important;
+        justify-content: flex-start !important;
+        margin-top: 1rem !important;
+    }
+}
