@@ -30,9 +30,9 @@
             <div class="col-lg-auto col-6">
                 <h6 class="footer-heading">Policies</h6>
                 <ul class="footer-links">
-                    <li><a href="#">ISO 9001 Certification</a></li>
-                    <li><a href="#">FSSC 22000 Certification</a></li>
-                    <li><a href="#">Quality Policy</a></li>
+                    <li><a href="{{ route('policies.cerf_iso') }}">ISO 9001 Certification</a></li>
+                    <li><a href="{{ route('policies.cerf_fssc') }}">FSSC 22000 Certification</a></li>
+                    <li><a href="{{ route('policies.quality') }}">Quality Policy</a></li>
                 </ul>
             </div>
 
