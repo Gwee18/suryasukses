@@ -12,7 +12,7 @@
                 <ul class="list-unstyled">
                   <li class="firsts">WE'RE HERE TO HELP</li>
                   <li><a href="{{ route('contact') }}">Contact Us</a></li>
-                  <li><a href="#">FAQ</a></li>
+                  <li><a href="{{ route('faq') }}">FAQ</a></li>
                 </ul>
               </div>
             </div>
