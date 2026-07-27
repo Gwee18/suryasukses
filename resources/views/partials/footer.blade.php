@@ -32,9 +32,9 @@
               <div class="texts_menus">
                 <ul class="list-unstyled">
                   <li class="firsts">POLICIES</li>
-                  <li><a href="#">ISO 9001 Certification</a></li>
-                  <li><a href="#">FSSC 22000 Certification</a></li>
-                  <li><a href="{{ route('about.quality') }}">Quality Policy</a></li>
+                  <li><a href="{{ route('policies.cerf_iso') }}">ISO 9001 Certification</a></li>
+                  <li><a href="{{ route('policies.cerf_fssc') }}">FSSC 22000 Certification</a></li>
+                  <li><a href="{{ route('policies.quality') }}">Quality Policy</a></li>
                 </ul>
               </div>
             </div>

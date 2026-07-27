@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="language" content="en" />
+    <meta http-equiv="Content-Security-Policy" content="frame-ancestors 'none'">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    
+    <link rel="Shortcut Icon" href="/asset/images/favicon.png" />
+    <link rel="icon" type="image/ico" href="/asset/images/favicon.png" />
+    <link rel="icon" type="image/x-icon" href="/asset/images/favicon.png" />
+
+    <link rel="stylesheet" type="text/css" href="/asset/css/screen.css" />
+    <link rel="stylesheet" type="text/css" href="/asset/css/comon.css" />
+    <!-- <script type="text/javascript" src="/assets/330d0d3c/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/330d0d3c/jui/js/jquery-ui.min.js"></script>
+<title></title>     -->
+    <title>SAP</title>
+    
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/asset/js/bootstrap-4.0.0/bootstrap.min.css">
+    <link rel="stylesheet" href="/asset/css/styles.css"> 
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+        <script type="text/javascript" src="/asset/js/jquery.min.js"></script>
+            <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script> 
+   
+    <!-- All JS -->
+    <script type="text/javascript">
+        var baseurl = "/home/quality";
+        var url_add_cart_action = "/product/addCart";
+        var url_edit_cart_action = "/product/edit";
+    </script>
+    <script src="/asset/js/all.js"></script>
+    <!-- <script src="/asset/js/jquery.min3.3.1.js"></script> -->
+
+            
+    <!-- Css -->
+    <link rel="stylesheet" type="text/css" href="/asset/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/asset/css/style.deory.css" />
+    <link rel="stylesheet" type="text/css" href="/asset/css/pager.css" />
+    <!-- Css Responsive -->
+    <link rel="stylesheet" type="text/css" href="/asset/css/media.style.css" />
+    <link rel="stylesheet" type="text/css" href="/asset/css/animate.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+<body>
+    
+<!--  -->
+<div class="prelatife">
+<header class="head headers  ">
+  <div class="prelatife container d-none d-sm-block">
+    <div class="inner-header">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="logo_heads"><a href="/home/index"><img src="/asset/images/lgo-header.png" alt="" class="img img-fluid"></a></div>
+        </div>
+        <div class="col-md-32">
+          <div class="bottoms_head_menu pt-4 text-left mt-2">
+            <ul class="list-inline m-0">
+              <li class="list-inline-item" data-id="products-menu"><a href="#">PRODUCTS&nbsp;<i class="fa fa-caret-down"></i></a></li>
+              <li class="list-inline-item" data-id="market-menu"><a href="#">MARKETS&nbsp;<i class="fa fa-caret-down"></i></a></li>
+              <li class="list-inline-item" data-id="solution-menu"><a href="#">SOLUTIONS&nbsp;<i class="fa fa-caret-down"></i></a></li>
+              <li class="list-inline-item" data-id="about-menu"><a href="#">ABOUT US&nbsp;<i class="fa fa-caret-down"></i></a></li>
+              <li class="list-inline-item"><a href="/blog/index">NEWS</i></a></li>
+              <li class="list-inline-item"><a href="/home/contact">CONTACT US</i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-20">
+          <div class="tops_iso text-right pt-3 mt-2">
+            <div class="isols_headr"><img src="/asset/images/iso-headers.png" alt="" class="img img-fluid"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+  </div>
+ 
+  <div class="d-block d-sm-none">
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+      <a class="navbar-brand" href="/home/index/page/Contact">
+        <img src="/asset/images/lgo-header.png" alt="" class="img img-fluid">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="/home/index">HOME</a></li>
+          <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              PRODUCTS
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/home/product_landing/2/slug/packaging">Packaging</a>
+                            <a class="dropdown-item" href="/home/product_landing/3/slug/specialty-nonwoven">Specialty Nonwoven</a>
+                            <a class="dropdown-item" href="/home/product_landing/4/slug/housewares">Housewares</a>
+                            <a class="dropdown-item" href="/home/product_landing/5/slug/roofing">Roofing</a>
+                          </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              MARKET
+            </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/home/market_landing/6/slug/beverage">Beverage</a>
+                            <a class="dropdown-item" href="/home/market_landing/7/slug/healthcare">Healthcare</a>
+                            <a class="dropdown-item" href="/home/market_landing/8/slug/household">Household</a>
+                            <a class="dropdown-item" href="/home/market_landing/9/slug/agriculture">Agriculture</a>
+                            <a class="dropdown-item" href="/home/market_landing/10/slug/industrial">Industrial</a>
+                            <a class="dropdown-item" href="/home/market_landing/11/slug/filtration">Filtration</a>
+                            <a class="dropdown-item" href="/home/market_landing/12/slug/building-construction">Building & Construction</a>
+                          </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              SOLUTIONS
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/home/sol_blue">Suryasukses Studio</a>
+              <a class="dropdown-item" href="/home/sol_capabilities">Capabilities</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              ABOUT US
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/home/pages/page/Company-History">Who We Are</a>
+              <a class="dropdown-item" href="/home/quality">Quality Statement</a>
+              <a class="dropdown-item" href="/home/pages/page/Career">Career</a>
+            </div>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/home/contact">CONTACT US</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
+
+  <div id="about-menu" class="blocks_bottom_menuDropdown back-about">
+    <div class="prelatife container">
+    <div class="inners_mndropdown">
+      <div class="row">
+        <div class="col-md-60">
+            <span class="in_title">ABOUT US</span>
+            <ul class="list-inline">
+              <li class="list-inline-item"><a href="/home/abouthistory">Who We Are</a></li>
+              <li class="list-inline-item"><a href="/home/aboutvalue">Our Values</a></li>
+              <li class="list-inline-item"><a href="/home/aboutquality">Quality Statement</a></li>
+              <li class="list-inline-item"><a href="/home/aboutcareer">Career</a></li>
+            </ul>
+            <div class="clear"></div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div id="market-menu" class="blocks_bottom_menuDropdown back-about">
+    <div class="prelatife container">
+    <div class="inners_mndropdown">
+      <div class="row">
+        <div class="col-md-60">
+            <span class="in_title">MARKETS</span>
+                        <ul class="inline">
+                            <li class="list-inline-item"><a href="/home/market_landing/6/slug/beverage">Beverage</a></li>
+                            <li class="list-inline-item"><a href="/home/market_landing/7/slug/healthcare">Healthcare</a></li>
+                            <li class="list-inline-item"><a href="/home/market_landing/8/slug/household">Household</a></li>
+                            <li class="list-inline-item"><a href="/home/market_landing/9/slug/agriculture">Agriculture</a></li>
+                            <li class="list-inline-item"><a href="/home/market_landing/10/slug/industrial">Industrial</a></li>
+                            <li class="list-inline-item"><a href="/home/market_landing/11/slug/filtration">Filtration</a></li>
+                            <li class="list-inline-item"><a href="/home/market_landing/12/slug/building-construction">Building & Construction</a></li>
+                          </ul>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="solution-menu" class="blocks_bottom_menuDropdown back-about">
+    <div class="prelatife container">
+    <div class="inners_mndropdown">
+      <div class="row">
+        <div class="col-md-60">
+            <span class="in_title">SOLUTIONS</span>
+            <ul class="inline">
+              <li class="list-inline-item"><a href="/home/sol_blue">Suryasukses Studio</a></li>
+              <li class="list-inline-item"><a href="/home/sol_capabilities">Capabilities</a></li>
+            </ul>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="products-menu" class="blocks_bottom_menuDropdown back-products">
+    <div class="prelatife container">
+      <div class="inners_mndropdown menu_small">
+        <span class="in_title">PRODUCTS</span>
+                <div class="row">
+                    <div class="col-md-15">
+              <ul class="list-unstyled">
+                <li class="firsts"><a href="/home/product_landing/2/slug/packaging">Packaging</a></li>
+                                                <li><a href="/home/product_range/1/parent/2/slug/preform">Preform</a></li>
+                                <li><a href="/home/product_range/2/parent/2/slug/bottles">Bottles</a></li>
+                                <li><a href="/home/product_range/3/parent/2/slug/closures">Closures</a></li>
+                                <li><a href="/home/product_range/4/parent/2/slug/drinking-cups">Drinking Cups</a></li>
+                                <li><a href="/home/product_range/5/parent/2/slug/lids">Lids</a></li>
+                                <li><a href="/home/product_range/6/parent/2/slug/containers">Containers</a></li>
+                              </ul>
+          </div>
+                    <div class="col-md-15">
+              <ul class="list-unstyled">
+                <li class="firsts"><a href="/home/product_landing/3/slug/specialty-nonwoven">Specialty Nonwoven</a></li>
+                                                <li><a href="/home/product_range/7/parent/3/slug/spunbond-polypropylene">Spunbond Polypropylene</a></li>
+                                <li><a href="/home/product_range/8/parent/3/slug/meltblown">Meltblown</a></li>
+                              </ul>
+          </div>
+                    <div class="col-md-15">
+              <ul class="list-unstyled">
+                <li class="firsts"><a href="/home/product_landing/4/slug/housewares">Housewares</a></li>
+                                                <li><a href="/home/product_range/9/parent/4/slug/storage">Storage</a></li>
+                                <li><a href="/home/product_range/10/parent/4/slug/sealware">Sealware</a></li>
+                                <li><a href="/home/product_range/11/parent/4/slug/kitchen">Kitchen</a></li>
+                                <li><a href="/home/product_range/13/parent/4/slug/containers">Containers</a></li>
+                                <li><a href="/home/product_range/14/parent/4/slug/racks">Racks</a></li>
+                                <li><a href="/home/product_range/15/parent/4/slug/bathroom">Bathroom</a></li>
+                                <li><a href="/home/product_range/16/parent/4/slug/cleaning-ware">Cleaning Ware</a></li>
+                                <li><a href="/home/product_range/17/parent/4/slug/garden">Garden</a></li>
+                              </ul>
+          </div>
+                    <div class="col-md-15">
+              <ul class="list-unstyled">
+                <li class="firsts"><a href="/home/product_landing/5/slug/roofing">Roofing</a></li>
+                                                <li><a href="/home/product_range/18/parent/5/slug/upvc">UPVC</a></li>
+                              </ul>
+          </div>
+          
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    
+    $('.bottoms_head_menu ul li').on('click', function(){
+      var cs_active = $(this).attr("data-id");
+      console.log(cs_active);
+
+      $('.blocks_bottom_menuDropdown').slideUp();
+      $('section.header-baru').addClass('opened');
+
+      // $('#'+cs_active+'.blocks_bottom_menuDropdown').addClass('views');
+      if ( $('#'+cs_active+'.blocks_bottom_menuDropdown').hasClass('open_m') ) {
+        $('#'+cs_active+'.blocks_bottom_menuDropdown').slideUp();
+        $('#'+cs_active+'.blocks_bottom_menuDropdown').removeClass('open_m');
+      } else {
+        $('#'+cs_active+'.blocks_bottom_menuDropdown').slideToggle(1200);
+        $('#'+cs_active+'.blocks_bottom_menuDropdown').addClass('open_m');
+      }
+      // return false;
+    });
+
+  });
+</script>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+
+  var sn_width = $(window).width();
+
+  // console.log($(document).scrollTop());
+  if (sn_width > 1150) {
+      $('body').scroll(function(){
+
+        var sntop1 = $(this).scrollTop();
+        // console.log(sntop1);
+
+        if(sntop1 > 115){
+          $('.header-affixs').removeClass('affix-top').addClass('affix');
+          // $('.header-affixs').addClass('affix');
+        }else{
+          $('.header-affixs.affix').removeClass('affix').addClass('affix-top');
+          // $('body').css('padding-top', '0px');
+        }
+      });
+
+    }
+
+  });
+</script>
+
+<section class="breadcrumb-det">
+    <div class="prelative container">
+      <div class="row">
+        <div class="col-md-45">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+					<li class="breadcrumb-item"><a href="#">Policies</a></li>
+					<li class="breadcrumb-item active" aria-current="page"><a href="#">Quality Policy</a></li>
+                </ol>
+            </nav>
+        </div>
+        <div class="col-md-15">
+          <div class="block-back-link text-right">
+            <a href="#">Back</a>
+          </div>
+        </div>
+      </div>
+      <div class="py-2"></div>
+    </div>
+</section>
+
+
+<section class="about-location-sec-1">
+  <div class="prelative container">
+    <div class="row">
+      <div class="col-md-15">
+      <div class="box-konten-kiri">
+        <h5>Policies</h5>
+            <ul class="list-unstyled lefts_submenu_product">
+            	<li class="dropdown"><a href="/home/cerf_iso">ISO 9001 Certification</a>
+            	</li>
+            	<li class="dropdown"><a href="/home/cerf_fssc">FSSC 22000 Certification</a>
+            	</li>
+            	<li class="dropdown active"><a href="/home/quality">Quality Policy</a>
+            	</li>
+            </ul>
+      </div>
+      </div>
+      <div class="col-md-45">
+		  <h3>Quality is our strength</h3>
+			<div class="content">
+				<p>To be a leader in providing, safe, high-quality, products and services; that always protect what’s important to our customers, employees, shareholders, neighbors, and suppliers. This is accomplished through responsible sourcing and utilization of resources focusing on innovation and sustainability.</p>				<div class="content-inner-quality">
+					<h4>Our quality policies that we embrace as our culture:</h4>
+<ul>
+	<li>Provide safe, high-quality products, and services that meet customers’ expectations.</li>
+	<li>Comply with applicable regulatory and customer requirements.</li>
+	<li>Maintain system effectiveness through utilization of technology, teamwork, and skilled employees that are United, Focused, Agile, and Accountable.</li>
+</ul>
+          <div class="clearfix clear"></div>
+				</div>
+				<div class="content-inner-quality">
+					<h4>Our quality certifications: (Click to read more)</h4>
+					<ul>
+						<li><a href="/home/cerf_iso">ISO 90001 Certification</a></li>
+						<li><a href="/home/cerf_fssc">FSSC 22000 Certification</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+    </div>
+  </div>
+</section>
+
+<style>
+    section.about-location-sec-1{
+        padding-top: 0 !important;
+    }
+    section.about-location-sec-1 .box-konten-kiri{
+        min-height:470px !important;
+    }
+    section.about-location-sec-1 .content-inner-quality ul li a{
+        font-size: 16px;
+        color: #6a6a6a;
+        font-weight: 400;
+    }
+</style>
+
+<script type="text/javascript">
+  $(window).load(function(){
+    
+    if( $(window).width() > 800 ){
+      var xheight_cont =  $('section.about-location-sec-1 .row .col-md-45, section.about-location-sec-1 .row .col-md-45').height();
+      $('section.about-location-sec-1 .row .box-konten-kiri, section.about-location-sec-1 .row .box-konten-kiri').css('height', xheight_cont+'px');
+    } 
+
+  });
+</script>
+
+<footer class="foot py-5">
+    <div class="prelatife container contain_foot">
+        <div class="inners_section">
+            <div class="row">
+                <div class="col-md-13">
+                    <div class="footers_logo"><a href="#"><img src="/asset/images/lgosn_footer.png" alt="" class="img img-fluid"></a></div>
+                </div>
+                <div class="col-md-34">
+                    <div class="row">
+                        <div class="col-md-20">
+                            <div class="texts_menus">
+                                <ul class="list-unstyled">
+                                    <li class="firsts">WE’RE HERE TO HELP</li>
+                                    <li><a href="/home/contact">Contact Us</a></li>
+                                    <li><a href="/home/faq">FAQ</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-20">
+                            <div class="texts_menus">
+                                <ul class="list-unstyled">
+                                    <li class="firsts">GET TO KNOW US</li>
+                                    <li><a href="/home/abouthistory">Who We Are</a></li>
+                                    <li><a href="/home/aboutvalue">Our Values</a></li>
+                                    <li><a href="/home/aboutquality">Quality Statement</a></li>
+                                    <li><a href="/blog/index">News and Articles</a></li>
+                                    <li><a href="/home/aboutcareer">Career</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-20">
+                            <div class="texts_menus">
+                                <ul class="list-unstyled">
+                                    <li class="firsts">POLICIES</li>
+                                    <li><a href="/home/cerf_iso">ISO 9001 Certification</a></li>
+                                    <li><a href="/home/cerf_fssc">FSSC 22000 Certification</a></li>
+                                    <li><a href="/home/quality">Quality Policy</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-13">
+                    <div class="text-right socials_med">
+                        <a target="_blank" href="#"><i class="fa fa-linkedin"></i></a>
+                        &nbsp;&nbsp;
+                        <a target="_blank" href="https://www.youtube.com/channel/UClbn91UG_JbVJuMIy_6Zb-Q"><i class="fa fa-youtube"></i></a>
+                        &nbsp;&nbsp;
+                        <a target="_blank" href="https://www.instagram.com/suryasuksesgroup/"><i class="fa fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</footer>
+
+<section class="live-chat">
+	<div class="row">
+		<div class="col-md-60">
+			<div class="live">
+				<a href="http://wa.me/62816511229">
+					<img src="/asset/images/Whatsapp-Click-to-chat.png" alt="">
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="bottom-footer-home">
+	<div class="inside">
+		<div class="t-footerleft"> <div class="clear height-5"></div> <div class="height-2"></div>
+    		<div class="t-copyright inline">
+    			<img style="width:20px;" src="/asset/images/waaaaaa.png"> &nbsp;<a href="http://wa.me/62816511229">Whatsapp</a>
+    		</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+<style>
+	section.live-chat{
+		position: fixed;
+		right: 0;
+		top: 60%;
+	}
+	.live a:hover{
+		cursor: pointer;
+	}
+
+    .bottom-footer-home{
+        height: 37px;
+        background-color: #fff;
+        width: 100%;
+        z-index: 20;
+        position: fixed;
+        bottom:0;
+    }
+    .bottom-footer-home .inside{
+        padding: 0 35px
+    }
+    .t-copyright.inline{
+        text-align:center;
+    }
+    .t-copyright.inline a{
+        color:#000;
+    }
+    @media screen and (min-width:450px){
+        .bottom-footer-home{
+            display:none;
+        }
+    }
+</style>
+
+<script type="text/javascript">
+	$(window).load(function(){
+		
+		if( $(window).width() > 800 ){
+			var xheight_cont =  $('section.about-location-sec-1 .row .col-md-45, section.product-sec-1 .row .col-md-45').height();
+			$('section.about-location-sec-1 .row .box-konten-kiri, section.product-sec-1 .row .box-konten-kiri').css('height', xheight_cont+'px');
+		} 
+
+	});
+</script>
+    
+    <!-- <div id="back-top" class="t-backtop " style="display:none">
+    <div class="clear height-5"></div>
+        <a href="#top"><i class="fa fa-chevron-up"></i></a>
+    </div> -->
+    <script type="text/javascript">
+        $(window).load(function(){
+        $('.t-backtop').hide();
+        });
+        $(function(){
+            $('.t-backtop').click(function () {
+                    $('body,html').animate({
+                        scrollTop: 0
+                    }, 800);
+                    return false;
+                });
+
+            var $win = $(window);
+                     $win.scroll(function () {
+                         if ($win.scrollTop() == 0)
+                         $('.t-backtop').hide();
+                         else if ($win.height() + $win.scrollTop() != $(document).height() || $win.height() + $win.scrollTop() > 500) {
+                         $('.t-backtop').show();
+                         }
+                     });
+
+            $('.toscroll').click(function() {
+                var sn_id = $(this).attr('data-id');
+                $('html, body').animate({
+                    scrollTop: $("#"+ sn_id).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        // $(function(){
+        //         // pindah tulisan hero image
+        //         var fullw = $(window).width();
+        //         if (fullw <= 767) {
+        //             $('.tops-cont-insidepage .insd-container.content-up').addClass('hidden-xs');
+        //             var copyText = $('.tops-cont-insidepage .insd-container.content-up').html();
+        //             $( ".outer-inside-middle-content.back-white .tops-cont-insidepage" ).after( "<div class='pindahan_text-heroimage'></div>" );
+        //             $('.pindahan_text-heroimage').append(copyText);
+        //         };
+        // });       
+    </script>
+</body>
+</html>
