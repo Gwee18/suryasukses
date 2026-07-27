@@ -1,53 +1,127 @@
-<footer class="site-footer">
-    <div class="container">
-        <div class="row footer-row gy-4">
-
-            <div class="col-lg-auto col-6 footer-logo-col">
-                <a href="{{ url()->current() }}">
-                    <img src="{{ asset('assets/images/logo/logo-header.png') }}" alt="Surya Sukses Logo">
-                </a>
-            </div>
-
-            <div class="col-lg-auto col-6">
-                <h6 class="footer-heading">We're Here To Help</h6>
-                <ul class="footer-links">
-                    <li><a href="{{ route('contact') }}">Contact Us</a></li>
-                    <li><a href="#">FAQ</a></li>
-                </ul>
-            </div>
-
-            <div class="col-lg-auto col-6">
-                <h6 class="footer-heading">Get To Know Us</h6>
-                <ul class="footer-links">
-                    <li><a href="{{ route('about') }}">Who We Are</a></li>
-                    <li><a href="{{ route('about.values') }}">Our Values</a></li>
-                    <li><a href="{{ route('about.quality') }}">Quality Statement</a></li>
-                    <li><a href="{{ route('news') }}">News and Articles</a></li>
-                    <li><a href="{{ route('about.career') }}">Career</a></li>
-                </ul>
-            </div>
-
-            <div class="col-lg-auto col-6">
-                <h6 class="footer-heading">Policies</h6>
-                <ul class="footer-links">
-                    <li><a href="#">ISO 9001 Certification</a></li>
-                    <li><a href="#">FSSC 22000 Certification</a></li>
-                    <li><a href="#">Quality Policy</a></li>
-                </ul>
-            </div>
-
-            <div class="col-lg-auto col-12 footer-social ms-lg-auto">
-                <a href="#" aria-label="LinkedIn">
-                    <svg viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3C448 46.5 433.6 32 416 32zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5C63.7 113.3 80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.2-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
-                </a>
-                <a href="#" aria-label="YouTube">
-                    <svg viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M23.498 6.186a2.994 2.994 0 0 0-2.107-2.117C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.391.524A2.994 2.994 0 0 0 .502 6.186 31.14 31.14 0 0 0 0 12a31.14 31.14 0 0 0 .502 5.814 2.994 2.994 0 0 0 2.107 2.117c1.886.524 9.391.524 9.391.524s7.505 0 9.391-.524a2.994 2.994 0 0 0 2.107-2.117A31.14 31.14 0 0 0 24 12a31.14 31.14 0 0 0-.502-5.814zM9.75 15.568V8.432L15.818 12 9.75 15.568z"/></svg>
-                </a>
-                <a href="#" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.012-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </a>
-            </div>
-
+<footer class="foot py-5">
+  <div class="prelatife container contain_foot">
+    <div class="inners_section">
+      <div class="row">
+        <div class="col-md-13">
+          <div class="footers_logo"><a href="{{ route('home') }}"><img src="{{ asset('asset/images/lgosn_footer.png') }}" alt="Suryasukses" class="img img-fluid"></a></div>
         </div>
+        <div class="col-md-34">
+          <div class="row">
+            <div class="col-md-20">
+              <div class="texts_menus">
+                <ul class="list-unstyled">
+                  <li class="firsts">WE'RE HERE TO HELP</li>
+                  <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                  <li><a href="#">FAQ</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-20">
+              <div class="texts_menus">
+                <ul class="list-unstyled">
+                  <li class="firsts">GET TO KNOW US</li>
+                  <li><a href="{{ route('about') }}">Who We Are</a></li>
+                  <li><a href="{{ route('about.values') }}">Our Values</a></li>
+                  <li><a href="{{ route('about.quality') }}">Quality Statement</a></li>
+                  <li><a href="{{ route('news') }}">News and Articles</a></li>
+                  <li><a href="{{ route('about.career') }}">Career</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-20">
+              <div class="texts_menus">
+                <ul class="list-unstyled">
+                  <li class="firsts">POLICIES</li>
+                  <li><a href="#">ISO 9001 Certification</a></li>
+                  <li><a href="#">FSSC 22000 Certification</a></li>
+                  <li><a href="{{ route('about.quality') }}">Quality Policy</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-13">
+          <div class="text-right socials_med">
+            <a target="_blank" href="#"><i class="fa fa-linkedin"></i></a>
+            &nbsp;&nbsp;
+            <a target="_blank" href="https://www.youtube.com/channel/UClbn91UG_JbVJuMIy_6Zb-Q"><i class="fa fa-youtube"></i></a>
+            &nbsp;&nbsp;
+            <a target="_blank" href="https://www.instagram.com/suryasuksesgroup/"><i class="fa fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="clearfix"></div>
     </div>
+  </div>
 </footer>
+
+<section class="live-chat">
+  <div class="row">
+    <div class="col-md-60">
+      <div class="live">
+        <a target="_blank" href="http://wa.me/62816511229">
+          <img src="{{ asset('asset/images/Whatsapp-Click-to-chat.png') }}" alt="Whatsapp Click to chat">
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="bottom-footer-home">
+  <div class="inside">
+    <div class="t-footerleft">
+      <div class="clear height-5"></div>
+      <div class="height-2"></div>
+      <div class="t-copyright inline">
+        <img style="width:20px;" src="{{ asset('asset/images/waaaaaa.png') }}"> &nbsp;<a target="_blank" href="http://wa.me/62816511229">Whatsapp</a>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  <div class="clear"></div>
+</div>
+
+<style type="text/css">
+  section.live-chat {
+    position: fixed;
+    right: 0;
+    top: 60%;
+    z-index: 9999;
+  }
+
+  .live a:hover {
+    cursor: pointer;
+  }
+
+  .live img {
+    max-width: 160px;
+    height: auto;
+  }
+
+  .bottom-footer-home {
+    height: 37px;
+    background-color: #fff;
+    width: 100%;
+    z-index: 20;
+    position: fixed;
+    bottom: 0;
+  }
+
+  .bottom-footer-home .inside {
+    padding: 0 35px;
+  }
+
+  .t-copyright.inline {
+    text-align: center;
+  }
+
+  .t-copyright.inline a {
+    color: #000;
+  }
+
+  @media screen and (min-width: 450px) {
+    .bottom-footer-home {
+      display: none !important;
+    }
+  }
+</style>

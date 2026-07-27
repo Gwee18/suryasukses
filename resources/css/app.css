@@ -22,7 +22,7 @@ main {
     flex: 1 0 auto;
 }
 
-.site-footer {
+footer.foot {
     flex-shrink: 0;
 }
 
