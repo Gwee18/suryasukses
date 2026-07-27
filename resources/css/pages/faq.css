@@ -1,0 +1,173 @@
+/* FAQ Page Styles */
+section.breadcrumb-det {
+    padding: 2.5rem 0 .3rem;
+    margin-bottom: 2.5rem;
+}
+
+section.breadcrumb-det .prelative.container {
+    border-bottom: 1px solid #f4f4f4;
+}
+
+section.breadcrumb-det .prelative.container ol.breadcrumb {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+section.breadcrumb-det .prelative.container ol.breadcrumb li.breadcrumb-item {
+    font-family: 'Fira Sans', sans-serif;
+}
+
+section.breadcrumb-det .prelative.container ol.breadcrumb li.breadcrumb-item + .breadcrumb-item::before {
+    content: "/";
+    padding: 0 0.5rem;
+    color: #6a6a6a;
+}
+
+section.breadcrumb-det .prelative.container ol.breadcrumb li.breadcrumb-item a {
+    color: #6a6a6a;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+section.breadcrumb-det .prelative.container ol.breadcrumb li.breadcrumb-item.active a {
+    color: #232323;
+    font-size: 15px;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+section.breadcrumb-det .prelative.container .block-back-link a {
+    font-size: 15px;
+    color: #000;
+    text-decoration: none;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+section.cerf-sec-1.block_section_faq {
+    padding-top: 30px;
+    position: relative;
+    padding-bottom: 100px;
+}
+
+section.cerf-sec-1.block_section_faq .box-konten-kiri {
+    background-color: #f4f4f4;
+    min-height: 600px;
+    padding: 25px;
+}
+
+section.cerf-sec-1.block_section_faq .box-konten-kiri h5 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #c52026;
+    margin-bottom: 25px;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+section.cerf-sec-1.block_section_faq .box-konten-kiri ol {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+section.cerf-sec-1.block_section_faq .box-konten-kiri ol li {
+    font-size: 15px;
+    color: #6a6a6a;
+    list-style: none;
+    margin-bottom: 7px;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+section.cerf-sec-1.block_section_faq .box-konten-kiri ol li a {
+    color: #6a6a6a;
+    text-decoration: none;
+}
+
+section.cerf-sec-1.block_section_faq .box-konten-kiri ol li.active a {
+    color: #6a6a6a;
+    font-weight: 600;
+}
+
+.prelative.container {
+    max-width: 1260px;
+    margin: 0 auto;
+}
+
+.blocks_faq_listdata .card {
+    border-radius: 0;
+    margin-bottom: .5rem;
+    box-shadow: none !important;
+}
+
+.blocks_faq_listdata .card .card-header {
+    font-size: 19px;
+    font-weight: 500;
+    color: #4d4d4d;
+    border-radius: 0;
+    background-color: #fff;
+}
+
+.blocks_faq_listdata .card .card-header h2 {
+    font-size: 19px;
+    font-weight: 500;
+    color: #4d4d4d;
+    padding: 0;
+    margin: 0;
+}
+
+.blocks_faq_listdata .card .card-header h2 button {
+    color: #4d4d4d;
+    padding: 0;
+    text-decoration: none;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 18px;
+    box-shadow: none !important;
+}
+
+.blocks_faq_listdata .card .card-header h2 button:hover, 
+.blocks_faq_listdata .card .card-header h2 button:focus {
+    text-decoration: underline !important;
+    color: #4d4d4d;
+    box-shadow: none !important;
+}
+
+.blocks_faq_listdata .card .card-header h2 button.collapsed {
+    color: #4d4d4d;
+}
+
+.blocks_faq_listdata .card .card-body {
+    border-radius: 0;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.blocks_faq_listdata .card .card-body p, 
+.blocks_faq_listdata .card .card-body ul li {
+    font-size: 14px;
+    font-weight: 300;
+    color: #6a6a6a;
+    font-family: 'Fira Sans', sans-serif;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.blocks_faq_listdata .card .card-body iframe {
+    max-width: 100%;
+}
+
+@media (max-width: 767.98px) {
+    section.cerf-sec-1.block_section_faq .box-konten-kiri {
+        min-height: auto;
+        margin-bottom: 20px;
+    }
+}
