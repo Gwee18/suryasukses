@@ -1,7 +1,3 @@
-/* =========================================================
-   FOOTER STYLES - 1:1 match from inisuryasukses
-   ========================================================= */
-
 footer.foot {
     background: #f9f9f9;
     min-height: 200px;
@@ -98,21 +94,18 @@ footer.foot .inners_section .socials_med a i.fa {
     }
 }
 
-/* =========================================================
-   FOOTER MOBILE - Match suryasukses.com mobile layout
-   ========================================================= */
 @media (max-width: 767.98px) {
     footer.foot {
         padding-top: 2rem !important;
         padding-bottom: 1rem !important;
-        border-bottom: 3px solid #4caf50;
+        border-bottom: 3px;
+        margin-bottom: 40px;
     }
 
     footer.foot .contain_foot {
         padding: 0 20px;
     }
 
-    /* Stack all columns vertically */
     footer.foot .col-md-13,
     footer.foot .col-md-34,
     footer.foot .col-md-20 {
@@ -120,7 +113,6 @@ footer.foot .inners_section .socials_med a i.fa {
         max-width: 100% !important;
     }
 
-    /* Logo */
     footer.foot .footers_logo {
         margin-bottom: 1.5rem;
     }
@@ -129,7 +121,6 @@ footer.foot .inners_section .socials_med a i.fa {
         max-height: 55px;
     }
 
-    /* Menu sections spacing */
     footer.foot .inners_section .texts_menus {
         margin-bottom: 1.2rem;
     }
@@ -149,12 +140,12 @@ footer.foot .inners_section .socials_med a i.fa {
         font-size: 13px;
     }
 
-    /* Social icons - move to bottom left */
     footer.foot .inners_section .socials_med {
         text-align: left !important;
         float: none !important;
         margin-top: 1rem;
         padding-top: 0.5rem;
+        transform: translateY(-8px);
     }
 
     footer.foot .inners_section .socials_med a {

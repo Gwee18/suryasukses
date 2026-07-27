@@ -380,7 +380,7 @@
         font-weight: 600;
         text-transform: none;
         letter-spacing: normal;
-        margin: 0 0 1rem 0;
+        margin: 0;
         padding: 0;
     }
 
@@ -405,10 +405,13 @@
     .mega-inline-list {
         flex-direction: column;
         align-items: flex-start;
+        margin: 0;
+        padding: 0;
     }
 
     .mega-inline-list li {
         padding: 0;
+        margin: 0;
         width: 100%;
     }
 

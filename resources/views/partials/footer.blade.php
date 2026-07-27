@@ -113,14 +113,25 @@
 
   .t-copyright.inline {
     text-align: center;
+    padding-top: 2px;
   }
 
   .t-copyright.inline a {
     color: #000;
   }
 
+  .t-copyright.inline img {
+    vertical-align: middle;
+  }
+
   @media screen and (min-width: 450px) {
     .bottom-footer-home {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    section.live-chat {
       display: none !important;
     }
   }
