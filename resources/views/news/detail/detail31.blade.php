@@ -44,7 +44,7 @@
             <div class="col-md-9 rights_cont_def">
                 <h3 class="detail-title">Proses Produksi dan Penjaminan Mutu di Suryasukses</h3>
                 <div class="clear clearfix"></div>
-                <span class="dates"><small><i class="fas fa-calendar-alt"></i> 06 November 2020</small></span>
+                <span class="dates"><small><i class="fa fa-calendar"></i> 06 November 2020</small></span>
                 <div class="clear clearfix"></div>
                 <div class="py-3"></div>
                 
@@ -71,7 +71,7 @@
                             <div class="py-3"></div>
                             <div class="row">
                                 <div class="col">
-                                    <p><a href="{{ route('news.detail32') }}"><i class="fas fa-chevron-left"></i> Back</a></p>
+                                    <p><a href="{{ route('news.detail32') }}"><i class="fa fa-chevron-left"></i> Back</a></p>
                                 </div>
                                 <div class="col">
                                     <p class="text-center">
@@ -79,7 +79,7 @@
                                     </p>
                                 </div>
                                 <div class="col text-end">
-                                    <p class="text-end"><a href="{{ route('news.detail29') }}">Next <i class="fas fa-chevron-right"></i></a></p>
+                                    <p class="text-end"><a href="{{ route('news.detail29') }}">Next <i class="fa fa-chevron-right"></i></a></p>
                                 </div>
                             </div>
                             <div class="clear"></div>

@@ -101,7 +101,7 @@
                         <div class="box-content">
                             <div class="image">
                                 <a href="{{ route('news.detail12') }}">
-                                    <img class="img-fluid w-100" src="{{ asset('assets/images/news/bdb30-foto utama (oxo) (1).png') }}" alt="Lestarikan Alam">
+                                    <img class="img-fluid w-100" src="{{ asset('assets/images/news/5cc50-Untitled design (1).png') }}" alt="Lestarikan Alam">
                                 </a>
                             </div>
                             <div class="title">

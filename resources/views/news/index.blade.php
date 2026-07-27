@@ -49,12 +49,12 @@
                     <div class="col-md-4 mb-4">
                         <div class="box-content">
                             <div class="image">
-                                <a href="#">
+                                <a href="{{ route('news.detail') }}">
                                     <img class="img-fluid w-100" src="{{ asset('assets/images/news/68f1c-cover kale.jpg') }}" alt="Mengenal Botol Kale">
                                 </a>
                             </div>
                             <div class="title">
-                                <a href="#"><p>Mengenal Botol Kale, Kemasan Minuman Kekinian Dengan Desain Simple Dan Menarik</p></a>
+                                <a href="{{ route('news.detail') }}"><p>Mengenal Botol Kale, Kemasan Minuman Kekinian Dengan Desain Simple Dan Menarik</p></a>
                             </div>
                             <div class="klik">
                                 <a href="{{ route('news.detail') }}"><p>Read More</p></a>
