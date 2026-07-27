@@ -72,19 +72,52 @@
 
 @media (max-width: 767.98px) {
     .home-hero {
-        height: 420px;
+        height: auto;
+        overflow: visible;
     }
 
-    .home-hero-title {
-        font-size: 1.9rem;
+    .home-hero-media {
+        position: static;
+        height: 260px;
     }
 
-    .home-hero-subtitle {
-        font-size: 1rem;
+    .home-hero-overlay {
+        display: none;
     }
 
     .home-hero-caption {
-        bottom: 4.5rem;
+        position: static;
+        background-color: #ffffff;
+        color: #1a1a1a;
+        text-align: center;
+        padding: 1.75rem 1rem 2rem;
+    }
+
+    .home-hero-title {
+        font-size: 1.5rem;
+        color: var(--navbar-accent, #e4002b);
+        margin-bottom: 0.4rem;
+    }
+
+    .home-hero-subtitle {
+        font-size: 0.85rem;
+        max-width: 340px;
+        color: #6a6a6a;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.25rem;
+    }
+
+    .home-hero-btn {
+        color: #3b3b3b;
+        border-color: #c9c9c9;
+        font-size: 0.85rem;
+    }
+
+    .home-hero-btn:hover {
+        background-color: #3b3b3b;
+        color: #fff;
+        border-color: #3b3b3b;
     }
 }
 
@@ -197,26 +230,38 @@
 }
 
 @media (max-width: 991.98px) {
+    .home-products {
+        padding: 2rem 0 3rem;
+    }
+
+    .home-products-tabs {
+        margin-bottom: 1.25rem;
+    }
+
     .home-products-tab {
-        width: 70px;
-        height: 70px;
+        width: 60px;
+        height: 92px;
     }
 
     .home-products-tab-icon {
-        width: 30px;
-        height: 30px;
+        width: 26px;
+        height: 46px;
     }
 
     .home-products-panel {
         height: auto;
+        display: flex;
+        flex-direction: column;
     }
 
     .home-products-info {
         padding: 1.5rem;
+        order: 2;
     }
 
     .home-products-media {
         height: 220px;
+        order: 1;
     }
 }
 
@@ -401,6 +446,19 @@
     z-index: 1;
 }
 
+/* Overlay gelap tipis di atas video biar teks tetap kebaca (desktop) */
+.home-corp-video-inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.15) 0%,
+        rgba(0, 0, 0, 0.35) 100%
+    );
+}
+
 .home-corp-content {
     position: relative;
     z-index: 3;
@@ -453,4 +511,139 @@
     font-family: 'Fira Sans', sans-serif;
     font-size: 1.1rem;
     font-weight: 600;
+}
+
+@media (max-width: 767.98px) {
+    .home-news {
+        padding-bottom: 2rem;
+    }
+
+    .home-corp-video {
+        padding-top: 2rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .home-corp-container {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .home-corp-video-inner {
+        height: 560px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .home-corp-video-inner::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.05) 0%,
+            rgba(0, 0, 0, 0.15) 45%,
+            rgba(0, 0, 0, 0.55) 100%
+        );
+    }
+
+    .home-corp-content {
+        text-align: center;
+        width: 100%;
+        padding: 0 1.5rem;
+    }
+
+    .home-corp-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .home-corp-subtitle {
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .home-corp-play {
+        gap: 0.6rem;
+    }
+
+    .home-corp-play svg {
+        width: 40px;
+        height: 40px;
+        padding: 11px;
+    }
+
+    .home-corp-play span {
+        font-size: 1rem;
+    }
+}
+
+/* ===== Modal video player — kotak kompak di tengah, backdrop redup transparan ===== */
+#videoModal {
+    z-index: 2000 !important; /* FIX: dipastikan menang di atas navbar (z-index: 1030) */
+}
+
+.modal-backdrop.show {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 1999 !important; /* FIX: target semua .modal-backdrop, dipastikan menutupi navbar juga */
+    background-color: #000 !important;
+    opacity: 0.75 !important; /* FIX: dinaikkan dari 0.5, lebih gelap */
+}
+
+/* Tombol close: kotak gelap sendiri, lebih gelap dari backdrop, pojok kanan atas */
+#videoModal .btn-close {
+    z-index: 2100 !important; /* FIX: sebelumnya 1060 inline, kalah sama backdrop baru; sekarang paling atas */
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: rgba(0, 0, 0, 0.85); /* lebih gelap dari backdrop (0.75) */
+    border-radius: 6px;
+    opacity: 1;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+    background-size: 1rem;
+}
+
+#videoModal .btn-close:hover {
+    background-color: rgba(0, 0, 0, 1);
+}
+
+#videoModal .modal-dialog {
+    margin: 0;
+    max-width: 100%;
+    width: 100%;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.5rem;
+}
+
+#videoModal .modal-content {
+    width: 100%;
+    max-width: 640px; /* FIX: dipersempit jadi kotak kompak, bukan full-bleed lebar */
+    background-color: #000;
+    border-radius: 8px; /* FIX: sudut rounded biar kesan "kartu" seperti referensi */
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+#videoModal .ratio {
+    width: 100%;
+}
+
+@media (max-width: 767.98px) {
+    #videoModal .modal-dialog {
+        padding: 0 1.25rem;
+    }
+
+    #videoModal .modal-content {
+        max-width: 100%; /* di layar kecil biarkan mengikuti lebar layar dikurangi padding */
+        border-radius: 6px;
+    }
 }
