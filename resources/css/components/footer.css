@@ -77,10 +77,6 @@ footer.foot .inners_section .socials_med a {
     text-decoration: none;
 }
 
-footer.foot .inners_section .socials_med a:hover {
-    background-color: #d40025;
-}
-
 footer.foot .inners_section .socials_med a i.fa {
     color: #fff;
     font-size: 14px;
