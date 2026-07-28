@@ -274,7 +274,7 @@
     </section>
 
     <div class="modal fade" id="videoModal" tabindex="-1" aria-hidden="true">
-        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-4" data-bs-dismiss="modal" aria-label="Close" style="z-index: 1060;"></button>
+        <button type="button" class="btn-close position-absolute top-0 end-0 m-0" data-bs-dismiss="modal" aria-label="Close" style="z-index: 1060;"></button>
         <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content bg-transparent border-0">
                 <div class="modal-body p-0">

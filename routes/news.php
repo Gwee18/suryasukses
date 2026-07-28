@@ -4,118 +4,120 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| News Routes
+| News & Blog Routes (Synced with suryasukses.com/blog/index)
 |--------------------------------------------------------------------------
 */
 
-Route::get('/news', function () {
+Route::get('/blog/index', function () {
     return view('news.index');
 })->name('news');
 
-Route::get('/news/page2', function () {
+Route::redirect('/news', '/blog/index');
+
+Route::get('/blog/index/Blog_page/2', function () {
     return view('news.page2');
 })->name('news.page2');
 
-Route::get('/news/page3', function () {
+Route::get('/blog/index/Blog_page/3', function () {
     return view('news.page3');
 })->name('news.page3');
 
-Route::get('/news/detail', function () {
+Route::get('/blog/detail/33', function () {
     return view('news.detail.detail');
 })->name('news.detail');
 
-Route::get('/news/detail32', function () {
+Route::get('/blog/detail/32', function () {
     return view('news.detail.detail32');
 })->name('news.detail32');
 
-Route::get('/news/detail31', function () {
+Route::get('/blog/detail/31', function () {
     return view('news.detail.detail31');
 })->name('news.detail31');
 
-Route::get('/news/detail29', function () {
+Route::get('/blog/detail/29', function () {
     return view('news.detail.detail29');
 })->name('news.detail29');
 
-Route::get('/news/detail28', function () {
+Route::get('/blog/detail/28', function () {
     return view('news.detail.detail28');
 })->name('news.detail28');
 
-Route::get('/news/detail23', function () {
+Route::get('/blog/detail/23', function () {
     return view('news.detail.detail23');
 })->name('news.detail23');
 
-Route::get('/news/detail22', function () {
+Route::get('/blog/detail/22', function () {
     return view('news.detail.detail22');
 })->name('news.detail22');
 
-Route::get('/news/detail21', function () {
+Route::get('/blog/detail/21', function () {
     return view('news.detail.detail21');
 })->name('news.detail21');
 
-Route::get('/news/detail20', function () {
+Route::get('/blog/detail/20', function () {
     return view('news.detail.detail20');
 })->name('news.detail20');
 
-Route::get('/news/detail19', function () {
+Route::get('/blog/detail/19', function () {
     return view('news.detail.detail19');
 })->name('news.detail19');
 
-Route::get('/news/detail18', function () {
+Route::get('/blog/detail/18', function () {
     return view('news.detail.detail18');
 })->name('news.detail18');
 
-Route::get('/news/detail16', function () {
+Route::get('/blog/detail/16', function () {
     return view('news.detail.detail16');
 })->name('news.detail16');
 
-Route::get('/news/detail15', function () {
+Route::get('/blog/detail/15', function () {
     return view('news.detail.detail15');
 })->name('news.detail15');
 
-Route::get('/news/detail14', function () {
+Route::get('/blog/detail/14', function () {
     return view('news.detail.detail14');
 })->name('news.detail14');
 
-Route::get('/news/detail13', function () {
+Route::get('/blog/detail/13', function () {
     return view('news.detail.detail13');
 })->name('news.detail13');
 
-Route::get('/news/detail12', function () {
+Route::get('/blog/detail/12', function () {
     return view('news.detail.detail12');
 })->name('news.detail12');
 
-Route::get('/news/detail10', function () {
+Route::get('/blog/detail/10', function () {
     return view('news.detail.detail10');
 })->name('news.detail10');
 
-Route::get('/news/detail9', function () {
+Route::get('/blog/detail/9', function () {
     return view('news.detail.detail9');
 })->name('news.detail9');
 
-Route::get('/news/detail7', function () {
+Route::get('/blog/detail/7', function () {
     return view('news.detail.detail7');
 })->name('news.detail7');
 
-Route::get('/news/detail6', function () {
+Route::get('/blog/detail/6', function () {
     return view('news.detail.detail6');
 })->name('news.detail6');
 
-Route::get('/news/detail5', function () {
+Route::get('/blog/detail/5', function () {
     return view('news.detail.detail5');
 })->name('news.detail5');
 
-Route::get('/news/detail4', function () {
+Route::get('/blog/detail/4', function () {
     return view('news.detail.detail4');
 })->name('news.detail4');
 
-Route::get('/news/detail1', function () {
+Route::get('/blog/detail/1', function () {
     return view('news.detail.detail1');
 })->name('news.detail1');
 
-Route::get('/news/detail2', function () {
+Route::get('/blog/detail/2', function () {
     return view('news.detail.detail2');
 })->name('news.detail2');
 
-Route::get('/news/detail3', function () {
+Route::get('/blog/detail/3', function () {
     return view('news.detail.detail3');
 })->name('news.detail3');

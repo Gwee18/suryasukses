@@ -21,7 +21,7 @@
             </div>
             <div class="col-md-6 col-6 text-end">
                 <div class="block-back-link">
-                    <a href="{{ route('news') }}"><i class="fas fa-chevron-left"></i> Back</a>
+                    <a href="{{ route('news') }}"><i class="fa fa-chevron-left"></i> Back</a>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
             <div class="col-md-9 rights_cont_def">
                 <h3 class="detail-title">Aplikasi AMARI Spunbond di bidang Agrikultur</h3>
                 <div class="clearfix"></div>
-                <span class="dates"><small><i class="far fa-calendar-alt"></i> 14 January 2018</small></span>
+                <span class="dates"><small><i class="fa fa-calendar"></i> 14 January 2018</small></span>
                 <div class="clearfix"></div>
                 <div class="py-3"></div>
                 
@@ -92,7 +92,7 @@
                             <div class="py-3"></div>
                             <div class="row">
                                 <div class="col">
-                                    <p><a href="{{ route('news.detail2') }}"><i class="fas fa-chevron-left"></i> Back</a></p>
+                                    <p><a href="{{ route('news.detail2') }}"><i class="fa fa-chevron-left"></i> Back</a></p>
                                 </div>
                                 <div class="col">
                                     <p class="text-center">
@@ -100,7 +100,7 @@
                                     </p>
                                 </div>
                                 <div class="col text-end">
-                                    <p class="text-end"><a href="{{ route('news.detail') }}">Next <i class="fas fa-chevron-right"></i></a></p>
+                                    <p class="text-end"><a href="{{ route('news.detail') }}">Next <i class="fa fa-chevron-right"></i></a></p>
                                 </div>
                             </div>
                             <div class="clear"></div>

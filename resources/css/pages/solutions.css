@@ -14,10 +14,10 @@ BEM Architecture for Solutions Pages (Studio & Capabilities)
     color: #333;
 }
 
-/* Container */
+/* Container - 1:1 with suryasukses.com (1260px) */
 .studio-container {
     width: 100%;
-    max-width: 1140px;
+    max-width: 1260px;
     margin-right: auto;
     margin-left: auto;
     padding-right: 15px;
@@ -26,16 +26,18 @@ BEM Architecture for Solutions Pages (Studio & Capabilities)
 
 /* Breadcrumb */
 .studio-breadcrumb {
-    padding-top: 40px;
-    padding-bottom: 5px;
+    padding-top: 2.5rem;
+    padding-bottom: 0.3rem;
     background-color: #fff;
-    border-bottom: 1px solid #eee;
+    border-bottom: none;
 }
 
 .studio-breadcrumb__layout {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0.75rem;
 }
 
 .studio-breadcrumb__list {
@@ -264,22 +266,22 @@ BEM Architecture for Solutions Pages (Studio & Capabilities)
 
     /* Mengembalikan ke ketebalan normal dan warna asli */
     font-weight: 400 !important;
-    color: #6a6a6a !important;
+    color: #000000 !important;
 }
 
 .studio-list li::marker {
-    color: #6a6a6a;
+    color: #000000;
     font-size: 14px;
 }
 
 /* Contact */
 .whatsapp {
-    margin-top: 16px;
+    margin-top: 1px;
 }
 
 .whatsapp h5 {
     margin: 0;
-    font-size: 16px;
+    font-size: 19px;
     font-weight: 600;
     color: #6a6a6a;
 }
@@ -309,10 +311,10 @@ BEM Architecture for Solutions Pages (Studio & Capabilities)
     color: #333;
 }
 
-/* Container */
+/* Container - 1:1 with suryasukses.com (1260px) */
 .solution-capabilities__container {
     width: 100%;
-    max-width: 1140px;
+    max-width: 1260px;
     margin-right: auto;
     margin-left: auto;
     padding-right: 15px;
@@ -321,16 +323,18 @@ BEM Architecture for Solutions Pages (Studio & Capabilities)
 
 /* Breadcrumb Section */
 .solution-capabilities__breadcrumb-wrapper {
-    padding-top: 40px;
-    padding-bottom: 5px;
+    padding-top: 2.5rem;
+    padding-bottom: 0.3rem;
     background-color: #fff;
-    border-bottom: 1px solid #eee;
+    border-bottom: none;
 }
 
 .solution-capabilities__breadcrumb-layout {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 0.75rem;
 }
 
 .solution-capabilities__breadcrumb {

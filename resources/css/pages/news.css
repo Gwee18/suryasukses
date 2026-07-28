@@ -55,7 +55,7 @@
 }
 
 .breadcrumb-det .breadcrumb-item.active a {
-    color: #232323; /* asli: #232323, bukan #555 */
+    color: #6a6a6a; /* asli: #232323, bukan #555 */
     font-weight: 400;
     font-size: 15px;
 }
@@ -230,16 +230,23 @@
 
 .page .pagination {
     justify-content: flex-start;
+    gap: 0;
+}
+
+.page .pagination .page-item {
+    margin: 0;
+    padding: 0;
 }
 
 .page .pagination .page-item .page-link {
     color: #0e509e; /* WARNA ASLI biru pager mereka, bukan #007bff */
     border: none;
-    padding: 0 6px;
-    margin: 0;
+    padding: 0 !important;
+    margin: 0 !important;
     font-size: 16px;
     font-weight: 700;
     background: transparent;
+    display: inline-block;
 }
 
 .page .pagination .page-item.active .page-link {
