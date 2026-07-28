@@ -32,7 +32,7 @@
     <section class="about-location-sec-1 contents_abouts_sec1">
         <div class="prelative container">
             <div class="row">
-                <div class="col-md-15">
+                <div class="col-md-3">
                     <div class="box-konten-kiri">
                         <h5>About Us</h5>
                         <ol>
@@ -43,7 +43,7 @@
                         </ol>
                     </div>
                 </div>
-                <div class="col-md-45">
+                <div class="col-md-9">
                     <div class="content-top cont_career">
                         <h3>Come Grow With Us</h3>
                         <img src="{{ asset('assets/images/about/3b5fb3dfb6_OPS6411.jpg') }}" alt="" class="img img-fluid pb-4 mb-2">

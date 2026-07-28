@@ -2,12 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| About Routes
-|--------------------------------------------------------------------------
-*/
-
 Route::get('/about', function () {
     return view('about.index');
 })->name('about');
