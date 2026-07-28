@@ -32,7 +32,7 @@
     <section class="about-location-sec-1 contents_abouts_sec1">
         <div class="prelative container">
             <div class="row">
-                <div class="col-md-15">
+                <div class="col-md-3">
                     <div class="box-konten-kiri">
                         <h5>About Us</h5>
                         <ol>
@@ -43,35 +43,35 @@
                         </ol>
                     </div>
                 </div>
-                <div class="col-md-45">
+                <div class="col-md-9">
                     <div class="content-top cont_career">
                         <h3>Our Values</h3>
                         <img src="{{ asset('assets/images/about/3b5fb3dfb6_OPS6411.jpg') }}" alt="Our Values" class="img img-fluid pb-5">
                         
                         <div class="lists_row_csn">
                             <div class="row">
-                                <div class="col-md-30 col-30">
+                                <div class="col-md-6 col-6">
                                     <div class="items pb-3">
                                         <h5>Partnerships</h5>
                                         <div class="py-2"></div>
                                         <p>We recognize the importance of strong, sustainable partnerships throughout all aspects of our business - we view our employees, customers, suppliers, and communities as our partners.</p>
                                     </div>
                                 </div>
-                                <div class="col-md-30 col-30">
+                                <div class="col-md-6 col-6">
                                     <div class="items pb-3">
                                         <h5>Excellence</h5>
                                         <div class="py-2"></div>
                                         <p>We pursue excellence in all that we do by optimizing our processes, enhancing our sustainability initiatives, and by providing the highest quality products and services to our customers. We believe in continuous training and development for our employees so that we can deliver excellence to our customers.</p>
                                     </div>
                                 </div>
-                                <div class="col-md-30 col-30">
+                                <div class="col-md-6 col-6">
                                     <div class="items pb-3">
                                         <h5>Growth</h5>
                                         <div class="py-2"></div>
                                         <p>Strategic growth is imperative for our business. Growth comes in many forms - financial growth, customer growth, employee growth and development, product growth and innovation, and the global growth of our Company.</p>
                                     </div>
                                 </div>
-                                <div class="col-md-30 col-30">
+                                <div class="col-md-6 col-6">
                                     <div class="items pb-3">
                                         <h5>Safety</h5>
                                         <div class="py-2"></div>

@@ -32,7 +32,7 @@
     <section class="about-location-sec-1">
         <div class="prelative container">
             <div class="row">
-                <div class="col-md-15">
+                <div class="col-md-3">
                     <div class="box-konten-kiri">
                         <h5>About Us</h5>
                         <ol>
@@ -43,37 +43,34 @@
                         </ol>
                     </div>
                 </div>
-                <div class="col-md-45">
+                <div class="col-md-9">
                     <h4>Our culture of perfections</h4>
                     <h3>Quality Statement</h3>
                     
                     <p>Quality products and on time delivery are the things that made us different. With hairline precision production and exceptional discipline in time management, Suryasukses Group has managed to be on top when it comes to quality.</p>
                     <p>The Suryasukses Group puts strong emphasis on quality. The best manufacturing practice in Suryasukses Group is centrally coordinated and implemented at each plant to ensure superior quality. The best manufacturing practice is continuously pushed up to lift the quality level further. All Suryasukses Group plants are ISO 9000 certified and following the intense and strict interntional safety standard regulation.<br></p>
                     
-                    <div class="row no-gutters py-4 align-items-center">
-                        <div class="col-md-30">
-                            <div class="content pr-5">
+                    <div class="row g-0 py-4 align-items-center">
+                        <div class="col-md-6">
+                            <div class="content pe-5">
                                 <div class="content-inner">
-                                    <div class="title">
-                                        <p></p>
-                                    </div>
                                     <div class="isi">
                                         <p>The quality control team at Suryasukses group continually assessed for precision without tolerance. Our test lab are fully equipped with the highest technology available to ensure quality checking. This attention to detail is reflected in the end product that our customer receive.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-30">
+                        <div class="col-md-6">
                             <img class="w-100" src="{{ asset('assets/images/about/b1b1e898fbLayer-43.jpg') }}" alt="">
                         </div>
                     </div>
             
-                    <div class="row no-gutters py-4 align-items-center">
-                        <div class="col-md-30">
+                    <div class="row g-0 py-4 align-items-center">
+                        <div class="col-md-6">
                             <img class="w-100" src="{{ asset('assets/images/about/ea8e93cbf2Layer-44.jpg') }}" alt="">
                         </div>
-                        <div class="col-md-30">
-                            <div class="content pl-5">
+                        <div class="col-md-6">
+                            <div class="content ps-5">
                                 <div class="content-inner">
                                     <div class="title">
                                         <p>When Technology Meets Human Skill</p>
