@@ -305,4 +305,19 @@ section.about-location-sec-1 p {
     .about-location-sec-1 .container {
         max-width: 100%;
     }
+
+    .about-location-sec-1 .content {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        text-align: left;
+        margin-top: 1rem;
+    }
+
+    .about-location-sec-1 .content-inner .title p {
+        text-align: left;
+    }
+
+    .about-location-sec-1 .content-inner .isi p {
+        text-align: left;
+    }
 }
