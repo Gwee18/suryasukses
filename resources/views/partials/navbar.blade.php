@@ -21,40 +21,40 @@
                             <div class="container">
                                 <div class="row gy-4">
                                     <div class="col-lg-3 col-md-6">
-                                        <h6 class="mega-heading"><a href="{{ route('product') }}#packaging">Packaging</a></h6>
+                                        <h6 class="mega-heading"><a href="{{ route('product.landing', ['id' => 2, 'slug' => 'packaging']) }}">Packaging</a></h6>
                                         <ul class="mega-list">
-                                            <li><a href="#">Preform</a></li>
-                                            <li><a href="#">Bottles</a></li>
-                                            <li><a href="#">Closures</a></li>
-                                            <li><a href="#">Drinking Cups</a></li>
-                                            <li><a href="#">Lids</a></li>
-                                            <li><a href="#">Containers</a></li>
+                                            <li><a href="{{ route('product.range', ['id' => 1, 'parentId' => 2, 'slug' => 'preform']) }}">Preform</a></li>
+                                            <li><a href="{{ route('product.range', ['id' => 2, 'parentId' => 2, 'slug' => 'bottles']) }}">Bottles</a></li>
+                                            <li><a href="{{ route('product.range', ['id' => 3, 'parentId' => 2, 'slug' => 'closures']) }}">Closures</a></li>
+                                            <li><a href="{{ route('product.range', ['id' => 4, 'parentId' => 2, 'slug' => 'drinking-cups']) }}">Drinking Cups</a></li>
+                                            <li><a href="{{ route('product.range', ['id' => 5, 'parentId' => 2, 'slug' => 'lids']) }}">Lids</a></li>
+                                            <li><a href="{{ route('product.range', ['id' => 6, 'parentId' => 2, 'slug' => 'containers']) }}">Containers</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
-                                        <h6 class="mega-heading"><a href="{{ route('product') }}#specialty-nonwoven">Specialty Nonwoven</a></h6>
+                                        <h6 class="mega-heading"><a href="{{ route('product.landing', ['id' => 3, 'slug' => 'specialty-nonwoven']) }}">Specialty Nonwoven</a></h6>
                                         <ul class="mega-list">
-                                            <li><a href="#">Spunbond Polypropylene</a></li>
-                                            <li><a href="#">Meltblown</a></li>
+                                            <li><a href="{{ route('product.range', ['id' => 7, 'parentId' => 3, 'slug' => 'spunbond-polypropylene']) }}">Spunbond Polypropylene</a></li>
+                                            <li><a href="{{ route('product.range', ['id' => 8, 'parentId' => 3, 'slug' => 'meltblown']) }}">Meltblown</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
-                                        <h6 class="mega-heading"><a href="{{ route('product') }}#housewares">Housewares</a></h6>
+                                        <h6 class="mega-heading"><a href="{{ route('product.landing', ['id' => 4, 'slug' => 'housewares']) }}">Housewares</a></h6>
                                         <ul class="mega-list">
-                                            <li><a href="#">Storage</a></li>
-                                            <li><a href="#">Sealware</a></li>
-                                            <li><a href="#">Kitchen</a></li>
-                                            <li><a href="#">Containers</a></li>
-                                            <li><a href="#">Racks</a></li>
-                                            <li><a href="#">Bathroom</a></li>
-                                            <li><a href="#">Cleaning Ware</a></li>
-                                            <li><a href="#">Garden</a></li>
+                                            <li><a href="{{ route('product.range', ['id' => 9, 'parentId' => 4, 'slug' => 'storage']) }}">Storage</a></li>
+                                            <li><a href="{{ route('product.range', ['id' => 10, 'parentId' => 4, 'slug' => 'sealware']) }}">Sealware</a></li>
+                                            <li><a href="{{ route('product.range', ['id' => 11, 'parentId' => 4, 'slug' => 'kitchen']) }}">Kitchen</a></li>
+                                            <li><a href="{{ route('product.range', ['id' => 13, 'parentId' => 4, 'slug' => 'containers']) }}">Containers</a></li>
+                                            <li><a href="{{ route('product.range', ['id' => 14, 'parentId' => 4, 'slug' => 'racks']) }}">Racks</a></li>
+                                            <li><a href="{{ route('product.range', ['id' => 15, 'parentId' => 4, 'slug' => 'bathroom']) }}">Bathroom</a></li>
+                                            <li><a href="{{ route('product.range', ['id' => 16, 'parentId' => 4, 'slug' => 'cleaning-ware']) }}">Cleaning Ware</a></li>
+                                            <li><a href="{{ route('product.range', ['id' => 17, 'parentId' => 4, 'slug' => 'garden']) }}">Garden</a></li>
                                         </ul>
                                     </div>
                                     <div class="col-lg-3 col-md-6">
-                                        <h6 class="mega-heading"><a href="{{ route('product') }}#roofing">Roofing</a></h6>
+                                        <h6 class="mega-heading"><a href="{{ route('product.landing', ['id' => 5, 'slug' => 'roofing']) }}">Roofing</a></h6>
                                         <ul class="mega-list">
-                                            <li><a href="#">UPVC</a></li>
+                                            <li><a href="{{ route('product.range', ['id' => 18, 'parentId' => 5, 'slug' => 'upvc']) }}">UPVC</a></li>
                                         </ul>
                                     </div>
                                 </div>
