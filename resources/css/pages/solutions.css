@@ -114,19 +114,27 @@ BEM Architecture for Solutions Pages (Studio & Capabilities)
     padding-left: 15px;
     display: flex;
     flex-direction: column;
+    margin-bottom: 25px;
 }
 
 @media (min-width: 768px) {
     .studio-sidebar {
         flex: 0 0 25%;
         max-width: 25%;
+        margin-bottom: 0;
     }
 }
 
 .studio-sidebar__box {
     background-color: #f4f4f4;
-    min-height: 900px;
-    padding: 25px;
+    padding: 15px 20px;
+}
+
+@media (min-width: 768px) {
+    .studio-sidebar__box {
+        min-height: 900px;
+        padding: 25px;
+    }
 }
 
 .studio-sidebar__title {
@@ -191,12 +199,19 @@ BEM Architecture for Solutions Pages (Studio & Capabilities)
 }
 
 .studio-title {
-    font-size: 45px;
+    font-size: 30px;
     color: #c52026;
     font-weight: 600;
     margin-top: 0;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+    .studio-title {
+        font-size: 45px;
+        margin-bottom: 25px;
+    }
 }
 
 /* Content Container */
@@ -414,22 +429,30 @@ BEM Architecture for Solutions Pages (Studio & Capabilities)
     padding-left: 15px;
     display: flex;
     flex-direction: column;
+    margin-bottom: 25px;
 }
 
 @media (min-width: 768px) {
     .solution-capabilities__sidebar {
         flex: 0 0 25%;
         max-width: 25%;
+        margin-bottom: 0;
     }
 }
 
 /* Sidebar Components */
 .solution-capabilities__sidebar-box {
     background-color: #f4f4f4;
-    min-height: 1075px;
     flex: 1 1 auto;
     width: 100%;
-    padding: 25px;
+    padding: 15px 20px;
+}
+
+@media (min-width: 768px) {
+    .solution-capabilities__sidebar-box {
+        min-height: 1075px;
+        padding: 25px;
+    }
 }
 
 .solution-capabilities__sidebar-title {
@@ -494,12 +517,19 @@ BEM Architecture for Solutions Pages (Studio & Capabilities)
 }
 
 .solution-capabilities__title {
-    font-size: 45px;
+    font-size: 30px;
     color: #c52026;
     font-weight: 600;
     margin-top: 0;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+    .solution-capabilities__title {
+        font-size: 45px;
+        margin-bottom: 30px;
+    }
 }
 
 /* Grid for Cards */
