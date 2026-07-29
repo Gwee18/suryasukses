@@ -15,3 +15,10 @@ require __DIR__ . '/solutions.php';
 require __DIR__ . '/contact.php';
 require __DIR__ . '/faq.php';
 require __DIR__ . '/policies.php';
+
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
+require __DIR__ . '/admin.php';

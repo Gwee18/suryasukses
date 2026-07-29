@@ -45,221 +45,40 @@
                 <div class="clear clearfix"></div>
 
                 <div class="row default-data">
-                    <!-- News Item 1 -->
-                    <div class="col-md-4 mb-4">
+                    @forelse($posts as $post)
+                    <div class="col-md-4">
                         <div class="box-content">
                             <div class="image">
-                                <a href="{{ route('news.detail') }}">
-                                    <img class="img-fluid w-100" src="{{ asset('assets/images/news/68f1c-cover kale.jpg') }}" alt="Mengenal Botol Kale">
+                                <a href="{{ route('news.detail', $post->slug) }}">
+                                    @if($post->cover_image)
+                                        <img class="img img-fluid w-100" src="{{ asset('assets/images/news/' . $post->cover_image) }}" alt="{{ $post->title }}">
+                                    @else
+                                        <div style="background:#eee; height:200px; display:flex; align-items:center; justify-content:center; color:#999;">No Image</div>
+                                    @endif
                                 </a>
                             </div>
                             <div class="title">
-                                <a href="{{ route('news.detail') }}"><p>Mengenal Botol Kale, Kemasan Minuman Kekinian Dengan Desain Simple Dan Menarik</p></a>
+                                <p>{{ $post->title }}</p>
                             </div>
                             <div class="klik">
-                                <a href="{{ route('news.detail') }}"><p>Read More</p></a>
+                                <a href="{{ route('news.detail', $post->slug) }}"><p>Read More</p></a>
                             </div>
                         </div>
                     </div>
-
-                    <!-- News Item 2 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="box-content">
-                            <div class="image">
-                                <a href="{{ route('news.detail32') }}">
-                                    <img class="img-fluid w-100" src="{{ asset('assets/images/news/52e12-foto utama_o.png') }}" alt="Peralatan Kantor Fungsional">
-                                </a>
-                            </div>
-                            <div class="title">
-                                <a href="{{ route('news.detail32') }}"><p>Peralatan Kantor Fungsional Dari Multindo Yang Bikin Semangat Kerja</p></a>
-                            </div>
-                            <div class="klik">
-                                <a href="{{ route('news.detail32') }}"><p>Read More</p></a>
-                            </div>
-                        </div>
+                    @empty
+                    <div class="col-12 text-center py-5">
+                        <p class="text-muted">Belum ada berita yang diterbitkan.</p>
                     </div>
-
-                    <!-- News Item 3 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="box-content">
-                            <div class="image">
-                                <a href="{{ route('news.detail31') }}">
-                                    <img class="img-fluid w-100" src="{{ asset('assets/images/news/b65a3-foto utama_.jpg') }}" alt="Proses Produksi Dan Penjaminan Mutu">
-                                </a>
-                            </div>
-                            <div class="title">
-                                <a href="{{ route('news.detail31') }}"><p>Proses Produksi Dan Penjaminan Mutu Di Suryasukses</p></a>
-                            </div>
-                            <div class="klik">
-                                <a href="{{ route('news.detail31') }}"><p>Read More</p></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- News Item 4 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="box-content">
-                            <div class="image">
-                                <a href="{{ route('news.detail29') }}">
-                                    <img class="img-fluid w-100" src="{{ asset('assets/images/news/f559a-foto utama.png') }}" alt="Peluang Bisnis Kemasan Minuman">
-                                </a>
-                            </div>
-                            <div class="title">
-                                <a href="{{ route('news.detail29') }}"><p>Peluang Bisnis Kemasan Minuman Yang Menjanjikan Dari Suryasukses</p></a>
-                            </div>
-                            <div class="klik">
-                                <a href="{{ route('news.detail29') }}"><p>Read More</p></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- News Item 5 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="box-content">
-                            <div class="image">
-                                <a href="{{ route('news.detail28') }}">
-                                    <img class="img-fluid w-100" src="{{ asset('assets/images/news/bdb30-foto utama (oxo) (1).png') }}" alt="Lestarikan Alam Dengan Kemasan">
-                                </a>
-                            </div>
-                            <div class="title">
-                                <a href="{{ route('news.detail28') }}"><p>Lestarikan Alam Dengan Kemasan Minuman Ramah Lingkungan Dan Aman Dari Suryasukses</p></a>
-                            </div>
-                            <div class="klik">
-                                <a href="{{ route('news.detail28') }}"><p>Read More</p></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- News Item 6 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="box-content">
-                            <div class="image">
-                                <a href="{{ route('news.detail23') }}">
-                                    <img class="img-fluid w-100" src="{{ asset('assets/images/news/ff1d8-foto utama_masker.jpg') }}" alt="Kenali Bahan Pembuat Masker">
-                                </a>
-                            </div>
-                            <div class="title">
-                                <a href="{{ route('news.detail23') }}"><p>Kenali Bahan Pembuat Masker Medis</p></a>
-                            </div>
-                            <div class="klik">
-                                <a href="{{ route('news.detail23') }}"><p>Read More</p></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- News Item 7 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="box-content">
-                            <div class="image">
-                                <a href="{{ route('news.detail22') }}">
-                                    <img class="img-fluid w-100" src="{{ asset('assets/images/news/0cca0-Foto utama.png') }}" alt="Kantong Plastik Dilarang">
-                                </a>
-                            </div>
-                            <div class="title">
-                                <a href="{{ route('news.detail22') }}"><p>Kantong Plastik Dilarang, Amari Spunbond Tawarkan Bahan Tas Ramah Lingkungan</p></a>
-                            </div>
-                            <div class="klik">
-                                <a href="{{ route('news.detail22') }}"><p>Read More</p></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- News Item 8 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="box-content">
-                            <div class="image">
-                                <a href="{{ route('news.detail21') }}">
-                                    <img class="img-fluid w-100" src="{{ asset('assets/images/news/a2c93-Foto utama.jpg') }}" alt="Tren Kemasan 2020">
-                                </a>
-                            </div>
-                            <div class="title">
-                                <a href="{{ route('news.detail21') }}"><p>Tren Kemasan 2020 Untuk Bisnis Makanan Dan Minuman</p></a>
-                            </div>
-                            <div class="klik">
-                                <a href="{{ route('news.detail21') }}"><p>Read More</p></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- News Item 9 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="box-content">
-                            <div class="image">
-                                <a href="{{ route('news.detail20') }}">
-                                    <img class="img-fluid w-100" src="{{ asset('assets/images/news/3a800-Foto utama-Amari roof2.jpg') }}" alt="Solusi Atap Berkualitas">
-                                </a>
-                            </div>
-                            <div class="title">
-                                <a href="{{ route('news.detail20') }}"><p>Solusi Atap Berkualitas Dan Efisien Dari Amari UPVC Roof</p></a>
-                            </div>
-                            <div class="klik">
-                                <a href="{{ route('news.detail20') }}"><p>Read More</p></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- News Item 10 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="box-content">
-                            <div class="image">
-                                <a href="{{ route('news.detail19') }}">
-                                    <img class="img-fluid w-100" src="{{ asset('assets/images/news/ebd06-foto_utama.png') }}" alt="Metode Perlindungan Tanaman">
-                                </a>
-                            </div>
-                            <div class="title">
-                                <a href="{{ route('news.detail19') }}"><p>Metode Perlindungan Tanaman Dengan Amari Spunbond Untuk Mempercepat Panen</p></a>
-                            </div>
-                            <div class="klik">
-                                <a href="{{ route('news.detail19') }}"><p>Read More</p></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- News Item 11 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="box-content">
-                            <div class="image">
-                                <a href="{{ route('news.detail18') }}">
-                                    <img class="img-fluid w-100" src="{{ asset('assets/images/news/f5424-Presentation UPVC ROOF.jpg') }}" alt="Berkenalan Dengan Amari UPVC Roof">
-                                </a>
-                            </div>
-                            <div class="title">
-                                <a href="{{ route('news.detail18') }}"><p>Berkenalan Dengan Amari UPVC Roof, Atap Pengganti Galvalum</p></a>
-                            </div>
-                            <div class="klik">
-                                <a href="{{ route('news.detail18') }}"><p>Read More</p></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- News Item 12 -->
-                    <div class="col-md-4 mb-4">
-                        <div class="box-content">
-                            <div class="image">
-                                <a href="{{ route('news.detail16') }}">
-                                    <img class="img-fluid w-100" src="{{ asset('assets/images/news/0f914-Untitled design (2).jpg') }}" alt="Kemasan Unik Untuk Bisnis Boba">
-                                </a>
-                            </div>
-                            <div class="title">
-                                <a href="{{ route('news.detail16') }}"><p>Kemasan Unik Untuk Bisnis Boba Dan Kopi Dari Suryasukses</p></a>
-                            </div>
-                            <div class="klik">
-                                <a href="{{ route('news.detail16') }}"><p>Read More</p></a>
-                            </div>
-                        </div>
+                    @endforelse
+                </div>
+                
+                @if($posts->hasPages())
+                <div class="row pt-5 mt-4">
+                    <div class="col-12">
+                        {{ $posts->links('vendor.pagination.custom') }}
                     </div>
                 </div>
-
-                <div class="py-4"></div>
-
-                <!-- Pagination -->
-                <div class="textaboveheader-landing page">
-                    <ul class="pagination mb-0">
-                        <li class="page-item active"><a class="page-link" href="{{ route('news') }}">1</a></li>
-                        <li class="page-item"><a class="page-link" href="{{ route('news.page2') }}">2</a></li>
-                        <li class="page-item"><a class="page-link" href="{{ route('news.page3') }}">3</a></li>
-                    </ul>
-                </div>
+                @endif
             </div>
         </div>
     </div>

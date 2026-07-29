@@ -195,61 +195,27 @@
             <div class="row justify-content-center">
                 <div class="col-xl-11">
                     <div class="row g-4">
+                @forelse($latestNews as $news)
                 <div class="col-lg-3 col-md-6">
                     <div class="home-news-card">
-                        <a href="{{ route('news.detail') }}" class="home-news-img">
-                            <img src="{{ asset('assets/images/home/68f1c-cover kale.jpg') }}" alt="Mengenal Botol Kale">
+                        <a href="{{ route('news.detail', $news->slug) }}" class="home-news-img">
+                            @if($news->cover_image)
+                                <img src="{{ asset('assets/images/news/' . $news->cover_image) }}" alt="{{ $news->title }}">
+                            @else
+                                <div style="background:#eee; height:200px; display:flex; align-items:center; justify-content:center; color:#999;">No Image</div>
+                            @endif
                         </a>
                         <div class="home-news-body">
                             <h4 class="home-news-heading">
-                                <a href="{{ route('news.detail') }}">Mengenal Botol Kale, Kemasan Minuman Kekinian dengan Desain ...</a>
+                                <a href="{{ route('news.detail', $news->slug) }}">{{ \Illuminate\Support\Str::limit($news->title, 60) }}</a>
                             </h4>
-                            <a href="{{ route('news.detail') }}" class="read-more">READ MORE</a>
+                            <a href="{{ route('news.detail', $news->slug) }}" class="read-more">READ MORE</a>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="home-news-card">
-                        <a href="{{ route('news.detail32') }}" class="home-news-img">
-                            <img src="{{ asset('assets/images/home/52e12-foto utama_o.png') }}" alt="Peralatan Kantor Multindo">
-                        </a>
-                        <div class="home-news-body">
-                            <h4 class="home-news-heading">
-                                <a href="{{ route('news.detail32') }}">Peralatan Kantor Fungsional dari Multindo yang Bikin Semanga...</a>
-                            </h4>
-                            <a href="{{ route('news.detail32') }}" class="read-more">READ MORE</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="home-news-card">
-                        <a href="{{ route('news.detail31') }}" class="home-news-img">
-                            <img src="{{ asset('assets/images/home/b65a3-foto utama_.jpg') }}" alt="Proses Produksi">
-                        </a>
-                        <div class="home-news-body">
-                            <h4 class="home-news-heading">
-                                <a href="{{ route('news.detail31') }}">Proses Produksi dan Penjaminan Mutu di Suryasukses...</a>
-                            </h4>
-                            <a href="{{ route('news.detail31') }}" class="read-more">READ MORE</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="home-news-card">
-                        <a href="{{ route('news.detail29') }}" class="home-news-img">
-                            <img src="{{ asset('assets/images/home/f559a-foto utama.png') }}" alt="Peluang Bisnis">
-                        </a>
-                        <div class="home-news-body">
-                            <h4 class="home-news-heading">
-                                <a href="{{ route('news.detail29') }}">Peluang Bisnis Kemasan Minuman yang Menjanjikan dari Suryasu...</a>
-                            </h4>
-                            <a href="{{ route('news.detail29') }}" class="read-more">READ MORE</a>
-                        </div>
-                    </div>
-                </div>
+                @empty
+                <div class="col-12 text-center text-muted">Belum ada berita.</div>
+                @endforelse
 
             </div>
         </div>
