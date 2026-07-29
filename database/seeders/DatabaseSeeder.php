@@ -15,11 +15,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // Seed Users
+        $usersJson = file_get_contents(database_path('seeders/data/users.json'));
+        $users = json_decode($usersJson, true);
+        foreach ($users as $userData) {
+            // Check if user already exists
+            if (!User::where('email', $userData['email'])->exists()) {
+                User::create($userData);
+            }
+        }
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Seed Posts
+        $postsJson = file_get_contents(database_path('seeders/data/posts.json'));
+        $posts = json_decode($postsJson, true);
+        foreach ($posts as $postData) {
+            if (!\App\Models\Post::where('slug', $postData['slug'])->exists()) {
+                \App\Models\Post::create($postData);
+            }
+        }
     }
 }
