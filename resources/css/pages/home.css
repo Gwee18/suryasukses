@@ -22,13 +22,13 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 20rem;
+    bottom: 26rem;
     color: #fff;
 }
 
 @media (min-width: 1400px) {
     .home-hero-caption .container {
-        padding-left: 3rem;
+        padding-left: calc(2.8rem - 15px);
         max-width: 100%;
     }
 }

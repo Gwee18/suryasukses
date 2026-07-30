@@ -123,67 +123,67 @@
                 <div class="col-xl-11">
                     <div class="row g-4">
                 <div class="col-lg-3 col-md-6">
-                    <a href="#" class="home-card">
+                    <div class="home-card">
                         <div class="home-card-img">
                             <img src="{{ asset('assets/images/home/d1f20f2452homesec-1.jpg') }}" alt="Get to Know SAP">
                         </div>
                         <div class="home-card-body">
                             <h4 class="home-card-title">Get to Know SAP</h4>
                             <p class="home-card-desc">Established in 1990, we are uniquely positioned to provide customers with the best, on-trend products.</p>
-                            <div class="home-card-footer">
+                            <a href="{{ route('about') }}" class="home-card-footer">
                                 <span class="read-more">READ MORE</span>
                                 <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-                            </div>
+                            </a>
                         </div>
-                    </a>
+                    </div>
                 </div>
                 
                 <div class="col-lg-3 col-md-6">
-                    <a href="#" class="home-card">
+                    <div class="home-card">
                         <div class="home-card-img">
                             <img src="{{ asset('assets/images/home/f49e0c021bhomesec-2.jpg') }}" alt="Our Markets">
                         </div>
                         <div class="home-card-body">
                             <h4 class="home-card-title">Our Markets</h4>
                             <p class="home-card-desc">Combining three-decade experience and a fully dedicated team, we are ready to serve a wide range of industries.</p>
-                            <div class="home-card-footer">
+                            <a href="{{ route('markets.beverage') }}" class="home-card-footer">
                                 <span class="read-more">READ MORE</span>
                                 <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-                            </div>
+                            </a>
                         </div>
-                    </a>
+                    </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6">
-                    <a href="#" class="home-card">
+                    <div class="home-card">
                         <div class="home-card-img">
                             <img src="{{ asset('assets/images/home/9fadce803chomesec-3.jpg') }}" alt="SAP Solutions">
                         </div>
                         <div class="home-card-body">
                             <h4 class="home-card-title">SAP Solutions</h4>
                             <p class="home-card-desc">Transform your idea into realization with our design team. Discover value-added, customized solutions.</p>
-                            <div class="home-card-footer">
+                            <a href="{{ route('solutions') }}" class="home-card-footer">
                                 <span class="read-more">READ MORE</span>
                                 <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-                            </div>
+                            </a>
                         </div>
-                    </a>
+                    </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6">
-                    <a href="#" class="home-card">
+                    <div class="home-card">
                         <div class="home-card-img">
                             <img src="{{ asset('assets/images/home/2008b6a72chomesec-4.jpg') }}" alt="SAP Career">
                         </div>
                         <div class="home-card-body">
                             <h4 class="home-card-title">SAP Career</h4>
                             <p class="home-card-desc">Join us. Grow together. Get in touch now to explore exciting opportunities.</p>
-                            <div class="home-card-footer">
+                            <a href="{{ route('about.career') }}" class="home-card-footer">
                                 <span class="read-more">READ MORE</span>
                                 <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-                            </div>
+                            </a>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -197,59 +197,60 @@
                     <div class="row g-4">
                 <div class="col-lg-3 col-md-6">
                     <div class="home-news-card">
-                        <div class="home-news-img">
+                        <a href="{{ route('news.detail') }}" class="home-news-img">
                             <img src="{{ asset('assets/images/home/68f1c-cover kale.jpg') }}" alt="Mengenal Botol Kale">
-                        </div>
+                        </a>
                         <div class="home-news-body">
                             <h4 class="home-news-heading">
-                                <a href="#">Mengenal Botol Kale, Kemasan Minuman Kekinian dengan Desain ...</a>
+                                <a href="{{ route('news.detail') }}">Mengenal Botol Kale, Kemasan Minuman Kekinian dengan Desain ...</a>
                             </h4>
-                            <a href="#" class="read-more">READ MORE</a>
+                            <a href="{{ route('news.detail') }}" class="read-more">READ MORE</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6">
                     <div class="home-news-card">
-                        <div class="home-news-img">
+                        <a href="{{ route('news.detail32') }}" class="home-news-img">
                             <img src="{{ asset('assets/images/home/52e12-foto utama_o.png') }}" alt="Peralatan Kantor Multindo">
-                        </div>
+                        </a>
                         <div class="home-news-body">
                             <h4 class="home-news-heading">
-                                <a href="#">Peralatan Kantor Fungsional dari Multindo yang Bikin Semanga...</a>
+                                <a href="{{ route('news.detail32') }}">Peralatan Kantor Fungsional dari Multindo yang Bikin Semanga...</a>
                             </h4>
-                            <a href="#" class="read-more">READ MORE</a>
+                            <a href="{{ route('news.detail32') }}" class="read-more">READ MORE</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6">
                     <div class="home-news-card">
-                        <div class="home-news-img">
+                        <a href="{{ route('news.detail31') }}" class="home-news-img">
                             <img src="{{ asset('assets/images/home/b65a3-foto utama_.jpg') }}" alt="Proses Produksi">
-                        </div>
+                        </a>
                         <div class="home-news-body">
                             <h4 class="home-news-heading">
-                                <a href="#">Proses Produksi dan Penjaminan Mutu di Suryasukses...</a>
+                                <a href="{{ route('news.detail31') }}">Proses Produksi dan Penjaminan Mutu di Suryasukses...</a>
                             </h4>
-                            <a href="#" class="read-more">READ MORE</a>
+                            <a href="{{ route('news.detail31') }}" class="read-more">READ MORE</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-3 col-md-6">
                     <div class="home-news-card">
-                        <div class="home-news-img">
+                        <a href="{{ route('news.detail29') }}" class="home-news-img">
                             <img src="{{ asset('assets/images/home/f559a-foto utama.png') }}" alt="Peluang Bisnis">
-                        </div>
+                        </a>
                         <div class="home-news-body">
                             <h4 class="home-news-heading">
-                                <a href="#">Peluang Bisnis Kemasan Minuman yang Menjanjikan dari Suryasu...</a>
+                                <a href="{{ route('news.detail29') }}">Peluang Bisnis Kemasan Minuman yang Menjanjikan dari Suryasu...</a>
                             </h4>
-                            <a href="#" class="read-more">READ MORE</a>
+                            <a href="{{ route('news.detail29') }}" class="read-more">READ MORE</a>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
