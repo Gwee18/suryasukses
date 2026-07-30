@@ -42,44 +42,50 @@
             
             <!-- Main Content -->
             <div class="col-md-9 rights_cont_def">
-                <h3 class="detail-title">Mengenal Botol Kale, Kemasan Minuman Kekinian dengan Desain Simple dan Menarik</h3>
+                <h3 class="detail-title">{{ $post->title }}</h3>
                 <div class="clear clearfix"></div>
-                <span class="dates"><small><i class="fa fa-calendar"></i> 03 May 2021</small></span>
+                <span class="dates"><small><i class="fa fa-calendar"></i> {{ $post->published_at ? $post->published_at->format('d M Y') : 'Draft' }}</small></span>
                 <div class="clear clearfix"></div>
                 <div class="py-3"></div>
                 
                 <div class="row feature-data mb-0 mt-0">
                     <div class="col-md-12">
+                        @if($post->cover_image)
                         <div class="featured_car_detail pb-2">
-                            <img class="img img-fluid w-100" src="{{ asset('assets/images/news/68f1c-cover kale.jpg') }}" alt="Mengenal Botol Kale">
+                            <img class="img img-fluid w-100" src="{{ asset('assets/images/news/' . $post->cover_image) }}" alt="{{ $post->title }}">
                         </div>
+                        @endif
                         <div class="contents_det_blog">
-                            <p>Bisnis minuman saat ini adalah salah satu bisnis yang sangat menjanjikan. Tak hanya sebagai kebutuhan primer, minuman sekarang sudah menjadi gaya hidup. Banyak sekali jenis minuman yang dijual di pasaran, mulai dari minuman kemasan, minuman siap minum, hingga minuman instan. Dengan berkembangnya bisnis minuman, kebutuhan pemilik usaha juga meningkat khususnya kebutuhan akan kemasan minuman. Sebelumnya, mungkin kemasan minuman hanya berfungsi sebagai wadah, namun saat ini dengan berkembangnya tren, kemasan minuman menjadi salah satu daya tarik dan identitas bisnis. Lalu kemasan seperti apa yang cocok untuk produk minumanmu?</p>
-                            <p>Salah satu botol yang sedang laris di pasaran adalah jenis botol Kale. Botol ini memiliki beberapa ukuran, di antaranya 250ml dan 1 liter. Botol Kale memiliki desain yang simple namun menarik dan terlihat elegan. Banyak sekali brand minuman yang sudah menggunakan botol Kale ini mulai dari usaha minuman micro hingga brand terkenal seperti Starbucks Coffee.</p>
-                            <p class="mb-3">
-                                <img src="{{ asset('assets/images/news/Data Botol (9).png') }}" class="img-fluid" style="width: 194px; height: auto; margin-right: 5px; margin-bottom: 15px;">
-                                <img src="{{ asset('assets/images/news/Data Botol (21).png') }}" class="img-fluid" style="width: 193px; height: auto; margin-right: 5px; margin-bottom: 15px;">
-                                <img src="{{ asset('assets/images/news/Data Botol (10).png') }}" class="img-fluid" style="width: 193px; height: auto; margin-right: 5px; margin-bottom: 15px;">
-                                <img src="{{ asset('assets/images/news/Data Botol (11).png') }}" class="img-fluid" style="width: 193px; height: auto; margin-bottom: 15px;">
-                                <img src="{{ asset('assets/images/news/Data Botol (20).png') }}" class="img-fluid" style="width: 192px; height: auto; margin-right: 5px; margin-bottom: 15px;">
-                                <img src="{{ asset('assets/images/news/Data Botol (19).png') }}" class="img-fluid" style="width: 191px; height: auto; margin-right: 5px; margin-bottom: 15px;">
-                            </p>
-                            <p>Dengan mulut botol yang lebih lebar, yaitu diameter 3,8cm botol Kale sangat diminati karena lubang yang besar dapat memudahkan pengisian minuman ke dalam botol. Saat ini botol Kale digunakan untuk wadah berbagai macam minuman seperti kopi, susu, bubble tea, jus, dan lain-lain. Tak hanya minuman, botol Kale juga sering dipakai sebagai wadah produk lain seperti minyak goreng, coconut oil, bumbu rujak, dan lain-lain. Botol Kale juga memiliki karakteristik yang lebih tebal apabila dibandingkan dengan botol jenis lain. Jadi, pengguna tidak perlu khawatir botol akan mengempisatau berubah bentuk saat masuk kulkas dan terkena udara dingin.</p>
-                            <p>Botol Kale sangat populer akhir-akhir ini, permintaannya meningkat tajam terlebih karena adanya pandemi dan pengusaha minuman mengganti konsep cafe mereka menjadi coffee to go atau menjual minuman yang untuk dibawa pulang. Kalau kamu sedang mencari botol Kale untuk usahamu, silahkan langsung kunjungi <a href="http://www.botolplastik.id">www.botolplastik.id</a> atau instagram @botolplastik.idn.</p>
-                            <p>source:</p>
+                            <style>
+                                .contents_det_blog img {
+                                    margin: 10px;
+                                    max-width: 100%;
+                                    height: auto;
+                                }
+                            </style>
+                            {!! $post->content !!}
                             
-                            <div class="py-3"></div>
-                            <div class="row">
-                                <div class="col">
-                                    <p><a href="{{ route('news.detail3') }}"><i class="fa fa-chevron-left"></i> Back</a></p>
-                                </div>
-                                <div class="col">
-                                    <p class="text-center">
-                                        <a href="{{ route('news') }}">View News</a>
-                                    </p>
-                                </div>
-                                <div class="col text-end">
-                                    <p class="text-end"><a href="{{ route('news.detail32') }}">Next <i class="fa fa-chevron-right"></i></a></p>
+                            <div class="py-4 border-top mt-4">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div style="width: 33%; text-align: left;">
+                                        @if($previous)
+                                            <a href="{{ route('news.detail', $previous->slug) }}" class="fw-bold text-decoration-none" style="color: #C52026; font-size: 16px;">
+                                                <i class="fa fa-chevron-left me-1"></i> Back
+                                            </a>
+                                        @endif
+                                    </div>
+                                    <div style="width: 33%; text-align: center;">
+                                        <a href="{{ route('news') }}" class="fw-bold text-decoration-none" style="color: #C52026; font-size: 16px;">
+                                            View News
+                                        </a>
+                                    </div>
+                                    <div style="width: 33%; text-align: right;">
+                                        @if($next)
+                                            <a href="{{ route('news.detail', $next->slug) }}" class="fw-bold text-decoration-none" style="color: #C52026; font-size: 16px;">
+                                                Next <i class="fa fa-chevron-right ms-1"></i>
+                                            </a>
+                                        @endif
+                                    </div>
                                 </div>
                             </div>
                             <div class="clear"></div>

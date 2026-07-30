@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "Test User",
+        "email": "test@example.com",
+        "email_verified_at": "2026-07-29 04:59:12",
+        "password": "$2y$12$eakWd.i2hOOAjwGOWOlJde7fKAQs2A6STFxzSVNqVzkkhrurMtdJC",
+        "remember_token": "s0huCbYB1d",
+        "created_at": "2026-07-29 04:59:12",
+        "updated_at": "2026-07-29 04:59:12"
+    },
+    {
+        "id": 2,
+        "name": "Administrator",
+        "email": "admin@suryasukses.test",
+        "email_verified_at": null,
+        "password": "$2y$12$.EKwMvjllKyx3Jy0zfCQBexhRSkmD\/MeiKopGOxGk5365RhdyV2Ly",
+        "remember_token": null,
+        "created_at": "2026-07-29 05:05:47",
+        "updated_at": "2026-07-29 05:05:47"
+    }
+]
