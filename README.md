@@ -211,7 +211,12 @@ Kode sumber pada repositori ini didistribusikan di bawah [Lisensi MIT](https://o
 
 ## Kontributor
 
+<a href="https://github.com/Aria100409" title="Aria100409"><img src="https://avatars.githubusercontent.com/u/223801392?s=60&v=4" width="60" height="60" /></a>
 <a href="https://github.com/Gwee18" title="Gwee18"><img src="https://avatars.githubusercontent.com/u/223205465?s=60&v=4" width="60" height="60" /></a>
+<a href="https://github.com/mdhimasandrian13-ctrl" title="mdhimasandrian13-ctrl"><img src="https://avatars.githubusercontent.com/u/235046662?s=60&v=4" width="60" height="60" /></a>
+<a href="https://github.com/ahwine" title="ahwine"><img src="https://avatars.githubusercontent.com/u/232284977?s=60&v=4" width="60" height="60" /></a>
+<a href="https://github.com/rafiHsN17" title="rafiHsN17"><img src="https://avatars.githubusercontent.com/u/227182981?s=60&v=4" width="60" height="60" /></a>
+<a href="https://github.com/Dynn-crypto" title="Dynn-crypto"><img src="https://avatars.githubusercontent.com/u/217714764?s=60&v=4" width="60" height="60" /></a>
 
 ---
 
