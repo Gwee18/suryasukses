@@ -211,8 +211,21 @@ Kode sumber pada repositori ini didistribusikan di bawah [Lisensi MIT](https://o
 
 ## Kontributor
 
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%">
+        <a href="https://github.com/Gwee18">
+          <img src="https://avatars.githubusercontent.com/u/223205465?v=4" width="100px;" alt="Gwee18" /><br />
+          <sub><b>Gwee18</b></sub>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <a href="https://github.com/Gwee18/suryasukses/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=Gwee18/suryasukses" alt="Kontributor" />
+  <img src="https://contrib.rocks/image?repo=Gwee18/suryasukses" alt="contrib.rocks" />
 </a>
 
 ---
