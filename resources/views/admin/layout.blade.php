@@ -110,6 +110,14 @@
             background-color: var(--primary-color);
         }
 
+        /* Dropdown Arrow Rotation */
+        .sidebar a[data-bs-toggle="collapse"] svg {
+            transition: transform 0.3s ease;
+        }
+        .sidebar a[data-bs-toggle="collapse"][aria-expanded="true"] svg {
+            transform: rotate(180deg) !important;
+        }
+
         /* Main Content */
         .main-content { 
             padding: 0; 
@@ -196,7 +204,21 @@
                         <a href="{{ route('admin.pages.edit', $homePage->id) }}" class="{{ request()->url() == route('admin.pages.edit', $homePage->id) ? 'active' : '' }}">Home</a>
                     @endif
                     
-                    <a href="#">Product</a>
+                    @php
+                        $isProductMenuOpen = request()->routeIs('admin.product-categories.*') || request()->routeIs('admin.products.*');
+                    @endphp
+                    <a data-bs-toggle="collapse" href="#collapseProducts" role="button" aria-expanded="{{ $isProductMenuOpen ? 'true' : 'false' }}" aria-controls="collapseProducts" class="d-flex justify-content-between align-items-center {{ $isProductMenuOpen ? 'active' : '' }}">
+                        PRODUCT 
+                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <div class="collapse {{ $isProductMenuOpen ? 'show' : '' }}" id="collapseProducts">
+                        <div style="background-color: #fcfcfc;">
+                            <a href="{{ route('admin.product-categories.index') }}" class="{{ request()->routeIs('admin.product-categories.*') ? 'active' : '' }}" style="padding-left: 45px; font-size: 14px; text-transform: capitalize;">Kategori</a>
+                            <a href="{{ route('admin.products.index') }}" class="{{ request()->routeIs('admin.products.*') ? 'active' : '' }}" style="padding-left: 45px; font-size: 14px; text-transform: capitalize;">Daftar Produk</a>
+                        </div>
+                    </div>
                     <a href="#">Markets</a>
                     <a href="#">Solutions</a>
                     
