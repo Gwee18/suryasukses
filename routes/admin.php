@@ -25,6 +25,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // CRUD Posts
         Route::resource('posts', PostController::class);
 
+        // CRUD Product Categories
+        Route::resource('product-categories', \App\Http\Controllers\Admin\ProductCategoryController::class);
+
+        // CRUD Products
+        Route::resource('products', \App\Http\Controllers\Admin\ProductController::class);
+        Route::delete('products/{product}/image/{imageIndex}', [\App\Http\Controllers\Admin\ProductController::class, 'deleteImage'])->name('products.deleteImage');
+
         // Pages CMS Route
         Route::resource('pages', \App\Http\Controllers\Admin\PageController::class)->except(['create', 'store', 'show', 'destroy']);
     });

@@ -31,7 +31,7 @@
 @section('content')
 <div class="product-page">
 
-    @include('product.partials.breadcrumb', ['breadcrumbCurrent' => $category['title']])
+    @include('product.partials.breadcrumb', ['breadcrumbCurrent' => $category->title])
 
     <div class="product-page__container">
         <div class="product-page__layout">
@@ -40,49 +40,48 @@
 
             <div class="product-page__content">
                 <section class="product-page__category">
-                    <h3 class="product-page__category-title">{{ $category['title'] }}</h3>
+                    <h3 class="product-page__category-title">{{ $category->title }}</h3>
 
                     <div class="product-page__category-media">
-                        {{--
-                            Selalu pakai carousel Bootstrap (dengan indicator dot),
-                            termasuk untuk kategori yang cuma punya 1 foto cover
-                            (mis. Roofing, Specialty Nonwoven), supaya konsisten
-                            dengan website resmi yang tetap menampilkan 1 titik
-                            indicator walau gambarnya cuma satu.
-                        --}}
                         <div id="carouselCategory" class="carousel slide product-page__carousel" data-bs-ride="carousel">
                             <div class="carousel-inner">
-                                @foreach ($category['images'] as $i => $img)
-                                    <div class="carousel-item {{ $i === 0 ? 'active' : '' }}">
-                                        <img src="{{ asset('assets/images/product/'.$img) }}" alt="{{ $category['title'] }}" class="product-page__category-image">
-                                    </div>
-                                @endforeach
+                                @if(is_array($category->images) && count($category->images) > 0)
+                                    @foreach ($category->images as $i => $img)
+                                        <div class="carousel-item {{ $i === 0 ? 'active' : '' }}">
+                                            <img src="{{ asset('assets/images/product/'.$img) }}" alt="{{ $category->title }}" class="product-page__category-image">
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                             <div class="carousel-indicators">
-                                @foreach ($category['images'] as $i => $img)
-                                    <button type="button" data-bs-target="#carouselCategory" data-bs-slide-to="{{ $i }}" class="{{ $i === 0 ? 'active' : '' }}" @if($i === 0) aria-current="true" @endif></button>
-                                @endforeach
+                                @if(is_array($category->images) && count($category->images) > 0)
+                                    @foreach ($category->images as $i => $img)
+                                        <button type="button" data-bs-target="#carouselCategory" data-bs-slide-to="{{ $i }}" class="{{ $i === 0 ? 'active' : '' }}" @if($i === 0) aria-current="true" @endif></button>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
                     </div>
 
-                    @if ($category['intro'])
-                        <p class="product-page__category-text">{{ $category['intro'] }}</p>
+                    @if ($category->intro)
+                        <p class="product-page__category-text">{{ $category->intro }}</p>
                     @endif
 
-                    @if ($category['catalog_text'])
-                        <a href="{{ $category['catalog_href'] }}" target="_blank" class="product-page__catalog-link">{{ $category['catalog_text'] }}</a>
+                    @if ($category->catalog_text)
+                        <a href="{{ $category->catalog_href }}" target="_blank" class="product-page__catalog-link">{{ $category->catalog_text }}</a>
                     @endif
 
                     <div class="product-page__grid">
                         @foreach ($ranges as $range)
-                            <div id="{{ $range['slug'] }}" class="product-page__card">
-                                <a href="{{ url('/home/product_range/'.$range['id'].'/parent/'.$category['id'].'/slug/'.$range['slug']) }}" class="product-page__card-image-wrapper">
-                                    <img src="{{ asset('assets/images/product/'.$range['images'][0]) }}" alt="{{ $range['title'] }}" class="product-page__card-image">
+                            <div id="{{ $range->slug }}" class="product-page__card">
+                                <a href="{{ url('/home/product_range/'.$range->id.'/parent/'.$category->id.'/slug/'.$range->slug) }}" class="product-page__card-image-wrapper">
+                                    @if(is_array($range->images) && count($range->images) > 0)
+                                        <img src="{{ asset('assets/images/product/'.$range->images[0]) }}" alt="{{ $range->title }}" class="product-page__card-image">
+                                    @endif
                                 </a>
-                                <p class="product-page__card-title">{{ $range['title'] }}</p>
-                                <p class="product-page__card-text">{{ $range['card_text'] }}</p>
-                                <a href="{{ url('/home/product_range/'.$range['id'].'/parent/'.$category['id'].'/slug/'.$range['slug']) }}" class="product-page__card-link">Learn More</a>
+                                <p class="product-page__card-title">{{ $range->title }}</p>
+                                <p class="product-page__card-text">{{ $range->card_text }}</p>
+                                <a href="{{ url('/home/product_range/'.$range->id.'/parent/'.$category->id.'/slug/'.$range->slug) }}" class="product-page__card-link">Learn More</a>
                             </div>
                         @endforeach
                     </div>
