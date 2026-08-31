@@ -1,59 +1,225 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Surya Sukses - Kloning Website (Proyek Pembelajaran)
+
+> **Perhatian:** Repositori ini dibuat semata-mata sebagai **proyek pembelajaran** dalam rangka memahami dan mempraktikkan pengembangan web modern menggunakan Laravel. Proyek ini merupakan hasil salinan tampilan dari website resmi [suryasukses.com](https://suryasukses.com). Seluruh hak cipta, merek dagang, konten, dan identitas visual adalah milik PT Surya Sukses Internasional. Repositori ini tidak dimaksudkan untuk kepentingan komersial maupun untuk menyaingi atau menggantikan website aslinya.
+
+---
+
+## Pratinjau
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="docs/screenshots/preview.svg" alt="Pratinjau Tampilan Website Surya Sukses" width="100%" />
 </p>
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tentang Proyek
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Proyek ini merupakan implementasi ulang tampilan antarmuka dari website [suryasukses.com](https://suryasukses.com) menggunakan tumpukan teknologi modern berbasis PHP. Tujuan dari proyek ini adalah untuk melatih kemampuan:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Membangun layout halaman web yang kompleks menggunakan Laravel dan Blade
+- Mengintegrasikan Bootstrap 5 dan Tailwind CSS dalam satu proyek
+- Mengelola aset statis menggunakan Vite sebagai bundler
+- Memahami struktur routing dan arsitektur MVC dalam Laravel
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Tumpukan Teknologi
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| Kategori | Teknologi |
+|---|---|
+| Framework Backend | Laravel 12 (PHP 8.2+) |
+| Template Engine | Blade |
+| CSS Framework | Bootstrap 5.3, Tailwind CSS 4 |
+| Bundler | Vite 7 dengan Laravel Vite Plugin |
+| Database | SQLite (default) / MySQL |
+| Package Manager | Composer, NPM |
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Persyaratan Sistem
 
-### Premium Partners
+Pastikan sistem Anda telah memenuhi persyaratan berikut sebelum melakukan instalasi:
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- PHP versi 8.2 atau lebih baru
+- Composer versi 2.x
+- Node.js versi 18 atau lebih baru dan NPM
+- Ekstensi PHP: `pdo`, `pdo_sqlite` (atau `pdo_mysql` jika menggunakan MySQL), `mbstring`, `openssl`, `tokenizer`, `xml`, `ctype`, `json`
+- Git
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Panduan Instalasi
 
-## Code of Conduct
+### 1. Kloning Repositori
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+git clone https://github.com/Gwee18/suryasukses.git
+cd suryasukses
+```
 
-## Security Vulnerabilities
+### 2. Instalasi Dependensi PHP
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+composer install
+```
 
-## License
+### 3. Konfigurasi Environment
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Salin file konfigurasi environment dan sesuaikan pengaturannya:
+
+```bash
+cp .env.example .env
+```
+
+Kemudian buka file `.env` dan sesuaikan nilai berikut:
+
+```env
+APP_NAME="Surya Sukses"
+APP_URL=http://localhost:8000
+
+# Jika menggunakan SQLite (default), tidak perlu mengubah bagian database
+DB_CONNECTION=sqlite
+
+# Jika menggunakan MySQL, ubah konfigurasi berikut:
+# DB_CONNECTION=mysql
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=suryasukses
+# DB_USERNAME=root
+# DB_PASSWORD=
+```
+
+### 4. Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+### 5. Migrasi dan Seeding Database
+
+Jalankan perintah berikut untuk membuat tabel database sekaligus mengisi data awal:
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+> **Catatan:** Perintah `migrate:fresh` akan menghapus seluruh tabel yang ada kemudian membuat ulang dari awal. Gunakan `php artisan migrate --seed` jika Anda tidak ingin menghapus data yang sudah ada.
+
+### 6. Instalasi Dependensi Node.js
+
+```bash
+npm install
+```
+
+### 7. Build Aset Frontend
+
+Untuk lingkungan pengembangan (dengan hot reload):
+
+```bash
+npm run dev
+```
+
+Untuk build produksi:
+
+```bash
+npm run build
+```
+
+### 8. Menjalankan Server Lokal
+
+```bash
+php artisan serve
+```
+
+Aplikasi dapat diakses melalui browser di alamat: `http://localhost:8000`
+
+---
+
+## Menjalankan Seluruh Layanan Sekaligus
+
+Anda dapat menjalankan server PHP, queue worker, dan Vite secara bersamaan menggunakan perintah berikut:
+
+```bash
+composer run dev
+```
+
+Perintah ini akan menjalankan:
+- `php artisan serve` - server pengembangan Laravel
+- `php artisan queue:listen` - pemroses antrian (queue worker)
+- `php artisan pail` - log viewer real-time
+- `npm run dev` - Vite dev server dengan hot module replacement
+
+---
+
+## Perintah Artisan yang Berguna
+
+| Perintah | Keterangan |
+|---|---|
+| `php artisan migrate:fresh --seed` | Reset database dan isi ulang data awal |
+| `php artisan migrate` | Jalankan migrasi yang belum dieksekusi |
+| `php artisan db:seed` | Jalankan seeder tanpa mereset tabel |
+| `php artisan cache:clear` | Bersihkan cache aplikasi |
+| `php artisan config:clear` | Bersihkan cache konfigurasi |
+| `php artisan route:list` | Tampilkan daftar seluruh rute yang terdaftar |
+| `php artisan tinker` | Buka REPL interaktif Laravel |
+| `php artisan test` | Jalankan seluruh pengujian otomatis |
+
+---
+
+## Struktur Direktori
+
+```
+suryasukses/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/    # Logika pengendali permintaan HTTP
+│   │   └── Middleware/     # Middleware kustom
+│   └── Models/             # Model Eloquent
+├── database/
+│   ├── migrations/         # File migrasi tabel database
+│   └── seeders/            # File seeder data awal
+├── public/                 # File yang dapat diakses publik (CSS, JS, gambar)
+├── resources/
+│   ├── css/                # File sumber CSS
+│   ├── js/                 # File sumber JavaScript
+│   └── views/              # Template Blade
+├── routes/
+│   └── web.php             # Definisi rute web
+├── docs/
+│   └── screenshots/        # Aset dokumentasi
+└── vite.config.js          # Konfigurasi Vite
+```
+
+---
+
+## Kredit
+
+Tampilan dan konten visual pada proyek ini mengacu pada website resmi milik:
+
+**PT Surya Sukses Internasional**
+Website: [https://suryasukses.com](https://suryasukses.com)
+
+Seluruh hak cipta atas merek, logo, konten teks, dan desain adalah milik PT Surya Sukses Internasional. Repositori ini hanya digunakan untuk keperluan edukasi dan tidak memiliki afiliasi resmi dengan perusahaan tersebut.
+
+---
+
+## Lisensi
+
+Kode sumber pada repositori ini didistribusikan di bawah [Lisensi MIT](https://opensource.org/licenses/MIT). Namun perlu ditegaskan bahwa lisensi ini hanya berlaku untuk kode yang ditulis oleh kontributor repositori ini, dan tidak mencakup konten visual maupun merek yang dimiliki oleh PT Surya Sukses Internasional.
+
+---
+
+## Kontributor
+
+<a href="https://github.com/Aria100409" title="Aria100409"><img src="https://avatars.githubusercontent.com/u/223801392?s=60&v=4" width="60" height="60" /></a>
+<a href="https://github.com/Gwee18" title="Gwee18"><img src="https://avatars.githubusercontent.com/u/223205465?s=60&v=4" width="60" height="60" /></a>
+<a href="https://github.com/mdhimasandrian13-ctrl" title="mdhimasandrian13-ctrl"><img src="https://avatars.githubusercontent.com/u/235046662?s=60&v=4" width="60" height="60" /></a>
+<a href="https://github.com/ahwine" title="ahwine"><img src="https://avatars.githubusercontent.com/u/232284977?s=60&v=4" width="60" height="60" /></a>
+<a href="https://github.com/rafiHsN17" title="rafiHsN17"><img src="https://avatars.githubusercontent.com/u/227182981?s=60&v=4" width="60" height="60" /></a>
+<a href="https://github.com/Dynn-crypto" title="Dynn-crypto"><img src="https://avatars.githubusercontent.com/u/217714764?s=60&v=4" width="60" height="60" /></a>
+
+---
+
+<p align="center">
+  Dibuat untuk keperluan pembelajaran. Bukan untuk penggunaan komersial.
+</p>
