@@ -1,19 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 
-Route::get('/about', function () {
-    return view('about.index');
-})->name('about');
-
-Route::get('/about/values', function () {
-    return view('about.values');
-})->name('about.values');
-
-Route::get('/about/quality', function () {
-    return view('about.quality');
-})->name('about.quality');
-
-Route::get('/about/career', function () {
-    return view('about.career');
-})->name('about.career');
+Route::get('/about', [PageController::class, 'show'])->defaults('slug', 'about')->name('about');
+Route::get('/about/values', [PageController::class, 'show'])->defaults('slug', 'about-values')->name('about.values');
+Route::get('/about/quality', [PageController::class, 'show'])->defaults('slug', 'about-quality')->name('about.quality');
+Route::get('/about/career', [PageController::class, 'show'])->defaults('slug', 'about-career')->name('about.career');

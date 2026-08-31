@@ -89,7 +89,7 @@ class PostController extends Controller
     private function processSummernoteContent($html)
     {
         if (empty($html)) {
-            return $html;
+            return '';
         }
 
         $dom = new \DOMDocument();

@@ -45,8 +45,12 @@
                 </div>
                 <div class="col-md-9">
                     <div class="content-top cont_career">
-                        <h3>Our Values</h3>
-                        <img src="{{ asset('assets/images/about/3b5fb3dfb6_OPS6411.jpg') }}" alt="Our Values" class="img img-fluid pb-5">
+                        @php $subHeading = $page->content['sub_heading'] ?? ''; @endphp
+                        @if($subHeading !== '')
+                            <h4>{{ $subHeading }}</h4>
+                        @endif
+                        <h3>{{ $page->title }}</h3>
+                        <img src="{{ asset('assets/images/' . ($page->content['image_1'] ?? 'about/3b5fb3dfb6_OPS6411.jpg')) }}" alt="{{ $page->title }}" class="img img-fluid pb-5">
                         
                         <div class="lists_row_csn">
                             <div class="row">
@@ -87,6 +91,13 @@
         </div>
     </section>
 
+    @php
+        $vidUrl = $page->content['video_url'] ?? 'https://www.youtube.com/embed/Aj2C4Xp-GMM';
+        $vidTitle = $page->content['video_title'] ?? 'SAP Corporate Profile Video';
+        $vidSubtitle = $page->content['video_subtitle'] ?? 'Sharing our passion, realizing your ideas and visions.';
+    @endphp
+
+    @if($vidUrl !== '')
     <section class="home-corp-video">
         <div class="home-corp-container">
             <div class="home-corp-video-inner">
@@ -94,8 +105,8 @@
                     <source src="{{ asset('assets/videos/videoplayback.webm') }}" type="video/webm">
                 </video>
                 <div class="home-corp-content">
-                    <h2 class="home-corp-title">SAP Corporate Profile Video</h2>
-                    <p class="home-corp-subtitle">Sharing our passion, realizing your ideas and visions.</p>
+                    <h2 class="home-corp-title">{{ $vidTitle }}</h2>
+                    <p class="home-corp-subtitle">{{ $vidSubtitle }}</p>
                     <button class="home-corp-play" data-bs-toggle="modal" data-bs-target="#videoModal">
                         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         <span>Play Video</span>
@@ -111,12 +122,13 @@
             <div class="modal-content bg-transparent border-0">
                 <div class="modal-body p-0">
                     <div class="ratio ratio-16x9">
-                        <iframe id="youtubeIframe" src="" data-src="https://www.youtube.com/embed/Aj2C4Xp-GMM" title="YouTube video" allow="encrypted-media" allowfullscreen></iframe>
+                        <iframe id="youtubeIframe" src="" data-src="{{ $vidUrl }}" title="YouTube video" allow="encrypted-media" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @endif
 
 @endsection
 

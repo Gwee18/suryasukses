@@ -34,10 +34,27 @@
 
         /* Sidebar Styling */
         .sidebar { 
-            min-height: 100vh; 
+            width: 260px;
+            flex-shrink: 0;
+            height: 100vh;
+            position: sticky;
+            top: 0;
             background: var(--bg-sidebar); 
             box-shadow: 2px 0 10px rgba(0,0,0,0.05);
             z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        /* Hide scrollbar for sidebar */
+        .sidebar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .sidebar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #e0e0e0;
+            border-radius: 5px;
         }
         
         .sidebar-brand {
@@ -159,15 +176,28 @@
     @auth
         <div class="d-flex">
             <!-- Sidebar -->
-            <div class="sidebar" style="width: 260px;">
+            <div class="sidebar">
                 <div class="sidebar-brand">
                     <!-- Added fallback text if logo is missing -->
                     <img src="{{ asset('assets/images/logo/logo-header.png') }}" alt="Surya Sukses" onerror="this.outerHTML='<h5 class=\'m-0 font-weight-bold text-dark\'>SAP Admin</h5>'">
                 </div>
                 <nav>
                     <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">Dashboard</a>
-                    <a href="{{ route('admin.posts.index') }}" class="{{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">Berita (News)</a>
-                    <!-- Modul lain akan ditambahkan di sini -->
+                    
+                    @php $homePage = \App\Models\Page::where('slug', 'home')->first(); @endphp
+                    @if($homePage)
+                        <a href="{{ route('admin.pages.edit', $homePage->id) }}" class="{{ request()->url() == route('admin.pages.edit', $homePage->id) ? 'active' : '' }}">Home</a>
+                    @endif
+                    
+                    <a href="#">Product</a>
+                    <a href="#">Markets</a>
+                    <a href="#">Solutions</a>
+                    
+                    <a href="{{ route('admin.pages.index') }}" class="{{ request()->routeIs('admin.pages.index') || (request()->routeIs('admin.pages.edit') && (!isset($homePage) || request()->url() != route('admin.pages.edit', $homePage->id))) ? 'active' : '' }}">About Us</a>
+                    
+                    <a href="{{ route('admin.posts.index') }}" class="{{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">News</a>
+                    
+                    <a href="#">Contact Us</a>
                 </nav>
             </div>
             

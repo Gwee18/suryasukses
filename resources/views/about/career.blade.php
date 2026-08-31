@@ -45,13 +45,21 @@
                 </div>
                 <div class="col-md-9">
                     <div class="content-top cont_career">
-                        <h3>Come Grow With Us</h3>
-                        <img src="{{ asset('assets/images/about/3b5fb3dfb6_OPS6411.jpg') }}" alt="" class="img img-fluid pb-4 mb-2">
+                        @php $subHeading = $page->content['sub_heading'] ?? ''; @endphp
+                        @if($subHeading !== '')
+                            <h4>{{ $subHeading }}</h4>
+                        @endif
+                        <h3>{{ $page->title }}</h3>
+                        <img src="{{ asset('assets/images/' . ($page->content['image_1'] ?? 'about/3b5fb3dfb6_OPS6411.jpg')) }}" alt="{{ $page->title }}" class="img img-fluid pb-4 mb-2">
                         
-                        <p>We attribute our success on hiring and maintaining a positive and productive workforce.</p>
-                        <p>SuryaSukses Group has established a reputation in the industry for being trustworthy and reliable, Our corporate culture is dynamic, creative, and innovative. Learn more about our career and opportunities.</p>
+                        {!! $page->content['career_text'] ?? '' !!}
                         
-                        <a class="btn join-team-btn pl-3 pr-3" target="_blank" href="https://id.jobstreet.com/companies/suryasukses-group-168535852924657">Join Our Team</a>
+                        @php
+                            $btnText = $page->content['career_btn_text'] ?? 'Join Our Team';
+                            $btnLink = $page->content['career_link'] ?? '#';
+                            $btnColor = $page->content['career_btn_color'] ?? '#0056b3'; // Default primary color
+                        @endphp
+                        <a class="btn pl-3 pr-3" style="background-color: {{ $btnColor }}; color: white;" target="_blank" href="{{ $btnLink }}">{{ $btnText }}</a>
                         
                         <div class="clear clearfix"></div>
                     </div>
@@ -60,6 +68,13 @@
         </div>
     </section>
 
+    @php
+        $vidUrl = $page->content['video_url'] ?? 'https://www.youtube.com/embed/Aj2C4Xp-GMM';
+        $vidTitle = $page->content['video_title'] ?? 'SAP Corporate Profile Video';
+        $vidSubtitle = $page->content['video_subtitle'] ?? 'Sharing our passion, realizing your ideas and visions.';
+    @endphp
+
+    @if($vidUrl !== '')
     <section class="home-corp-video mt-5">
         <div class="home-corp-container">
             <div class="home-corp-video-inner">
@@ -67,8 +82,8 @@
                     <source src="{{ asset('assets/videos/videoplayback.webm') }}" type="video/webm">
                 </video>
                 <div class="home-corp-content">
-                    <h2 class="home-corp-title">SAP Corporate Profile Video</h2>
-                    <p class="home-corp-subtitle">Sharing our passion, realizing your ideas and visions.</p>
+                    <h2 class="home-corp-title">{{ $vidTitle }}</h2>
+                    <p class="home-corp-subtitle">{{ $vidSubtitle }}</p>
                     <button class="home-corp-play" data-bs-toggle="modal" data-bs-target="#videoModal">
                         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         <span>Play Video</span>
@@ -84,12 +99,13 @@
             <div class="modal-content bg-transparent border-0">
                 <div class="modal-body p-0">
                     <div class="ratio ratio-16x9">
-                        <iframe id="youtubeIframe" src="" data-src="https://www.youtube.com/embed/Aj2C4Xp-GMM" title="YouTube video" allow="encrypted-media" allowfullscreen></iframe>
+                        <iframe id="youtubeIframe" src="" data-src="{{ $vidUrl }}" title="YouTube video" allow="encrypted-media" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @endif
 
 @endsection
 

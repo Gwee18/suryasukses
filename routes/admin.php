@@ -24,5 +24,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // CRUD Posts
         Route::resource('posts', PostController::class);
+
+        // Pages CMS Route
+        Route::resource('pages', \App\Http\Controllers\Admin\PageController::class)->except(['create', 'store', 'show', 'destroy']);
     });
 });
