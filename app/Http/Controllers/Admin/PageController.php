@@ -82,11 +82,7 @@ class PageController extends Controller
             'content' => $content,
         ]);
 
-        if ($page->slug == 'home') {
-            return redirect()->route('admin.pages.edit', $page->id)->with('success', 'Halaman Home berhasil diperbarui.');
-        }
-
-        return redirect()->route('admin.pages.index')->with('success', 'Halaman berhasil diperbarui.');
+        return redirect()->route('admin.pages.edit', $page->id)->with('success', 'Halaman berhasil diperbarui.');
     }
 
     private function processSummernoteContent($html)

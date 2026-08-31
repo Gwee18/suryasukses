@@ -174,6 +174,13 @@
 </head>
 <body>
     @auth
+        @php
+            // $page hanya tersedia saat sedang membuka form edit halaman (admin.pages.edit).
+            // Di halaman lain (dashboard, posts, dst) variabel ini tidak ada, jadi kita fallback ke null.
+            $currentEditedPage = isset($page) ? $page : null;
+            $isAboutFamily = $currentEditedPage && in_array($currentEditedPage->slug, ['about', 'about-values', 'about-quality', 'about-career']);
+            $isContactPage = $currentEditedPage && $currentEditedPage->slug == 'contact';
+        @endphp
         <div class="d-flex">
             <!-- Sidebar -->
             <div class="sidebar">
@@ -193,11 +200,16 @@
                     <a href="#">Markets</a>
                     <a href="#">Solutions</a>
                     
-                    <a href="{{ route('admin.pages.index') }}" class="{{ request()->routeIs('admin.pages.index') || (request()->routeIs('admin.pages.edit') && (!isset($homePage) || request()->url() != route('admin.pages.edit', $homePage->id))) ? 'active' : '' }}">About Us</a>
+                    <a href="{{ route('admin.pages.index') }}" class="{{ request()->routeIs('admin.pages.index') || $isAboutFamily ? 'active' : '' }}">About Us</a>
                     
                     <a href="{{ route('admin.posts.index') }}" class="{{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">News</a>
                     
-                    <a href="#">Contact Us</a>
+                    @php $contactPage = \App\Models\Page::where('slug', 'contact')->first(); @endphp
+                    @if($contactPage)
+                        <a href="{{ route('admin.pages.edit', $contactPage->id) }}" class="{{ $isContactPage ? 'active' : '' }}">Contact Us</a>
+                    @else
+                        <a href="#">Contact Us</a>
+                    @endif
                 </nav>
             </div>
             
