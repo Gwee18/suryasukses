@@ -68,7 +68,13 @@ class PageSeeder extends Seeder
                     'career_btn_color' => '#0056b3',
                 ],
                 'cover_image' => null,
-            ]
+            ],
+            [
+                'title' => 'Contact Us',
+                'slug' => 'contact',
+                'content' => [],
+                'cover_image' => null,
+            ],
         ];
 
         foreach ($pages as $page) {
