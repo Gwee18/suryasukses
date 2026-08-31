@@ -10,26 +10,17 @@
 <aside class="product-page__sidebar">
     <h5 class="product-page__sidebar-title">Products</h5>
     <ul class="product-page__sidebar-nav" id="productSidebarNav">
-        @foreach ($allCategories as $slug => $cat)
-            <li data-category="{{ $slug }}" class="{{ $slug === $categorySlug ? 'is-active' : '' }}">
-                <a href="{{ url('/home/product_landing/'.$cat['id'].'/slug/'.$slug) }}">{{ $cat['title'] }}</a>
+        @foreach ($allCategories as $cat)
+            <li data-category="{{ $cat->slug }}" class="{{ $cat->slug === $categorySlug ? 'is-active' : '' }}">
+                <a href="{{ url('/home/product_landing/'.$cat->id.'/slug/'.$cat->slug) }}">{{ $cat->title }}</a>
                 <ul>
-                    {{--
-                        Beberapa kategori (mis. Housewares) punya 2 range id dengan
-                        slug sama persis (contoh: id 11 & 12 sama-sama "kitchen").
-                        Di website resmi, duplikat ini tetap muncul sebagai kartu
-                        di grid produk, tapi menu/sidebar-nya hanya menampilkan
-                        satu. Jadi di sini kita dedupe berdasarkan slug supaya
-                        sidebar tidak menampilkan item yang sama dua kali.
-                    --}}
                     @php($shownSlugs = [])
-                    @php($activeSlug = isset($activeRangeId) ? ($allRanges[$activeRangeId]['slug'] ?? null) : null)
-                    @foreach ($cat['ranges'] as $rangeId)
-                        @php($r = $allRanges[$rangeId])
-                        @continue(in_array($r['slug'], $shownSlugs))
-                        @php($shownSlugs[] = $r['slug'])
-                        <li class="{{ $activeSlug === $r['slug'] ? 'is-active' : '' }}">
-                            <a href="{{ url('/home/product_range/'.$rangeId.'/parent/'.$cat['id'].'/slug/'.$r['slug']) }}">{{ $r['title'] }}</a>
+                    @php($activeSlug = isset($activeRangeId) ? ($allRanges->where('id', $activeRangeId)->first()->slug ?? null) : null)
+                    @foreach ($cat->products as $r)
+                        @continue(in_array($r->slug, $shownSlugs))
+                        @php($shownSlugs[] = $r->slug)
+                        <li class="{{ $activeSlug === $r->slug ? 'is-active' : '' }}">
+                            <a href="{{ url('/home/product_range/'.$r->id.'/parent/'.$cat->id.'/slug/'.$r->slug) }}">{{ $r->title }}</a>
                         </li>
                     @endforeach
                 </ul>

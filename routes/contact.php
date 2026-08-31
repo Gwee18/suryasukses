@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 Route::get('/contact', function () {
-    return view('contact.index');
+    $page = \App\Models\Page::where('slug', 'contact')->first();
+
+    return view('contact.index', compact('page'));
 })->name('contact');
