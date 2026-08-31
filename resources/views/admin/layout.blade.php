@@ -191,9 +191,21 @@
                     
                     <a href="#">Product</a>
                     <a href="#">Markets</a>
-                    <a href="#">Solutions</a>
+                    <a href="#solutionsSubmenu" data-bs-toggle="collapse" class="dropdown-toggle {{ request()->url() == route('admin.pages.edit', \App\Models\Page::where('slug', 'solutions')->first()->id ?? 0) || request()->url() == route('admin.pages.edit', \App\Models\Page::where('slug', 'capabilities')->first()->id ?? 0) ? 'active' : '' }}">Solutions</a>
+                    <ul class="collapse list-unstyled ps-3 {{ request()->url() == route('admin.pages.edit', \App\Models\Page::where('slug', 'solutions')->first()->id ?? 0) || request()->url() == route('admin.pages.edit', \App\Models\Page::where('slug', 'capabilities')->first()->id ?? 0) ? 'show' : '' }}" id="solutionsSubmenu">
+                        @php 
+                            $solutionsPage = \App\Models\Page::where('slug', 'solutions')->first(); 
+                            $capabilitiesPage = \App\Models\Page::where('slug', 'capabilities')->first(); 
+                        @endphp
+                        @if($solutionsPage)
+                            <li><a href="{{ route('admin.pages.edit', $solutionsPage->id) }}" class="{{ request()->url() == route('admin.pages.edit', $solutionsPage->id) ? 'active' : '' }}" style="font-size: 13px; padding: 8px 25px;">Suryasukses Studio</a></li>
+                        @endif
+                        @if($capabilitiesPage)
+                            <li><a href="{{ route('admin.pages.edit', $capabilitiesPage->id) }}" class="{{ request()->url() == route('admin.pages.edit', $capabilitiesPage->id) ? 'active' : '' }}" style="font-size: 13px; padding: 8px 25px;">Capabilities</a></li>
+                        @endif
+                    </ul>
                     
-                    <a href="{{ route('admin.pages.index') }}" class="{{ request()->routeIs('admin.pages.index') || (request()->routeIs('admin.pages.edit') && (!isset($homePage) || request()->url() != route('admin.pages.edit', $homePage->id))) ? 'active' : '' }}">About Us</a>
+                    <a href="{{ route('admin.pages.index') }}" class="{{ request()->routeIs('admin.pages.index') || (request()->routeIs('admin.pages.edit') && isset($page) && in_array($page->slug, ['about', 'about-values', 'about-quality', 'about-career'])) ? 'active' : '' }}">About Us</a>
                     
                     <a href="{{ route('admin.posts.index') }}" class="{{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">News</a>
                     

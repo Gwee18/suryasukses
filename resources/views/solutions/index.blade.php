@@ -47,25 +47,15 @@
                     
                     <div class="studio-content">
                         <div class="studio-banner">
-                            <img src="{{ asset('assets/images/solutions/aa68c28011sbl-sap (1) (1).jpg') }}" alt="Suryasukses Studio" class="studio-image">
+                            <img src="{{ asset('assets/images/' . ($page->content['image_1'] ?? 'solutions/aa68c28011sbl-sap (1) (1).jpg')) }}" alt="{{ $page->title ?? 'Suryasukses Studio' }}" class="studio-image">
                         </div>
 
                         <div class="studio-description">
-                            <p>Whether you’re looking for a specific cap or or designing a revolutionary bottle/cup shape, our teams will work together to develop a product your consumers are sure to enjoy, guaranteed by our many years of experience and well-established networks around the world.</p>
-                            <p>Our decoration options includes:</p>
-                            <ul class="studio-list">
-                                <li>Custom design products</li>
-                                <li>Offset printing on Cup</li>
-                                <li>Emboss cap</li>
-                                <li>Emboss bottle</li>
-                                <li>Print logo on Houseware products</li>
-                            </ul>                
-                            <p>Contact us and discuss your project with us now. <br>
-                            Email your inquiry at <a href="mailto:cs@suryasukses.com">cs@suryasukses.com</a></p>
+                            {!! nl2br(e($page->content['main_text'] ?? "Whether you’re looking for a specific cap or or designing a revolutionary bottle/cup shape, our teams will work together to develop a product your consumers are sure to enjoy, guaranteed by our many years of experience and well-established networks around the world.\n\nOur decoration options includes:\n- Custom design products\n- Offset printing on Cup\n- Emboss cap\n- Emboss bottle\n- Print logo on Houseware products\n\nContact us and discuss your project with us now.")) !!}
                         </div>
                         
                         <div class="whatsapp pt-2">
-                            <h5>Whatsapp <a target="_blank" href="http://wa.me/6285777303030"><img src="{{ asset('assets/images/WA-Logo-copy-2.png') }}" alt=""> +62 857 7730 3030</a></h5>
+                            <h5>Whatsapp <a target="_blank" href="{{ $page->content['whatsapp_link'] ?? 'http://wa.me/6285777303030' }}"><img src="{{ asset('assets/images/WA-Logo-copy-2.png') }}" alt=""> {{ $page->content['whatsapp'] ?? '+62 857 7730 3030' }}</a></h5>
                         </div>
                     </div>
                 </main>

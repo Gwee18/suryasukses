@@ -11,7 +11,8 @@ class SolutionController extends Controller
      */
     public function index()
     {
-        return view('solutions.index');
+        $page = \App\Models\Page::where('slug', 'solutions')->first();
+        return view('solutions.index', compact('page'));
     }
 
     /**
@@ -19,6 +20,7 @@ class SolutionController extends Controller
      */
     public function capabilities()
     {
-        return view('solutions.capabilities');
+        $page = \App\Models\Page::where('slug', 'capabilities')->first();
+        return view('solutions.capabilities', compact('page'));
     }
 }
