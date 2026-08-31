@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call(PageSeeder::class);
+        $this->call(ProductSeeder::class);
         // Seed Users
         $usersJson = file_get_contents(database_path('seeders/data/users.json'));
         $users = json_decode($usersJson, true);
