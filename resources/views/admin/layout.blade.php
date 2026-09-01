@@ -219,7 +219,7 @@
                             <a href="{{ route('admin.products.index') }}" class="{{ request()->routeIs('admin.products.*') ? 'active' : '' }}" style="padding-left: 45px; font-size: 14px; text-transform: capitalize;">Daftar Produk</a>
                         </div>
                     </div>
-                    <a href="#">Markets</a>
+                                        <a href="{{ route('admin.markets.index') }}" class="{{ request()->routeIs('admin.markets.*') ? 'active' : '' }}">Markets</a>
                     <a href="#solutionsSubmenu" data-bs-toggle="collapse" class="dropdown-toggle {{ request()->url() == route('admin.pages.edit', \App\Models\Page::where('slug', 'solutions')->first()->id ?? 0) || request()->url() == route('admin.pages.edit', \App\Models\Page::where('slug', 'capabilities')->first()->id ?? 0) ? 'active' : '' }}">Solutions</a>
                     <ul class="collapse list-unstyled ps-3 {{ request()->url() == route('admin.pages.edit', \App\Models\Page::where('slug', 'solutions')->first()->id ?? 0) || request()->url() == route('admin.pages.edit', \App\Models\Page::where('slug', 'capabilities')->first()->id ?? 0) ? 'show' : '' }}" id="solutionsSubmenu">
                         @php 
