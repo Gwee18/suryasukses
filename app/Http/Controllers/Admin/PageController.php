@@ -9,7 +9,7 @@ class PageController extends Controller
 {
     public function index()
     {
-        $pages = \App\Models\Page::where('slug', '!=', 'home')
+        $pages = \App\Models\Page::whereIn('slug', ['about', 'about-values', 'about-quality', 'about-career'])
             ->orderByRaw("FIELD(slug, 'about', 'about-values', 'about-quality', 'about-career')")
             ->paginate(10);
         return view('admin.pages.index', compact('pages'));
