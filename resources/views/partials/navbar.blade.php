@@ -46,13 +46,13 @@
                         <div class="mega-dropdown mega-dropdown-inline">
                             <div class="container">
                                 <ul class="mega-inline-list">
-                                    <li><a href="{{ route('markets.beverage') }}">Beverage</a></li>
-                                    <li><a href="{{ route('markets.healthcare') }}">Healthcare</a></li>
-                                    <li><a href="{{ route('markets.household') }}">Household</a></li>
-                                    <li><a href="{{ route('markets.agriculture') }}">Agriculture</a></li>
-                                    <li><a href="{{ route('markets.industrial') }}">Industrial</a></li>
-                                    <li><a href="{{ route('markets.filtration') }}">Filtration</a></li>
-                                    <li><a href="{{ route('markets.building_construction') }}">Building &amp; Construction</a></li>
+                                    <li><a href="{{ route('markets.show', 'beverage') }}">Beverage</a></li>
+                                    <li><a href="{{ route('markets.show', 'healthcare') }}">Healthcare</a></li>
+                                    <li><a href="{{ route('markets.show', 'household') }}">Household</a></li>
+                                    <li><a href="{{ route('markets.show', 'agriculture') }}">Agriculture</a></li>
+                                    <li><a href="{{ route('markets.show', 'industrial') }}">Industrial</a></li>
+                                    <li><a href="{{ route('markets.show', 'filtration') }}">Filtration</a></li>
+                                    <li><a href="{{ route('markets.show', 'building-construction') }}">Building &amp; Construction</a></li>
                                 </ul>
                             </div>
                         </div>

@@ -118,6 +118,21 @@ class PageSeeder extends Seeder
             ],
         ];
 
+        $markets = ['beverage', 'healthcare', 'household', 'agriculture', 'industrial', 'filtration', 'building-construction'];
+        foreach ($markets as $m) {
+            $pages[] = [
+                'title' => ucwords(str_replace('-', ' ', $m)),
+                'slug' => 'markets-' . $m,
+                'content' => [
+                    'title' => ucwords(str_replace('-', ' ', $m)),
+                    'subtitle' => 'Our Markets',
+                    'description' => '<p>Konten untuk market ini belum ditambahkan di CMS.</p>',
+                    'main_text' => '<p>Konten untuk market ini belum ditambahkan di CMS.</p>',
+                ],
+                'cover_image' => null,
+            ];
+        }
+
         foreach ($pages as $page) {
             $existing = Page::where('slug', $page['slug'])->first();
             if ($existing) {
