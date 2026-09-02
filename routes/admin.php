@@ -35,5 +35,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Pages CMS Route
         Route::resource('pages', \App\Http\Controllers\Admin\PageController::class)->except(['create', 'store', 'show', 'destroy']);
+        Route::get('/contact', [\App\Http\Controllers\Admin\ContactPageController::class, 'edit'])->name('contact.edit');
+        Route::put('/contact', [\App\Http\Controllers\Admin\ContactPageController::class, 'update'])->name('contact.update');
     });
 });

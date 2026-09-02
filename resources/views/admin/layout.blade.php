@@ -238,12 +238,7 @@
                     
                     <a href="{{ route('admin.posts.index') }}" class="{{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">News</a>
                     
-                    @php $contactPage = \App\Models\Page::where('slug', 'contact')->first(); @endphp
-                    @if($contactPage)
-                        <a href="{{ route('admin.pages.edit', $contactPage->id) }}" class="{{ $isContactPage ? 'active' : '' }}">Contact Us</a>
-                    @else
-                        <a href="#">Contact Us</a>
-                    @endif
+                    <a href="{{ route('admin.contact.edit') }}" class="{{ request()->routeIs('admin.contact.*') ? 'active' : '' }}">Contact Us</a>
                 </nav>
             </div>
             
