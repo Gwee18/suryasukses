@@ -217,30 +217,20 @@
                         </div>
                     </div>
                                         <a href="{{ route('admin.markets.index') }}" class="{{ request()->routeIs('admin.markets.*') ? 'active' : '' }}">Markets</a>
-                    <a href="#solutionsSubmenu" data-bs-toggle="collapse" class="dropdown-toggle {{ request()->url() == route('admin.pages.edit', \App\Models\Page::where('slug', 'solutions')->first()->id ?? 0) || request()->url() == route('admin.pages.edit', \App\Models\Page::where('slug', 'capabilities')->first()->id ?? 0) ? 'active' : '' }}">Solutions</a>
-                    <ul class="collapse list-unstyled ps-3 {{ request()->url() == route('admin.pages.edit', \App\Models\Page::where('slug', 'solutions')->first()->id ?? 0) || request()->url() == route('admin.pages.edit', \App\Models\Page::where('slug', 'capabilities')->first()->id ?? 0) ? 'show' : '' }}" id="solutionsSubmenu">
+                    <a href="#solutionsSubmenu" data-bs-toggle="collapse" class="dropdown-toggle {{ request()->routeIs('admin.studio.*') || request()->routeIs('admin.capabilities.*') ? 'active' : '' }}">Solutions</a>
+                    <ul class="collapse list-unstyled ps-3 {{ request()->routeIs('admin.studio.*') || request()->routeIs('admin.capabilities.*') ? 'show' : '' }}" id="solutionsSubmenu">
                         @php 
                             $solutionsPage = \App\Models\Page::where('slug', 'solutions')->first(); 
-                            $capabilitiesPage = \App\Models\Page::where('slug', 'capabilities')->first(); 
                         @endphp
-                        @if($solutionsPage)
-                            <li><a href="{{ route('admin.pages.edit', $solutionsPage->id) }}" class="{{ request()->url() == route('admin.pages.edit', $solutionsPage->id) ? 'active' : '' }}" style="font-size: 13px; padding: 8px 25px;">Suryasukses Studio</a></li>
-                        @endif
-                        @if($capabilitiesPage)
-                            <li><a href="{{ route('admin.pages.edit', $capabilitiesPage->id) }}" class="{{ request()->url() == route('admin.pages.edit', $capabilitiesPage->id) ? 'active' : '' }}" style="font-size: 13px; padding: 8px 25px;">Capabilities</a></li>
-                        @endif
+                        <li><a href="{{ route('admin.studio.edit') }}" class="{{ request()->routeIs('admin.studio.*') ? 'active' : '' }}" style="font-size: 13px; padding: 8px 25px;">Suryasukses Studio</a></li>
+                        <li><a href="{{ route('admin.capabilities.index') }}" class="{{ request()->routeIs('admin.capabilities.*') ? 'active' : '' }}" style="font-size: 13px; padding: 8px 25px;">Capabilities</a></li>
                     </ul>
                     
                     <a href="{{ route('admin.about.edit') }}" class="{{ request()->routeIs('admin.about.*') ? 'active' : '' }}">About Us</a>
                     
                     <a href="{{ route('admin.posts.index') }}" class="{{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">News</a>
                     
-                    @php $contactPage = \App\Models\Page::where('slug', 'contact')->first(); @endphp
-                    @if($contactPage)
-                        <a href="{{ route('admin.pages.edit', $contactPage->id) }}" class="{{ $isContactPage ? 'active' : '' }}">Contact Us</a>
-                    @else
-                        <a href="#">Contact Us</a>
-                    @endif
+                    <a href="{{ route('admin.contact.edit') }}" class="{{ request()->routeIs('admin.contact.*') ? 'active' : '' }}">Contact Us</a>
                 </nav>
             </div>
             

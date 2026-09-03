@@ -12,7 +12,8 @@ class SolutionController extends Controller
     public function index()
     {
         $page = \App\Models\Page::where('slug', 'solutions')->first();
-        return view('solutions.index', compact('page'));
+        $studio = \App\Models\SuryasuksesStudio::first();
+        return view('solutions.index', compact('page', 'studio'));
     }
 
     /**
@@ -21,6 +22,7 @@ class SolutionController extends Controller
     public function capabilities()
     {
         $page = \App\Models\Page::where('slug', 'capabilities')->first();
-        return view('solutions.capabilities', compact('page'));
+        $capabilities = \App\Models\Capability::orderBy('sort_order', 'asc')->get();
+        return view('solutions.capabilities', compact('page', 'capabilities'));
     }
 }
