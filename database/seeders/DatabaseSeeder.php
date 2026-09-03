@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
             HomeSeeder::class,
             AboutSeeder::class,
             SolutionsSeeder::class,
+            StudioDataSeeder::class,
+            CapabilitiesDataSeeder::class,
             ContactSeeder::class,
             MarketSeeder::class,
         ]);

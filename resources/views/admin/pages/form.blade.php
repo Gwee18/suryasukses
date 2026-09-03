@@ -366,55 +366,16 @@
                     <input type="url" class="form-control" name="content[career_link]" value="{{ $page->content['career_link'] ?? '' }}" required>
                 </div>
             @elseif($page->slug == 'solutions')
-                @include('admin.pages._image_upload', ['name' => 'image_1', 'label' => 'Gambar Banner Atas', 'default' => 'solutions/aa68c28011sbl-sap (1) (1).jpg'])
-                <div class="mb-3">
-                    <label class="form-label fw-bold">Konten Deskripsi <span class="text-danger">*</span></label>
-                    <textarea class="form-control" name="content[main_text]" rows="5" required>{!! $page->content['main_text'] ?? '' !!}</textarea>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label fw-bold">Nomor Whatsapp <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" name="content[whatsapp]" value="{{ $page->content['whatsapp'] ?? '+62 857 7730 3030' }}" required>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <label class="form-label fw-bold">Link Whatsapp <span class="text-danger">*</span></label>
-                        <input type="url" class="form-control" name="content[whatsapp_link]" value="{{ $page->content['whatsapp_link'] ?? 'http://wa.me/6285777303030' }}" required>
-                    </div>
+                <div class="alert alert-info py-3 shadow-sm border-info" style="font-size: 0.95rem;">
+                    <strong>Pemberitahuan:</strong> Pengaturan untuk Halaman Suryasukses Studio sekarang dikelola secara terpisah.<br>
+                    <a href="{{ route('admin.studio.edit') }}" class="btn btn-sm btn-primary mt-2">Kelola Suryasukses Studio di Sini</a>
                 </div>
             @elseif($page->slug == 'capabilities')
-                <div class="alert alert-info py-2" style="font-size: 0.85rem;">
-                    Upload foto bersifat opsional. Jika Anda mengupload file baru, foto yang lama akan ditimpa. Kosongkan judul jika ingin menyembunyikan kapabilitas tertentu.
+                <div class="alert alert-info py-3 shadow-sm border-info" style="font-size: 0.95rem;">
+                    <strong>Pemberitahuan:</strong> Data Kapabilitas sekarang dikelola secara terpisah melalui Modul Capabilities (CRUD).<br>
+                    <a href="{{ route('admin.capabilities.index') }}" class="btn btn-sm btn-primary mt-2">Kelola Kapabilitas di Sini</a>
                 </div>
-                <div class="accordion mb-4" id="capabilitiesAccordion">
-                    @for($i = 1; $i <= 7; $i++)
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingCap{{ $i }}">
-                            <button class="accordion-button collapsed fw-bold bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCap{{ $i }}" aria-expanded="false" aria-controls="collapseCap{{ $i }}">
-                                <i class="fas fa-cog me-2"></i> Kapabilitas {{ $i }}
-                            </button>
-                        </h2>
-                        <div id="collapseCap{{ $i }}" class="accordion-collapse collapse" aria-labelledby="headingCap{{ $i }}" data-bs-parent="#capabilitiesAccordion">
-                            <div class="accordion-body">
-                                <div class="row">
-                                    <div class="col-md-4 border-end">
-                                        @include('admin.pages._image_upload', ['name' => 'cap_img_'.$i, 'label' => 'Gambar Kapabilitas', 'default' => ''])
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="mb-2">
-                                            <label class="fw-bold">Judul Kapabilitas</label>
-                                            <input type="text" class="form-control" name="content[cap_title_{{ $i }}]" value="{{ $page->content['cap_title_'.$i] ?? '' }}">
-                                        </div>
-                                        <div class="mb-2">
-                                            <label class="fw-bold">Deskripsi <span class="text-danger">*</span></label>
-                                            <textarea class="form-control" name="content[cap_desc_{{ $i }}]" rows="4">{!! $page->content['cap_desc_'.$i] ?? '' !!}</textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endfor
-                </div>
+                
                 <div class="card mb-4 border-info">
                     <div class="card-header bg-info text-white fw-bold"><i class="fab fa-whatsapp me-2"></i> Pengaturan Kontak (Bawah)</div>
                     <div class="card-body row">

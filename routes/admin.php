@@ -35,5 +35,12 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
         // Pages CMS Route
         Route::resource('pages', \App\Http\Controllers\Admin\PageController::class)->except(['create', 'store', 'show', 'destroy']);
+        
+        // Capabilities CRUD Route
+        Route::resource('capabilities', \App\Http\Controllers\Admin\CapabilityController::class)->except(['show']);
+
+        // Suryasukses Studio Setting Route
+        Route::get('studio', [\App\Http\Controllers\Admin\StudioController::class, 'edit'])->name('studio.edit');
+        Route::put('studio', [\App\Http\Controllers\Admin\StudioController::class, 'update'])->name('studio.update');
     });
 });
