@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
             StudioDataSeeder::class,
             CapabilitiesDataSeeder::class,
             ContactSeeder::class,
+            ContactPageSeeder::class,
             MarketSeeder::class,
+            HomeSliderSeeder::class,
         ]);
     }
 }
