@@ -74,8 +74,8 @@
                                     </div>
 
                                     <button type="button" class="btn btn-sm btn-outline-primary" onclick="document.getElementById('input_slider_images_{{ $slider->id }}').click()">Tambah Foto</button>
-                                    <input type="file" id="input_slider_images_{{ $slider->id }}" class="d-none" name="sliders[{{ $slider->id }}][new_images][]" accept="image/*" multiple onchange="updateFileCount(this, 'file_count_{{ $slider->id }}')">
-                                    <span id="file_count_{{ $slider->id }}" class="ms-2 text-muted" style="font-size: 0.85rem;"></span>
+                                    <input type="file" id="input_slider_images_{{ $slider->id }}" class="d-none" name="sliders[{{ $slider->id }}][new_images][]" accept="image/*" multiple onchange="previewMultipleImages(this, 'preview_new_images_{{ $slider->id }}')">
+                                    <div id="preview_new_images_{{ $slider->id }}" class="d-flex flex-wrap gap-2 mt-2"></div>
                                     <div class="mt-1"><small class="text-muted">Pilih beberapa foto sekaligus untuk ditambahkan ke koleksi foto ini.</small></div>
                                 </div>
                             </div>
@@ -186,11 +186,25 @@
         }
     }
 
-    function updateFileCount(input, displayId) {
-        var count = input.files ? input.files.length : 0;
-        var display = document.getElementById(displayId);
-        if (display) {
-            display.textContent = count > 0 ? count + ' file(s) selected' : '';
+    function previewMultipleImages(input, containerId) {
+        var container = document.getElementById(containerId);
+        if (!container) return;
+        container.innerHTML = '';
+        
+        if (input.files) {
+            Array.from(input.files).forEach(file => {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'img-thumbnail';
+                    img.style.height = '60px';
+                    img.style.width = '60px';
+                    img.style.objectFit = 'cover';
+                    container.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            });
         }
     }
 </script>
