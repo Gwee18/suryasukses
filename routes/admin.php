@@ -33,7 +33,15 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // CRUD Markets
         Route::resource('markets', \App\Http\Controllers\Admin\MarketController::class);
 
-        // Pages CMS Route
+        // Pages CMS Route (for other pages like Contact, Solutions)
         Route::resource('pages', \App\Http\Controllers\Admin\PageController::class)->except(['create', 'store', 'show', 'destroy']);
+
+        // Home CMS Route
+        Route::get('/home', [\App\Http\Controllers\Admin\HomeController::class, 'edit'])->name('home.edit');
+        Route::post('/home', [\App\Http\Controllers\Admin\HomeController::class, 'update'])->name('home.update');
+
+        // About CMS Route
+        Route::get('/about', [\App\Http\Controllers\Admin\AboutController::class, 'edit'])->name('about.edit');
+        Route::post('/about', [\App\Http\Controllers\Admin\AboutController::class, 'update'])->name('about.update');
     });
 });

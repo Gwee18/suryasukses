@@ -40,7 +40,57 @@
     </section>
 
     @php
-        $activeCategory = $sliders->first();
+        $defaultProducts = [
+            1 => [
+                'icon' => 'home/bawah-slide1.png',
+                'title' => 'Bottles and Caps',
+                'description' => 'Recyclable bottles that deliver pristine quality to fulfill customers` needs.',
+                'link' => route('product'),
+                'images' => ['home/bottle001-new.png', 'home/bottle002.jpg'],
+            ],
+            2 => [
+                'icon' => 'home/bawah-slide-5.png',
+                'title' => 'Drinking Cups & Lids',
+                'description' => 'Our disposable cups are light-weight and cost efficient. We also offer multiple decoration options.',
+                'link' => route('product'),
+                'images' => ['home/drinking-cups001-new.png', 'home/drinking-cups002.jpg'],
+            ],
+            3 => [
+                'icon' => 'home/bawah-slide2.png',
+                'title' => 'Specialty Nonwoven',
+                'description' => 'A versatile product that can be printed or luminated. Its naturally porous, light-weight and eco-friendly characteristics make spunbond a multipurpose product.',
+                'link' => route('product'),
+                'images' => ['home/cover-specialty.jpg'],
+            ],
+            4 => [
+                'icon' => 'home/bawah-slide3.png',
+                'title' => 'Housewares',
+                'description' => 'We provide customers with qualified household products, innovative design, and prompt delivery at a very competitive price. Each products are designed to comfort and ease your life.',
+                'link' => route('product'),
+                'images' => ['home/cover-garden.jpg', 'home/cover-cleaningware.jpg', 'home/cover-racks.jpg', 'home/cover-kitchenware.jpg', 'home/cover-sealware.jpg', 'home/cover-bathroom.jpg'],
+            ],
+            5 => [
+                'icon' => 'home/bawah-slide4.png',
+                'title' => 'Roofing System',
+                'description' => 'Roofing sheets manufactured from UPVC, designed to suit a diverse range of applications in various markets.',
+                'link' => route('product'),
+                'images' => ['home/cover-roofing-suryasukses.jpg'],
+            ],
+        ];
+
+        $productCategories = [];
+        foreach([1, 2, 3, 4, 5] as $i) {
+            $productCategories[] = [
+                'icon' => $page->content['prod_icon_'.$i] ?? $defaultProducts[$i]['icon'],
+                'title' => $page->content['prod_title_'.$i] ?? $defaultProducts[$i]['title'],
+                'description' => $page->content['prod_desc_'.$i] ?? $defaultProducts[$i]['description'],
+                'link' => $page->content['prod_link_'.$i] ?? $defaultProducts[$i]['link'],
+                'images' => isset($page->content['prod_img_'.$i]) && is_array($page->content['prod_img_'.$i]) && count($page->content['prod_img_'.$i]) > 0 
+                            ? $page->content['prod_img_'.$i] 
+                            : $defaultProducts[$i]['images'],
+            ];
+        }
+        $activeCategory = $productCategories[0];
     @endphp
 
     <section class="home-products">
@@ -49,17 +99,17 @@
                 <div class="col-xl-8 col-lg-10 home-products-inner">
 
                     <div class="row justify-content-between home-products-tabs g-0 gy-3">
-                        @foreach ($sliders as $index => $category)
+                        @foreach ($productCategories as $index => $category)
                             <div class="col-auto">
                                 <button
                                     type="button"
                                     class="home-products-tab {{ $index === 0 ? 'is-active' : '' }}"
-                                    data-title="{{ $category->title }}"
-                                    data-desc="{{ $category->description }}"
-                                    data-link="{{ $category->link }}"
-                                    data-images="{{ $category->images->map(fn ($img) => asset('assets/images/' . $img->image))->implode('|') }}"
+                                    data-title="{{ $category['title'] }}"
+                                    data-desc="{{ $category['description'] }}"
+                                    data-link="{{ $category['link'] }}"
+                                    data-images="{{ collect($category['images'])->map(fn ($img) => asset('assets/images/' . $img))->implode('|') }}"
                                 >
-                                    <img src="{{ asset('assets/images/' . $category->icon) }}" alt="{{ $category->title }}" class="home-products-tab-icon">
+                                    <img src="{{ asset('assets/images/' . $category['icon']) }}" alt="{{ $category['title'] }}" class="home-products-tab-icon">
                                 </button>
                             </div>
                         @endforeach
@@ -67,20 +117,18 @@
 
                     <div class="row align-items-stretch g-0 home-products-panel">
                         <div class="col-lg-7 home-products-info">
-                            <h3 class="home-products-title">{{ $activeCategory->title ?? '' }}</h3>
-                            <p class="home-products-desc">{{ $activeCategory->description ?? '' }}</p>
-                            <a href="{{ $activeCategory->link ?? '#' }}" class="home-products-link">Learn more</a>
+                            <h3 class="home-products-title">{{ $activeCategory['title'] }}</h3>
+                            <p class="home-products-desc">{{ $activeCategory['description'] }}</p>
+                            <a href="{{ $activeCategory['link'] }}" class="home-products-link">Learn more</a>
                         </div>
                         <div class="col-lg-5 home-products-media">
                             <div class="home-products-slider" id="homeProductsSlider">
                                 <div class="home-products-track">
-                                    @if($activeCategory && $activeCategory->images)
-                                        @foreach ($activeCategory->images as $img)
-                                            <div class="home-products-slide">
-                                                <img src="{{ asset('assets/images/' . $img->image) }}" alt="{{ $activeCategory->title }}">
-                                            </div>
-                                        @endforeach
-                                    @endif
+                                    @foreach ($activeCategory['images'] as $img)
+                                        <div class="home-products-slide">
+                                            <img src="{{ asset('assets/images/' . $img) }}" alt="{{ $activeCategory['title'] }}">
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

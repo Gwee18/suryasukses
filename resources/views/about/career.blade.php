@@ -45,19 +45,19 @@
                 </div>
                 <div class="col-md-9">
                     <div class="content-top cont_career">
-                        @php $subHeading = $page->content['sub_heading'] ?? ''; @endphp
+                        @php $subHeading = ''; @endphp
                         @if($subHeading !== '')
                             <h4>{{ $subHeading }}</h4>
                         @endif
-                        <h3>{{ $page->title }}</h3>
-                        <img src="{{ asset('assets/images/' . ($page->content['image_1'] ?? 'about/3b5fb3dfb6_OPS6411.jpg')) }}" alt="{{ $page->title }}" class="img img-fluid pb-4 mb-2">
+                        <h3>Come Grow With Us</h3>
+                        <img src="{{ asset('assets/images/' . ($career->image ?? 'about/3b5fb3dfb6_OPS6411.jpg')) }}" alt="Come Grow With Us" class="img img-fluid pb-4 mb-2">
                         
-                        {!! $page->content['career_text'] ?? '' !!}
+                        {!! nl2br(e($career->text)) !!}
                         
                         @php
-                            $btnText = $page->content['career_btn_text'] ?? 'Join Our Team';
-                            $btnLink = $page->content['career_link'] ?? '#';
-                            $btnColor = $page->content['career_btn_color'] ?? '#0056b3'; // Default primary color
+                            $btnText = $career->btn_text ?? 'Join Our Team';
+                            $btnLink = $career->btn_link ?? '#';
+                            $btnColor = $career->btn_color ?? '#0056b3'; // Default primary color
                         @endphp
                         <a class="btn pl-3 pr-3" style="background-color: {{ $btnColor }}; color: white;" target="_blank" href="{{ $btnLink }}">{{ $btnText }}</a>
                         
@@ -69,9 +69,9 @@
     </section>
 
     @php
-        $vidUrl = $page->content['video_url'] ?? 'https://www.youtube.com/embed/Aj2C4Xp-GMM';
-        $vidTitle = $page->content['video_title'] ?? 'SAP Corporate Profile Video';
-        $vidSubtitle = $page->content['video_subtitle'] ?? 'Sharing our passion, realizing your ideas and visions.';
+        $vidUrl = 'https://www.youtube.com/embed/Aj2C4Xp-GMM?autoplay=1';
+        $vidTitle = 'SAP Corporate Profile Video';
+        $vidSubtitle = 'Sharing our passion, realizing your ideas and visions.';
     @endphp
 
     @if($vidUrl !== '')

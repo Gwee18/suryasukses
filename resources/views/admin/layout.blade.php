@@ -199,10 +199,7 @@
                 <nav>
                     <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">Dashboard</a>
                     
-                    @php $homePage = \App\Models\Page::where('slug', 'home')->first(); @endphp
-                    @if($homePage)
-                        <a href="{{ route('admin.pages.edit', $homePage->id) }}" class="{{ request()->url() == route('admin.pages.edit', $homePage->id) ? 'active' : '' }}">Home</a>
-                    @endif
+                    <a href="{{ route('admin.home.edit') }}" class="{{ request()->routeIs('admin.home.*') ? 'active' : '' }}">Home</a>
                     
                     @php
                         $isProductMenuOpen = request()->routeIs('admin.product-categories.*') || request()->routeIs('admin.products.*');
@@ -234,7 +231,7 @@
                         @endif
                     </ul>
                     
-                    <a href="{{ route('admin.pages.index') }}" class="{{ request()->routeIs('admin.pages.index') || $isAboutFamily ? 'active' : '' }}">About Us</a>
+                    <a href="{{ route('admin.about.edit') }}" class="{{ request()->routeIs('admin.about.*') ? 'active' : '' }}">About Us</a>
                     
                     <a href="{{ route('admin.posts.index') }}" class="{{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">News</a>
                     
