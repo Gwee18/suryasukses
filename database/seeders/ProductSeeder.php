@@ -188,15 +188,17 @@ class ProductSeeder extends Seeder
         ];
 
         foreach ($categories as $slug => $data) {
-            $cat = ProductCategory::create([
-                'id' => $data['id'],
-                'title' => $data['title'],
-                'slug' => $slug,
-                'images' => $data['images'],
-                'intro' => $data['intro'],
-                'catalog_text' => $data['catalog_text'],
-                'catalog_href' => $data['catalog_href'],
-            ]);
+            $cat = ProductCategory::updateOrCreate(
+                ['id' => $data['id']],
+                [
+                    'title' => $data['title'],
+                    'slug' => $slug,
+                    'images' => $data['images'],
+                    'intro' => $data['intro'],
+                    'catalog_text' => $data['catalog_text'],
+                    'catalog_href' => $data['catalog_href'],
+                ]
+            );
         }
 
         foreach ($ranges as $data) {
@@ -213,14 +215,18 @@ class ProductSeeder extends Seeder
                 }
             }
 
-            Product::create([
-                'product_category_id' => $data['parent_id'],
-                'title' => $data['title'],
-                'slug' => $data['slug'],
-                'images' => $data['images'],
-                'content' => $contentHtml,
-                'card_text' => $data['card_text'],
-            ]);
+            Product::updateOrCreate(
+                [
+                    'slug' => $data['slug'],
+                    'product_category_id' => $data['parent_id']
+                ],
+                [
+                    'title' => $data['title'],
+                    'images' => $data['images'],
+                    'content' => $contentHtml,
+                    'card_text' => $data['card_text'],
+                ]
+            );
         }
     }
 }
