@@ -44,32 +44,32 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    @php $subHeading = $page->content['sub_heading'] ?? 'Our culture of perfections'; @endphp
+                    @php $subHeading = 'Our culture of perfections'; @endphp
                     @if($subHeading !== '')
                         <h4>{{ $subHeading }}</h4>
                     @endif
-                    <h3>{{ $page->title }}</h3>
+                    <h3>Quality Statement</h3>
                     
-                    {!! $page->content['quality_1'] ?? '' !!}
+                    {!! nl2br(e($quality->text1)) !!}
                     
                     <div class="row g-0 py-4 align-items-center">
                         <div class="col-md-6">
                             <div class="content pe-5">
                                 <div class="content-inner">
                                     <div class="isi">
-                                        {!! $page->content['quality_2'] ?? '' !!}
+                                        {!! nl2br(e($quality->text2)) !!}
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <img class="w-100" src="{{ asset('assets/images/' . ($page->content['image_1'] ?? 'about/b1b1e898fbLayer-43.jpg')) }}" alt="">
+                            <img class="w-100" src="{{ asset('assets/images/' . ($quality->img1 ?? 'about/b1b1e898fbLayer-43.jpg')) }}" alt="">
                         </div>
                     </div>
             
                     <div class="row g-0 py-4 align-items-center">
                         <div class="col-md-6">
-                            <img class="w-100" src="{{ asset('assets/images/' . ($page->content['image_2'] ?? 'about/ea8e93cbf2Layer-44.jpg')) }}" alt="">
+                            <img class="w-100" src="{{ asset('assets/images/' . ($quality->img2 ?? 'about/ea8e93cbf2Layer-44.jpg')) }}" alt="">
                         </div>
                         <div class="col-md-6">
                             <div class="content ps-5">
@@ -78,7 +78,7 @@
                                         <p>When Technology Meets Human Skill</p>
                                     </div>
                                     <div class="isi">
-                                        {!! $page->content['quality_3'] ?? '' !!}
+                                        {!! nl2br(e($quality->text3)) !!}
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +88,7 @@
                     <div class="hr-garis-about-quality"></div>
                     
                     <h5 class="quality-section-title mb-3">Our Quality Certfications</h5>
-                    <img src="{{ asset('assets/images/' . ($page->content['image_3'] ?? 'about/f8f77a1e23Layer-42.png')) }}" alt="Our Quality Certifications" class="img-fluid" style="max-height: 80px;">
+                    <img src="{{ asset('assets/images/' . ($quality->img3 ?? 'about/f8f77a1e23Layer-42.png')) }}" alt="Our Quality Certifications" class="img-fluid" style="max-height: 80px;">
 
                 </div>
             </div>
@@ -96,9 +96,9 @@
     </section>
 
     @php
-        $vidUrl = $page->content['video_url'] ?? 'https://www.youtube.com/embed/Aj2C4Xp-GMM';
-        $vidTitle = $page->content['video_title'] ?? 'SAP Corporate Profile Video';
-        $vidSubtitle = $page->content['video_subtitle'] ?? 'Sharing our passion, realizing your ideas and visions.';
+        $vidUrl = 'https://www.youtube.com/embed/Aj2C4Xp-GMM?autoplay=1';
+        $vidTitle = 'SAP Corporate Profile Video';
+        $vidSubtitle = 'Sharing our passion, realizing your ideas and visions.';
     @endphp
 
     @if($vidUrl !== '')

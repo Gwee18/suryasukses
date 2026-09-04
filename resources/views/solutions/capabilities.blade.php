@@ -49,21 +49,36 @@
 
                     <div class="solution-capabilities__grid">
                         
-                        @for($i = 1; $i <= 7; $i++)
-                            @if(isset($page->content['cap_title_'.$i]) && $page->content['cap_title_'.$i] != '')
+                        @forelse($capabilities as $cap)
                             <article class="solution-capabilities__card">
                                 <div class="solution-capabilities__image-wrapper">
-                                    <img src="{{ asset('assets/images/' . ($page->content['cap_img_'.$i] ?? '')) }}" alt="{{ $page->content['cap_title_'.$i] }}" class="solution-capabilities__image">
+                                    <img src="{{ asset('assets/images/' . $cap->image) }}" alt="{{ $cap->title }}" class="solution-capabilities__image">
                                 </div>
                                 <div class="solution-capabilities__content">
-                                    <h5 class="solution-capabilities__card-title">{{ $page->content['cap_title_'.$i] }}</h5>
+                                    <h5 class="solution-capabilities__card-title">{{ $cap->title }}</h5>
                                     <p class="solution-capabilities__card-text">
-                                        {!! nl2br(e($page->content['cap_desc_'.$i] ?? '')) !!}
+                                        {!! nl2br(e($cap->description)) !!}
                                     </p>
                                 </div>
                             </article>
-                            @endif
-                        @endfor
+                        @empty
+                            <!-- Fallback to old JSON format if capabilities are empty, before seeder is run -->
+                            @for($i = 1; $i <= 7; $i++)
+                                @if(isset($page->content['cap_title_'.$i]) && $page->content['cap_title_'.$i] != '')
+                                <article class="solution-capabilities__card">
+                                    <div class="solution-capabilities__image-wrapper">
+                                        <img src="{{ asset('assets/images/' . ($page->content['cap_img_'.$i] ?? '')) }}" alt="{{ $page->content['cap_title_'.$i] }}" class="solution-capabilities__image">
+                                    </div>
+                                    <div class="solution-capabilities__content">
+                                        <h5 class="solution-capabilities__card-title">{{ $page->content['cap_title_'.$i] }}</h5>
+                                        <p class="solution-capabilities__card-text">
+                                            {!! nl2br(e($page->content['cap_desc_'.$i] ?? '')) !!}
+                                        </p>
+                                    </div>
+                                </article>
+                                @endif
+                            @endfor
+                        @endforelse
                     </div>
 
                     <div class="solution-capabilities__contact">

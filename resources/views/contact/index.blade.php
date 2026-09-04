@@ -9,41 +9,17 @@
 @section('content')
 
     @php
-        $content = optional($page)->content ?? [];
+        $heroEyebrow = optional($contactPage)->hero_eyebrow ?? 'Contact Us';
+        $heroTitle = optional($contactPage)->hero_title ?? "We're at your service";
+        $introTitle = optional($contactPage)->intro_title ?? "We're here to help you";
+        $introText = optional($contactPage)->intro_text ?? 'We provide a variety of resources to assist our customers and partners in configuring, designing, enhancing and upgrading products. Customers will receive support services and product consultancy support, technical assistance and product sampling.';
+        $introNote = optional($contactPage)->intro_note ?? 'Please contact our help-line at these numbers';
 
-        $heroEyebrow = $content['hero_eyebrow'] ?? 'Contact Us';
-        $heroTitle = $content['hero_title'] ?? "We're at your service";
-        $introTitle = $content['intro_title'] ?? "We're here to help you";
-        $introText = $content['intro_text'] ?? 'We provide a variety of resources to assist our customers and partners in configuring, designing, enhancing and upgrading products. Customers will receive support services and product consultancy support, technical assistance and product sampling.';
-        $introNote = $content['intro_note'] ?? 'Please contact our help-line at these numbers';
-
-                $offices = $content['offices'] ?? [
-            [
-                'name' => 'Suryasukses Group Surabaya',
-                'phones' => ['031 5030450 / 99603700'],
-                'address_lines' => ['Jl. Kertajaya 109 Surabaya 60286 - Indonesia', 'Jl. Raya Sedati 97 Sidoarjo - Indonesia'],
-                'map' => 'https://goo.gl/maps/RmAtJontTNyMtMuZ6',
-            ],
-            [
-                'name' => 'Suryasukses Group Jakarta',
-                'phones' => ['021 386 1333'],
-                'address_lines' => ['Jakarta', 'Jl. Cideng Timur No. 70E dan F', 'Jakarta Pusat - Indonesia'],
-                'map' => 'https://maps.app.goo.gl/zoNV8ckCL8zGQuDf6',
-            ],
-            [
-                'name' => 'Suryasukses Group Bekasi',
-                'phones' => ['+62 821-6488-8806'],
-                'address_lines' => ['Kawasan Industri MM2100', 'Jl. Selayar Blk. B3 No.1, Mekarwangi Kec. Cikarang Bar, Bekasi, Jawa Barat 17530'],
-                'map' => 'https://goo.gl/maps/K9uRD4tDpK2Wyphd7',
-            ],
-        ];
-
-        $supportTitle = $content['support_title'] ?? 'PIC Kantor Surabaya';
-        $pics = $content['pics'] ?? ['Phyllia (081 651 1229)', 'Livia & Ayu (0882 2616 3037)'];
-        $supportEmail = $content['support_email'] ?? 'cs@suryasukses.com';
-        $whatsappLabel = $content['whatsapp_label'] ?? 'Whatsapp';
-        $whatsappDisplay = $content['whatsapp_display'] ?? '+62 81 651 1229';
-        $whatsappLink = $content['whatsapp_link'] ?? 'https://wa.me/62816511229';
+        $supportTitle = optional($contactPage)->support_title ?? 'PIC Kantor Surabaya';
+        $supportEmail = optional($contactPage)->support_email ?? 'cs@suryasukses.com';
+        $whatsappLabel = optional($contactPage)->whatsapp_label ?? 'Whatsapp';
+        $whatsappDisplay = optional($contactPage)->whatsapp_display ?? '+62 81 651 1229';
+        $whatsappLink = optional($contactPage)->whatsapp_link ?? 'https://wa.me/62816511229';
     @endphp
 
     <section class="contact-hero">
@@ -79,32 +55,38 @@
                     <p class="contact-intro-note">{{ $introNote }}</p>
 
                     <div class="row g-4 contact-offices">
-                        @foreach ($offices as $office)
+                        @forelse ($offices as $office)
+                            @php
+                                $phones = $office->phones->pluck('phone')->filter()->values();
+                                $addressLines = $office->addressLines->pluck('line')->filter()->values();
+                            @endphp
                             <div class="col-md-6">
                                 <div class="contact-office-card">
-                                    <h3 class="contact-office-name">{{ $office['name'] ?? '' }}</h3>
+                                    <h3 class="contact-office-name">{{ $office->name }}</h3>
 
-                                    @if(!empty(array_filter($office['phones'] ?? [])))
+                                    @if($phones->isNotEmpty())
                                         <p class="contact-office-phone">
-                                            {{ implode(' / ', array_filter($office['phones'])) }}
+                                            {{ $phones->implode(' / ') }}
                                         </p>
                                     @endif
 
-                                    @if(!empty(array_filter($office['address_lines'] ?? [])))
+                                    @if($addressLines->isNotEmpty())
                                         <p class="contact-office-address">
-                                            {!! implode('<br>', array_map('e', array_filter($office['address_lines']))) !!}
+                                            {!! $addressLines->map(fn ($line) => e($line))->implode('<br>') !!}
                                         </p>
                                     @endif
 
-                                    @if(!empty($office['map']))
-                                        <a href="{{ $office['map'] }}" target="_blank" rel="noopener" class="contact-office-map">
+                                    @if(!empty($office->map_url))
+                                        <a href="{{ $office->map_url }}" target="_blank" rel="noopener" class="contact-office-map">
                                             Click here to view on Google Map
                                             <svg viewBox="0 0 24 24"><path d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.5 7.5 12.5 7.5 12.5s7.5-7 7.5-12.5C19.5 5.36 16.14 2 12 2zm0 10.25a2.75 2.75 0 1 1 0-5.5 2.75 2.75 0 0 1 0 5.5z"/></svg>
                                         </a>
                                     @endif
                                 </div>
                             </div>
-                        @endforeach
+                        @empty
+                            {{-- belum ada office ke-seed --}}
+                        @endforelse
                     </div>
 
                     <div class="contact-support-block">
@@ -113,8 +95,8 @@
                         @endif
 
                         @foreach ($pics as $pic)
-                            @if(trim($pic) !== '')
-                                <p class="contact-support-text">{{ $pic }}</p>
+                            @if(trim($pic->name_phone ?? '') !== '')
+                                <p class="contact-support-text">{{ $pic->name_phone }}</p>
                             @endif
                         @endforeach
 

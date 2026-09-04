@@ -22,7 +22,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 26rem;
+    top: 35%;
     color: #fff;
 }
 
@@ -48,7 +48,7 @@
     font-family: 'Fira Sans', sans-serif;
     font-size: 1.15rem;
     font-weight: 400 !important;
-    max-width: 600px;
+    max-width: 100%;
     margin-bottom: 1.5rem;
 }
 
