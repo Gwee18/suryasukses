@@ -29,6 +29,7 @@ class MarketController extends Controller
 
     public function store(Request $request)
     {
+                \Log::info('Market Update Payload:', $request->all());
         $validated = $this->validateMarket($request);
         $validated['slug'] = Str::slug($validated['title']);
         $validated['banner_image'] = $this->handleUpload($request, 'banner_image');
@@ -48,6 +49,7 @@ class MarketController extends Controller
 
     public function update(Request $request, Market $market)
     {
+                \Log::info('Market Update Payload:', $request->all());
         $validated = $this->validateMarket($request);
         
         $banner = $this->handleUpload($request, 'banner_image');

@@ -162,7 +162,8 @@
         <h5 class="modal-title" id="cardModalTitle">Tambah Produk/Kategori</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+            <div class="modal-body">
+        <div id="modal-error-msg" class="alert alert-danger d-none py-2 mb-3" style="font-size: 0.85rem;"><i class="fas fa-exclamation-circle me-1"></i> Mohon lengkapi semua data! Gambar, Judul, dan Deskripsi wajib diisi.</div>
         <div id="modal-file-input-container">
             <!-- File input component will be moved here dynamically -->
         </div>
@@ -189,6 +190,16 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <script>
+            function previewImage(input, previewId) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#' + previewId).attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
     $(document).ready(function() {
 
 
@@ -316,8 +327,20 @@
         });
 
         $('#btn-save-modal').click(function() {
-            let title = $('#modal-title-input').val();
-            let subtitle = $('#modal-subtitle-input').val();
+            let title = $('#modal-title-input').val().trim();
+            let subtitle = $('#modal-subtitle-input').val().trim();
+            
+            // Check if there is a file selected or an old image exists
+            let hasFile = $('#card-image-upload-' + activeHiddenIndex).find('input[type="file"]').val() !== '';
+            let hasOldImage = $('#hidden-card-' + activeHiddenIndex).find('.hidden-old-image').val() !== '';
+            
+            // Validation
+            if (title === '' || subtitle === '' || (!hasFile && !hasOldImage)) {
+                $('#modal-error-msg').removeClass('d-none');
+                return; // Stop execution
+            } else {
+                $('#modal-error-msg').addClass('d-none');
+            }
             
             // Move file component back
             restoreFileInput();
