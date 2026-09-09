@@ -56,7 +56,7 @@ class MarketController extends Controller
         }
 
         // Handle cards images
-        $validated['cards'] = $this->handleCardsUpload($request, $request->input('cards', []), $market->cards ?? []);
+        $validated['cards'] = $this->handleCardsUpload($request, $request->input('cards', []));
 
         $market->update($validated);
 
@@ -90,10 +90,10 @@ class MarketController extends Controller
         return null;
     }
 
-    private function handleCardsUpload(Request $request, $cardsData, $oldCardsData = [])
+    private function handleCardsUpload(Request $request, $cardsData)
     {
         $processedCards = [];
-        for ($i = 0; $i < 6; $i++) {
+        for ($i = 0; $i < 8; $i++) {
             $card = $cardsData[$i] ?? [];
             if (!empty($card['title'])) {
                 // If a new image is uploaded for this card
@@ -103,9 +103,13 @@ class MarketController extends Controller
                     $file->move(public_path('assets/images/markets'), $filename);
                     $card['image'] = 'markets/' . $filename;
                 } else {
-                    // Retain old image if exists
-                    $card['image'] = $oldCardsData[$i]['image'] ?? '';
+                    // Retain old image if exists, passed from the hidden input form to support shifting
+                    $card['image'] = $card['old_image'] ?? '';
                 }
+                
+                // remove old_image from final array so it doesn't get saved to DB unnecessarily
+                unset($card['old_image']);
+                
                 $processedCards[] = $card;
             }
         }

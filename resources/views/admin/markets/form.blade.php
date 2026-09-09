@@ -4,7 +4,80 @@
 @section('header', isset($market) ? 'Edit Market' : 'Tambah Market')
 
 @push('styles')
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+
+<style>
+    .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    .card-slot {
+        width: 100%;
+        aspect-ratio: 3/4;
+        border-radius: 8px;
+        position: relative;
+        transition: 0.2s;
+    }
+    .card-slot.empty {
+        background-color: #f8f9fa;
+        border: 1px solid #e0e0e0;
+    }
+    .card-slot.add-new {
+        border: 2px dashed #b0b0b0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: #888;
+        background-color: transparent;
+    }
+    .card-slot.add-new:hover {
+        border-color: #0056b3;
+        color: #0056b3;
+        background-color: #f0f7ff;
+    }
+    .card-slot.filled {
+        border: 1px solid #e0e0e0;
+        overflow: hidden;
+        background: #fff;
+        cursor: pointer;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .card-slot.filled img {
+        width: 100%;
+        height: 70%;
+        object-fit: cover;
+    }
+    .card-slot.filled .card-title {
+        padding: 10px;
+        font-size: 13px;
+        font-weight: bold;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border-top: 1px solid #eee;
+    }
+    .card-overlay {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.6);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        opacity: 0;
+        transition: 0.2s;
+        border-radius: 8px;
+    }
+    .card-slot.filled:hover .card-overlay {
+        opacity: 1;
+    }
+    .hidden-card-input { display: none; }
+</style>
 @endpush
 
 @section('content')
@@ -23,94 +96,304 @@
             </div>
         @endif
 
-        <form action="{{ isset($market) ? route('admin.markets.update', $market->id) : route('admin.markets.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ isset($market) ? route('admin.markets.update', $market->id) : route('admin.markets.store') }}" method="POST" enctype="multipart/form-data" id="marketForm">
             @csrf
             @if(isset($market))
                 @method('PUT')
             @endif
 
-            <div class="mb-3">
-                @include('admin.markets._market_image_upload', ['name' => 'banner_image', 'label' => 'Gambar Banner Atas', 'default' => $market->banner_image ?? ''])
-            </div>
-            
-            <div class="mb-3">
-                <label class="form-label fw-bold">Judul Halaman <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" name="title" value="{{ old('title', $market->title ?? '') }}" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-bold">Sub-judul <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" name="subtitle" value="{{ old('subtitle', $market->subtitle ?? 'Our Markets') }}" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-bold">Deskripsi Utama <span class="text-muted">(Opsional)</span></label>
-                <textarea class="form-control summernote" name="description" rows="5">{{ old('description', $market->description ?? '') }}</textarea>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        @include('admin.markets._market_image_upload', ['name' => 'banner_image', 'label' => 'Gambar Banner Atas', 'default' => $market->banner_image ?? ''])
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Judul Halaman <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="title" value="{{ old('title', $market->title ?? '') }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Sub-judul <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="subtitle" value="{{ old('subtitle', $market->subtitle ?? 'Our Markets') }}" required>
+                    </div>
+
+                </div>
             </div>
 
             <h5 class="fw-bold mt-5 mb-3 border-bottom pb-2">Daftar Produk/Kategori Market</h5>
-            <div class="alert alert-info py-2" style="font-size: 0.85rem;">
-                Anda dapat mengisi hingga 8 kartu produk. Kosongkan "Judul Kartu" jika kartu tersebut tidak ingin ditampilkan di halaman.
-            </div>
+            <p class="text-muted small mb-3">Maksimal 8 foto produk. Klik kotak putus-putus untuk menambah. Arahkan kursor pada kotak untuk mengedit atau menghapus.</p>
             
-            <div class="accordion mb-4" id="marketCardsAccordion">
+            <div class="cards-grid" id="cards-grid">
+                <!-- Grid items generated by JS -->
+            </div>
+
+            <!-- HIDDEN INPUTS AREA -->
+            <div id="hidden-cards-container" class="d-none">
                 @for($i = 0; $i < 8; $i++)
                     @php
                         $card = isset($market) && isset($market->cards[$i]) ? $market->cards[$i] : null;
-                        $isOpen = $i === 0 || !empty($card['title']);
                     @endphp
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingCard{{ $i }}">
-                            <button class="accordion-button {{ $isOpen ? '' : 'collapsed' }} fw-bold bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCard{{ $i }}" aria-expanded="{{ $isOpen ? 'true' : 'false' }}" aria-controls="collapseCard{{ $i }}">
-                                <i class="fas fa-box me-2"></i> {{ $i + 1 }}. {{ $card['title'] ?? 'Kartu Baru' }}
-                            </button>
-                        </h2>
-                        <div id="collapseCard{{ $i }}" class="accordion-collapse collapse {{ $isOpen ? 'show' : '' }}" aria-labelledby="headingCard{{ $i }}" data-bs-parent="#marketCardsAccordion">
-                            <div class="accordion-body">
-                                <div class="row">
-                                    <div class="col-md-4 mb-3">
-                                        @include('admin.markets._market_image_upload', ['name' => "cards[$i][image]", 'label' => 'Gambar Kartu', 'default' => $card['image'] ?? ''])
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="mb-3">
-                                            <label class="form-label fw-bold">Judul Kartu</label>
-                                            <input type="text" class="form-control" name="cards[{{ $i }}][title]" value="{{ old("cards.$i.title", $card['title'] ?? '') }}">
-                                        </div>
-                                        <div class="mb-3">
-                                            <label class="form-label fw-bold">Deskripsi Singkat</label>
-                                            <textarea class="form-control" name="cards[{{ $i }}][subtitle]" rows="3">{{ old("cards.$i.subtitle", $card['subtitle'] ?? '') }}</textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="hidden-card-input" data-index="{{ $i }}" id="hidden-card-{{ $i }}">
+                        <input type="text" name="cards[{{ $i }}][title]" value="{{ $card['title'] ?? '' }}" class="hidden-title">
+                        <textarea name="cards[{{ $i }}][subtitle]" class="hidden-subtitle">{{ $card['subtitle'] ?? '' }}</textarea>
+                        <input type="hidden" name="cards[{{ $i }}][old_image]" value="{{ $card['image'] ?? '' }}" class="hidden-old-image">
+                        <div id="card-image-upload-{{ $i }}">
+                            @include('admin.markets._market_image_upload', ['name' => "cards[$i][image]", 'label' => 'Gambar Kartu', 'default' => $card['image'] ?? ''])
                         </div>
                     </div>
                 @endfor
             </div>
 
-            <div class="text-end">
-                <a href="{{ route('admin.markets.index') }}" class="btn btn-secondary">Batal</a>
-                <button type="submit" class="btn btn-danger"><i class="fas fa-save me-1"></i> Simpan Market</button>
+            <hr>
+            <div class="d-flex justify-content-between">
+                <a href="{{ route('admin.markets.index') }}" class="btn btn-secondary">Kembali</a>
+                <button type="submit" class="btn btn-success"><i class="fas fa-save me-1"></i> Simpan Market</button>
             </div>
         </form>
     </div>
 </div>
+
+<!-- Modal Edit Kartu -->
+<div class="modal fade" id="cardModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="cardModalTitle">Tambah Produk/Kategori</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="modal-file-input-container">
+            <!-- File input component will be moved here dynamically -->
+        </div>
+        <div class="mb-3 mt-3">
+            <label class="form-label fw-bold">Judul Kartu</label>
+            <input type="text" class="form-control" id="modal-title-input" placeholder="Masukkan judul produk...">
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-bold">Deskripsi Singkat</label>
+            <textarea class="form-control" id="modal-subtitle-input" rows="3" placeholder="Masukkan deskripsi singkat..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <button type="button" class="btn btn-primary" id="btn-save-modal">Simpan Data</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
 <script>
     $(document).ready(function() {
-        $('.summernote').summernote({
-            height: 200,
-            toolbar: [
-                ['style', ['style']],
-                ['font', ['bold', 'underline', 'clear']],
-                ['color', ['color']],
-                ['para', ['ul', 'ol', 'paragraph']],
-                ['table', ['table']],
-                ['insert', ['link', 'picture']],
-                ['view', ['fullscreen', 'codeview', 'help']]
-            ]
+
+
+        const MAX_CARDS = 8;
+        let cardsData = [];
+        let currentEditingArrayIndex = -1;
+        let activeHiddenIndex = -1; // The physical DOM hidden container index
+
+        // Initialize cardsData from DOM
+        for(let i=0; i<MAX_CARDS; i++) {
+            let container = $('#hidden-card-' + i);
+            let title = container.find('.hidden-title').val();
+            let oldImage = container.find('.hidden-old-image').val();
+            
+            // If it has a title or old image, it's considered an active card
+            if(title || oldImage) {
+                cardsData.push({
+                    domIndex: i, // which hidden container it belongs to
+                    title: title,
+                    subtitle: container.find('.hidden-subtitle').val()
+                });
+            }
+        }
+
+        function renderGrid() {
+            let html = '';
+            for(let i=0; i<MAX_CARDS; i++) {
+                if (i < cardsData.length) {
+                    let card = cardsData[i];
+                    
+                    // Fetch current preview image from the DOM component
+                    let imgElem = $('#card-image-upload-' + card.domIndex).find('img');
+                    let imgSrc = imgElem.attr('src') || 'https://placehold.co/600x400?text=Foto';
+
+                    html += `
+                    <div class="card-slot filled">
+                        <img src="${imgSrc}">
+                        <div class="card-title">${card.title || 'Tanpa Judul'}</div>
+                        <div class="card-overlay">
+                            <button type="button" class="btn btn-sm btn-light" onclick="openModal(${i})"><i class="fas fa-edit"></i> Edit</button>
+                            <button type="button" class="btn btn-sm btn-danger" onclick="deleteCard(${i})"><i class="fas fa-trash"></i> Hapus</button>
+                        </div>
+                    </div>`;
+                } else if (i === cardsData.length) {
+                    // Render "Add" box at the current tail
+                    html += `
+                    <div class="card-slot add-new" onclick="openModal(-1)">
+                        <i class="fas fa-camera fa-2x mb-2"></i>
+                        <span>Tambah foto</span>
+                    </div>`;
+                } else {
+                    // Empty slot
+                    html += `<div class="card-slot empty"></div>`;
+                }
+            }
+            $('#cards-grid').html(html);
+        }
+
+        window.openModal = function(arrayIndex) {
+            // Restore any previously moved file input just in case modal was closed abruptly
+            restoreFileInput();
+
+            if (arrayIndex === -1) {
+                // Add new
+                $('#cardModalTitle').text('Tambah Produk/Kategori Baru');
+                currentEditingArrayIndex = cardsData.length;
+                
+                // Find an unused domIndex (one that isn't in cardsData)
+                let usedIndices = cardsData.map(c => c.domIndex);
+                activeHiddenIndex = -1;
+                for(let i=0; i<MAX_CARDS; i++) {
+                    if(!usedIndices.includes(i)) {
+                        activeHiddenIndex = i;
+                        break;
+                    }
+                }
+                
+                if(activeHiddenIndex === -1) {
+                    alert('Maksimal kartu telah tercapai!');
+                    return;
+                }
+
+                // Clear the hidden inputs for this new slot
+                let container = $('#hidden-card-' + activeHiddenIndex);
+                container.find('.hidden-title').val('');
+                container.find('.hidden-subtitle').val('');
+                container.find('.hidden-old-image').val('');
+                container.find('input[type="file"]').val('');
+                // reset preview using the ID generated by the partial
+                let cleanId = container.find('input[type="file"]').attr('id').replace('input_', 'preview_');
+                $('#' + cleanId).attr('src', 'https://placehold.co/600x400?text=Pilih+Foto');
+
+                $('#modal-title-input').val('');
+                $('#modal-subtitle-input').val('');
+
+            } else {
+                // Edit existing
+                $('#cardModalTitle').text('Edit Produk/Kategori');
+                currentEditingArrayIndex = arrayIndex;
+                activeHiddenIndex = cardsData[arrayIndex].domIndex;
+
+                let container = $('#hidden-card-' + activeHiddenIndex);
+                $('#modal-title-input').val(container.find('.hidden-title').val());
+                $('#modal-subtitle-input').val(container.find('.hidden-subtitle').val());
+            }
+
+            // Move the file upload UI component into the modal
+            $('#modal-file-input-container').append($('#card-image-upload-' + activeHiddenIndex));
+
+            $('#cardModal').modal('show');
+        };
+
+        function restoreFileInput() {
+            if (activeHiddenIndex !== -1) {
+                // move it back from modal to hidden container
+                $('#hidden-card-' + activeHiddenIndex).append($('#card-image-upload-' + activeHiddenIndex));
+            }
+        }
+
+        // When modal is closed without saving (batal/x button)
+        $('#cardModal').on('hidden.bs.modal', function () {
+            restoreFileInput();
+            activeHiddenIndex = -1;
+            renderGrid();
         });
+
+        $('#btn-save-modal').click(function() {
+            let title = $('#modal-title-input').val();
+            let subtitle = $('#modal-subtitle-input').val();
+            
+            // Move file component back
+            restoreFileInput();
+            
+            // Update hidden values
+            let container = $('#hidden-card-' + activeHiddenIndex);
+            container.find('.hidden-title').val(title);
+            container.find('.hidden-subtitle').val(subtitle);
+
+            if (currentEditingArrayIndex === cardsData.length) {
+                // Was adding new
+                cardsData.push({
+                    domIndex: activeHiddenIndex,
+                    title: title,
+                    subtitle: subtitle
+                });
+            } else {
+                // Was editing
+                cardsData[currentEditingArrayIndex].title = title;
+                cardsData[currentEditingArrayIndex].subtitle = subtitle;
+            }
+
+            activeHiddenIndex = -1; // clear
+            $('#cardModal').modal('hide'); // renderGrid is called on hidden event, but we can call it here too
+            renderGrid();
+        });
+
+        window.deleteCard = function(arrayIndex) {
+            if(confirm('Hapus kartu ini?')) {
+                let domIdx = cardsData[arrayIndex].domIndex;
+                
+                // Remove from tracking array
+                cardsData.splice(arrayIndex, 1);
+                
+                // Clear the physical hidden inputs so they aren't submitted
+                let container = $('#hidden-card-' + domIdx);
+                container.find('.hidden-title').val('');
+                container.find('.hidden-subtitle').val('');
+                container.find('.hidden-old-image').val('');
+                container.find('input[type="file"]').val('');
+
+                // IMPORTANT: Reorder the `name` attributes of all active hidden containers
+                // so they submit as cards[0], cards[1], cards[2] without gaps!
+                for(let i=0; i<MAX_CARDS; i++) {
+                    let cont = $('#hidden-card-' + i);
+                    
+                    // Find if this domIndex is still active
+                    let currentPos = -1;
+                    for(let j=0; j<cardsData.length; j++) {
+                        if(cardsData[j].domIndex === i) {
+                            currentPos = j;
+                            break;
+                        }
+                    }
+
+                    if (currentPos !== -1) {
+                        // It is active, set name to cards[currentPos]
+                        cont.find('.hidden-title').attr('name', `cards[${currentPos}][title]`);
+                        cont.find('.hidden-subtitle').attr('name', `cards[${currentPos}][subtitle]`);
+                        cont.find('.hidden-old-image').attr('name', `cards[${currentPos}][old_image]`);
+                        cont.find('input[type="file"]').attr('name', `cards[${currentPos}][image]`);
+                    } else {
+                        // It is inactive, set name to cards[i] (or anything, since values are empty it won't matter, but keeping consistent is good)
+                        cont.find('.hidden-title').attr('name', `cards[${i}][title]`);
+                        cont.find('.hidden-subtitle').attr('name', `cards[${i}][subtitle]`);
+                        cont.find('.hidden-old-image').attr('name', `cards[${i}][old_image]`);
+                        cont.find('input[type="file"]').attr('name', `cards[${i}][image]`);
+                    }
+                }
+
+                renderGrid();
+            }
+        };
+
+        // Render initial state
+        renderGrid();
     });
 </script>
 @endpush

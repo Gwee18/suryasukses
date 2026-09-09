@@ -11,9 +11,10 @@
             <small class="text-muted">Menampilkan {{ $markets->firstItem() ?? 0 }} - {{ $markets->lastItem() ?? 0 }} dari total {{ $markets->total() }} market</small>
         </div>
         <div class="d-flex gap-2">
-            <form action="{{ route('admin.markets.index') }}" method="GET" class="d-flex">
-                <input type="text" name="search" class="form-control form-control-sm me-2" placeholder="Cari judul..." value="{{ request('search') }}">
+            <form action="{{ route('admin.markets.index') }}" method="GET" class="d-flex gap-2">
+                <input type="text" name="search" class="form-control form-control-sm" placeholder="Cari judul..." value="{{ request('search') }}">
                 <button type="submit" class="btn btn-sm btn-outline-secondary">Cari</button>
+                <a href="{{ route('admin.markets.index') }}" class="btn btn-sm btn-outline-secondary">Reset</a>
             </form>
             <a href="{{ route('admin.markets.create') }}" class="btn btn-danger btn-sm text-nowrap">
                 + Tambah Market
