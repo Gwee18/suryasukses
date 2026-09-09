@@ -13,9 +13,17 @@ class CapabilityController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $capabilities = Capability::orderBy('sort_order', 'asc')->get();
+        $query = Capability::query();
+
+        if ($request->has('search') && $request->search != '') {
+            $search = $request->search;
+            $query->where('title', 'like', '%' . $search . '%')
+                  ->orWhere('description', 'like', '%' . $search . '%');
+        }
+
+        $capabilities = $query->orderBy('sort_order', 'asc')->get();
         return view('admin.capabilities.index', compact('capabilities'));
     }
 

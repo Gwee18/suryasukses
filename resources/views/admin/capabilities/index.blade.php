@@ -5,11 +5,18 @@
 
 @section('content')
 <div class="card shadow-sm">
-    <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+    <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center flex-wrap gap-3">
         <h5 class="m-0 font-weight-bold">Daftar Kapabilitas</h5>
-        <a href="{{ route('admin.capabilities.create') }}" class="btn btn-primary btn-sm">
-            <i class="fas fa-plus"></i> Tambah Kapabilitas
-        </a>
+        <div class="d-flex align-items-center gap-2">
+            <form action="{{ route('admin.capabilities.index') }}" method="GET" class="d-flex gap-2 mb-0">
+                <input type="text" name="search" class="form-control form-control-sm" placeholder="Cari judul..." value="{{ request('search') }}">
+                <button type="submit" class="btn btn-sm btn-outline-secondary">Cari</button>
+                <a href="{{ route('admin.capabilities.index') }}" class="btn btn-sm btn-outline-secondary">Reset</a>
+            </form>
+            <a href="{{ route('admin.capabilities.create') }}" class="btn btn-danger btn-sm text-nowrap">
+                + Tambah Kapabilitas
+            </a>
+        </div>
     </div>
     <div class="card-body">
         <div class="table-responsive">
