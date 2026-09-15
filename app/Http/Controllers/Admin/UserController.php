@@ -65,6 +65,11 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        // Hanya Head Admin yang boleh mengedit akun, termasuk akunnya sendiri.
+        if (!Auth::user()->isHeadAdmin()) {
+            return redirect()->route('admin.users.index')->with('error', 'Hanya Head Admin yang dapat mengedit akun admin.');
+        }
+
         return view('admin.users.form', compact('user'));
     }
 
@@ -73,6 +78,11 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        // Hanya Head Admin yang boleh mengedit akun, termasuk akunnya sendiri.
+        if (!Auth::user()->isHeadAdmin()) {
+            return redirect()->route('admin.users.index')->with('error', 'Hanya Head Admin yang dapat mengedit akun admin.');
+        }
+
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($user->id)],

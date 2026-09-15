@@ -23,9 +23,10 @@
             <table class="table table-bordered table-hover align-middle">
                 <thead class="table-light">
                     <tr>
-                        <th width="30%">Nama</th>
-                        <th width="30%">Email</th>
-                        <th width="20%">Terdaftar</th>
+                        <th width="25%">Nama</th>
+                        <th width="25%">Email</th>
+                        <th width="15%">Role</th>
+                        <th width="15%">Terdaftar</th>
                         <th width="20%">Aksi</th>
                     </tr>
                 </thead>
@@ -39,11 +40,20 @@
                                 @endif
                             </td>
                             <td>{{ $user->email }}</td>
+                            <td>
+                                @if($user->isHeadAdmin())
+                                    <span class="badge bg-danger">Head Admin</span>
+                                @else
+                                    <span class="badge bg-light text-dark border">Co-Admin</span>
+                                @endif
+                            </td>
                             <td>{{ $user->created_at?->format('d M Y') }}</td>
                             <td>
                                 <div class="d-flex gap-2">
-                                    <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-outline-primary">Edit</a>
-                                    @if($user->id !== Auth::id())
+                                    @if(Auth::user()->isHeadAdmin())
+                                        <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-outline-primary">Edit</a>
+                                    @endif
+                                    @if(Auth::user()->isHeadAdmin() && !$user->isHeadAdmin())
                                         <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus akun admin ini?');">
                                             @csrf
                                             @method('DELETE')
@@ -55,7 +65,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="text-center py-4 text-muted">Belum ada akun admin.</td>
+                            <td colspan="5" class="text-center py-4 text-muted">Belum ada akun admin.</td>
                         </tr>
                     @endforelse
                 </tbody>
