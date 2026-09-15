@@ -44,22 +44,20 @@
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <h4>About Us</h4>
+                    @php $subHeading = 'About Us'; @endphp
+                    @if($subHeading !== '')
+                        <h4>{{ $subHeading }}</h4>
+                    @endif
                     <h3>Who We Are</h3>
-                    <img src="{{ asset('assets/images/about/bca40e3401new.jpg') }}" alt="Who We Are" class="img img-fluid pb-5">
+                    <img src="{{ asset('assets/images/' . ($about->who_we_are_img1 ?? 'about/bca40e3401new.jpg')) }}" alt="Who We Are" class="img img-fluid pb-5">
                     
                     <div class="row">
                         <div class="col-md-6">
-                            <p>At Suryasukses, we take pride in our heritage and the company we've become today. Throughout our history, it has been the dedication of our team members that has allowed us to grow into a leading plastic manufacturing company.</p>
-                            <p>Our history is rich in product innovation, customer focus, and strategic growth. With roots as a small, hometown company based in Surabaya, Indonesia, Suryasukses Group has come a long way since it was established in 1985 under the name Multindo Plastics. Starting with few injection machines, and now we have over 10,000 international and local customers</p>
-                            <p>From houseware manufacturer we diversify our business to rigid plastic packaging, starting from thermoforming cups to printing, then preform, bottles, and closures, serving home industries to well established food and beverage companies. We further expand our market with nonwoven products to cater hygiene, agriculture, and industrial markets. Lastly, with deep knowledge of breakthrough materials and backed with professionals with decades of experience, Amari Upvc Roofing will surely satisfies the market with strong, consistent, unique and competitive products.</p>
-                            <p>We take great pride in the company we have developed and the products and services we offer. Our ability to support our customers at every stage of the product development process-including expertise in consumer insights, ideation and design, manufacturing and research and development-is what has allowed us to become a leader in the industry</p>
+                            {!! nl2br(e($about->who_we_are_text)) !!}
                         </div>
                         <div class="col-md-6">
-                            <div class="row g-0">
-                                <div class="col-md-12">
-                                    <img class="img img-fluid w-100" src="{{ asset('assets/images/about/248abe37b4banners_whowe.jpg') }}" alt="Who We Are Image">
-                                </div>
+                            <div class="h-100">
+                                <img class="img-fluid w-100 h-100" style="object-fit: cover; object-position: center;" src="{{ asset('assets/images/' . ($about->who_we_are_img2 ?? 'about/248abe37b4banners_whowe.jpg')) }}" alt="Who We Are Image">
                             </div>
                         </div>
                     </div>
@@ -68,6 +66,13 @@
         </div>
     </section>
 
+    @php
+        $vidUrl = 'https://www.youtube.com/embed/Aj2C4Xp-GMM?autoplay=1';
+        $vidTitle = 'SAP Corporate Profile Video';
+        $vidSubtitle = 'Sharing our passion, realizing your ideas and visions.';
+    @endphp
+
+    @if($vidUrl !== '')
     <section class="home-corp-video">
         <div class="home-corp-container">
             <div class="home-corp-video-inner">
@@ -75,8 +80,8 @@
                     <source src="{{ asset('assets/videos/videoplayback.webm') }}" type="video/webm">
                 </video>
                 <div class="home-corp-content">
-                    <h2 class="home-corp-title">SAP Corporate Profile Video</h2>
-                    <p class="home-corp-subtitle">Sharing our passion, realizing your ideas and visions.</p>
+                    <h2 class="home-corp-title">{{ $vidTitle }}</h2>
+                    <p class="home-corp-subtitle">{{ $vidSubtitle }}</p>
                     <button class="home-corp-play" data-bs-toggle="modal" data-bs-target="#videoModal">
                         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         <span>Play Video</span>
@@ -92,12 +97,13 @@
             <div class="modal-content bg-transparent border-0">
                 <div class="modal-body p-0">
                     <div class="ratio ratio-16x9">
-                        <iframe id="youtubeIframe" src="" data-src="https://www.youtube.com/embed/Aj2C4Xp-GMM" title="YouTube video" allow="encrypted-media" allowfullscreen></iframe>
+                        <iframe id="youtubeIframe" src="" data-src="{{ $vidUrl }}" title="YouTube video" allow="encrypted-media" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @endif
 
 @endsection
 

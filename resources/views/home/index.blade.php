@@ -9,19 +9,28 @@
 @section('content')
 
     <section class="home-hero">
-        <video class="home-hero-media" autoplay muted loop playsinline>
-            <source src="{{ asset('assets/videos/videoplayback.webm') }}" type="video/webm">
-        </video>
+        @php
+            $heroBg = $page->content['hero_bg'] ?? null;
+            $isBgVideo = !$heroBg || Str::endsWith(strtolower($heroBg), ['.mp4', '.webm']);
+        @endphp
+        
+        @if($isBgVideo)
+            <video class="home-hero-media" autoplay muted loop playsinline>
+                <source src="{{ $heroBg ? asset('assets/images/' . $heroBg) : asset('assets/videos/videoplayback.webm') }}" type="{{ $heroBg && Str::endsWith(strtolower($heroBg), '.mp4') ? 'video/mp4' : 'video/webm' }}">
+            </video>
+        @else
+            <img class="home-hero-media" src="{{ asset('assets/images/' . $heroBg) }}" alt="Hero Background" style="object-fit: cover; width: 100%; height: 100%;">
+        @endif
 
         <div class="home-hero-overlay"></div>
 
         <div class="home-hero-caption">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-7 col-md-9">
-                        <h1 class="home-hero-title"><strong>Suryasukses</strong> Group,</h1>
+                    <div class="col-lg-9 col-md-10">
+                        <h1 class="home-hero-title"><strong>{{ $home->hero_title ?? 'Suryasukses Group,' }}</strong></h1>
                         <p class="home-hero-subtitle">
-                            A reputation in the premium plastic related products.
+                            {{ $home->hero_text }}
                         </p>
                         <a href="{{ route('about') }}" class="home-hero-btn">Read More</a>
                     </div>
@@ -31,44 +40,7 @@
     </section>
 
     @php
-        $productCategories = [
-            [
-                'icon' => 'bawah-slide1.png',
-                'title' => 'Bottles and Caps',
-                'description' => 'Recyclable bottles that deliver pristine quality to fulfill customers` needs.',
-                'link' => route('product'),
-                'images' => ['bottle001-new.png', 'bottle002.jpg'],
-            ],
-            [
-                'icon' => 'bawah-slide-5.png',
-                'title' => 'Drinking Cups & Lids',
-                'description' => 'Our disposable cups are light-weight and cost efficient. We also offer multiple decoration options.',
-                'link' => route('product'),
-                'images' => ['drinking-cups001-new.png', 'drinking-cups002.jpg'],
-            ],
-            [
-                'icon' => 'bawah-slide2.png',
-                'title' => 'Specialty Nonwoven',
-                'description' => 'A versatile product that can be printed or luminated. Its naturally porous, light-weight and eco-friendly characteristics make spunbond a multipurpose product.',
-                'link' => route('product'),
-                'images' => ['cover-specialty.jpg'],
-            ],
-            [
-                'icon' => 'bawah-slide3.png',
-                'title' => 'Housewares',
-                'description' => 'We provide customers with qualified household products, innovative design, and prompt delivery at a very competitive price. Each products are designed to comfort and ease your life.',
-                'link' => route('product'),
-                'images' => ['cover-garden.jpg', 'cover-cleaningware.jpg', 'cover-racks.jpg', 'cover-kitchenware.jpg', 'cover-sealware.jpg', 'cover-bathroom.jpg'],
-            ],
-            [
-                'icon' => 'bawah-slide4.png',
-                'title' => 'Roofing System',
-                'description' => 'Roofing sheets manufactured from UPVC, designed to suit a diverse range of applications in various markets.',
-                'link' => route('product'),
-                'images' => ['cover-roofing-suryasukses.jpg'],
-            ],
-        ];
-        $activeCategory = $productCategories[0];
+        $activeCategory = $sliders->first();
     @endphp
 
     <section class="home-products">
@@ -77,17 +49,17 @@
                 <div class="col-xl-8 col-lg-10 home-products-inner">
 
                     <div class="row justify-content-between home-products-tabs g-0 gy-3">
-                        @foreach ($productCategories as $index => $category)
+                        @foreach ($sliders as $index => $category)
                             <div class="col-auto">
                                 <button
                                     type="button"
                                     class="home-products-tab {{ $index === 0 ? 'is-active' : '' }}"
-                                    data-title="{{ $category['title'] }}"
-                                    data-desc="{{ $category['description'] }}"
-                                    data-link="{{ $category['link'] }}"
-                                    data-images="{{ collect($category['images'])->map(fn ($img) => asset('assets/images/home/' . $img))->implode('|') }}"
+                                    data-title="{{ $category->title }}"
+                                    data-desc="{{ $category->description }}"
+                                    data-link="{{ $category->link }}"
+                                    data-images="{{ $category->images->map(fn ($img) => asset('assets/images/' . $img->image))->implode('|') }}"
                                 >
-                                    <img src="{{ asset('assets/images/home/' . $category['icon']) }}" alt="{{ $category['title'] }}" class="home-products-tab-icon">
+                                    <img src="{{ asset('assets/images/' . $category->icon) }}" alt="{{ $category->title }}" class="home-products-tab-icon">
                                 </button>
                             </div>
                         @endforeach
@@ -95,18 +67,20 @@
 
                     <div class="row align-items-stretch g-0 home-products-panel">
                         <div class="col-lg-7 home-products-info">
-                            <h3 class="home-products-title">{{ $activeCategory['title'] }}</h3>
-                            <p class="home-products-desc">{{ $activeCategory['description'] }}</p>
-                            <a href="{{ $activeCategory['link'] }}" class="home-products-link">Learn more</a>
+                            <h3 class="home-products-title">{{ $activeCategory->title ?? '' }}</h3>
+                            <p class="home-products-desc">{{ $activeCategory->description ?? '' }}</p>
+                            <a href="{{ $activeCategory->link ?? '#' }}" class="home-products-link">Learn more</a>
                         </div>
                         <div class="col-lg-5 home-products-media">
                             <div class="home-products-slider" id="homeProductsSlider">
                                 <div class="home-products-track">
-                                    @foreach ($activeCategory['images'] as $img)
-                                        <div class="home-products-slide">
-                                            <img src="{{ asset('assets/images/home/' . $img) }}" alt="{{ $activeCategory['title'] }}">
-                                        </div>
-                                    @endforeach
+                                    @if($activeCategory && $activeCategory->images)
+                                        @foreach ($activeCategory->images as $img)
+                                            <div class="home-products-slide">
+                                                <img src="{{ asset('assets/images/' . $img->image) }}" alt="{{ $activeCategory->title }}">
+                                            </div>
+                                        @endforeach
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -122,69 +96,23 @@
             <div class="row justify-content-center">
                 <div class="col-xl-11">
                     <div class="row g-4">
+                @foreach($cards as $card)
                 <div class="col-lg-3 col-md-6">
                     <div class="home-card">
                         <div class="home-card-img">
-                            <img src="{{ asset('assets/images/home/d1f20f2452homesec-1.jpg') }}" alt="Get to Know SAP">
+                            <img src="{{ asset('assets/images/' . $card->image) }}" alt="{{ $card->title }}">
                         </div>
                         <div class="home-card-body">
-                            <h4 class="home-card-title">Get to Know SAP</h4>
-                            <p class="home-card-desc">Established in 1990, we are uniquely positioned to provide customers with the best, on-trend products.</p>
-                            <a href="{{ route('about') }}" class="home-card-footer">
+                            <h4 class="home-card-title">{{ $card->title }}</h4>
+                            <p class="home-card-desc">{{ $card->description }}</p>
+                            <a href="{{ $card->link }}" class="home-card-footer">
                                 <span class="read-more">READ MORE</span>
                                 <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
                             </a>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-lg-3 col-md-6">
-                    <div class="home-card">
-                        <div class="home-card-img">
-                            <img src="{{ asset('assets/images/home/f49e0c021bhomesec-2.jpg') }}" alt="Our Markets">
-                        </div>
-                        <div class="home-card-body">
-                            <h4 class="home-card-title">Our Markets</h4>
-                            <p class="home-card-desc">Combining three-decade experience and a fully dedicated team, we are ready to serve a wide range of industries.</p>
-                            <a href="{{ route('markets.beverage') }}" class="home-card-footer">
-                                <span class="read-more">READ MORE</span>
-                                <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="home-card">
-                        <div class="home-card-img">
-                            <img src="{{ asset('assets/images/home/9fadce803chomesec-3.jpg') }}" alt="SAP Solutions">
-                        </div>
-                        <div class="home-card-body">
-                            <h4 class="home-card-title">SAP Solutions</h4>
-                            <p class="home-card-desc">Transform your idea into realization with our design team. Discover value-added, customized solutions.</p>
-                            <a href="{{ route('solutions') }}" class="home-card-footer">
-                                <span class="read-more">READ MORE</span>
-                                <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="home-card">
-                        <div class="home-card-img">
-                            <img src="{{ asset('assets/images/home/2008b6a72chomesec-4.jpg') }}" alt="SAP Career">
-                        </div>
-                        <div class="home-card-body">
-                            <h4 class="home-card-title">SAP Career</h4>
-                            <p class="home-card-desc">Join us. Grow together. Get in touch now to explore exciting opportunities.</p>
-                            <a href="{{ route('about.career') }}" class="home-card-footer">
-                                <span class="read-more">READ MORE</span>
-                                <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

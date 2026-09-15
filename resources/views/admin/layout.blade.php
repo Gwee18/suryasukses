@@ -34,10 +34,27 @@
 
         /* Sidebar Styling */
         .sidebar { 
-            min-height: 100vh; 
+            width: 260px;
+            flex-shrink: 0;
+            height: 100vh;
+            position: sticky;
+            top: 0;
             background: var(--bg-sidebar); 
             box-shadow: 2px 0 10px rgba(0,0,0,0.05);
             z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        /* Hide scrollbar for sidebar */
+        .sidebar::-webkit-scrollbar {
+            width: 5px;
+        }
+        .sidebar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #e0e0e0;
+            border-radius: 5px;
         }
         
         .sidebar-brand {
@@ -91,6 +108,14 @@
             height: 100%;
             width: 4px;
             background-color: var(--primary-color);
+        }
+
+        /* Dropdown Arrow Rotation */
+        .sidebar a[data-bs-toggle="collapse"] svg {
+            transition: transform 0.3s ease;
+        }
+        .sidebar a[data-bs-toggle="collapse"][aria-expanded="true"] svg {
+            transform: rotate(180deg) !important;
         }
 
         /* Main Content */
@@ -157,17 +182,57 @@
 </head>
 <body>
     @auth
+        @php
+            // $page hanya tersedia saat sedang membuka form edit halaman (admin.pages.edit).
+            // Di halaman lain (dashboard, posts, dst) variabel ini tidak ada, jadi kita fallback ke null.
+            $currentEditedPage = isset($page) ? $page : null;
+            $isAboutFamily = $currentEditedPage && in_array($currentEditedPage->slug, ['about', 'about-values', 'about-quality', 'about-career']);
+            $isContactPage = $currentEditedPage && $currentEditedPage->slug == 'contact';
+        @endphp
         <div class="d-flex">
             <!-- Sidebar -->
-            <div class="sidebar" style="width: 260px;">
+            <div class="sidebar">
                 <div class="sidebar-brand">
                     <!-- Added fallback text if logo is missing -->
                     <img src="{{ asset('assets/images/logo/logo-header.png') }}" alt="Surya Sukses" onerror="this.outerHTML='<h5 class=\'m-0 font-weight-bold text-dark\'>SAP Admin</h5>'">
                 </div>
                 <nav>
                     <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">Dashboard</a>
-                    <a href="{{ route('admin.posts.index') }}" class="{{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">Berita (News)</a>
-                    <!-- Modul lain akan ditambahkan di sini -->
+                    
+                    <a href="{{ route('admin.home.edit') }}" class="{{ request()->routeIs('admin.home.*') ? 'active' : '' }}">Home</a>
+                    
+                    @php
+                        $isProductMenuOpen = request()->routeIs('admin.product-categories.*') || request()->routeIs('admin.products.*');
+                    @endphp
+                    <a data-bs-toggle="collapse" href="#collapseProducts" role="button" aria-expanded="{{ $isProductMenuOpen ? 'true' : 'false' }}" aria-controls="collapseProducts" class="d-flex justify-content-between align-items-center {{ $isProductMenuOpen ? 'active' : '' }}">
+                        PRODUCT 
+                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                    <div class="collapse {{ $isProductMenuOpen ? 'show' : '' }}" id="collapseProducts">
+                        <div style="background-color: #fcfcfc;">
+                            <a href="{{ route('admin.product-categories.index') }}" class="{{ request()->routeIs('admin.product-categories.*') ? 'active' : '' }}" style="padding-left: 45px; font-size: 14px; text-transform: capitalize;">Kategori</a>
+                            <a href="{{ route('admin.products.index') }}" class="{{ request()->routeIs('admin.products.*') ? 'active' : '' }}" style="padding-left: 45px; font-size: 14px; text-transform: capitalize;">Daftar Produk</a>
+                        </div>
+                    </div>
+                                        <a href="{{ route('admin.markets.index') }}" class="{{ request()->routeIs('admin.markets.*') ? 'active' : '' }}">Markets</a>
+                    <a href="#solutionsSubmenu" data-bs-toggle="collapse" class="dropdown-toggle {{ request()->routeIs('admin.studio.*') || request()->routeIs('admin.capabilities.*') ? 'active' : '' }}">Solutions</a>
+                    <ul class="collapse list-unstyled ps-3 {{ request()->routeIs('admin.studio.*') || request()->routeIs('admin.capabilities.*') ? 'show' : '' }}" id="solutionsSubmenu">
+                        @php 
+                            $solutionsPage = \App\Models\Page::where('slug', 'solutions')->first(); 
+                        @endphp
+                        <li><a href="{{ route('admin.studio.edit') }}" class="{{ request()->routeIs('admin.studio.*') ? 'active' : '' }}" style="font-size: 13px; padding: 8px 25px;">Suryasukses Studio</a></li>
+                        <li><a href="{{ route('admin.capabilities.index') }}" class="{{ request()->routeIs('admin.capabilities.*') ? 'active' : '' }}" style="font-size: 13px; padding: 8px 25px;">Capabilities</a></li>
+                    </ul>
+                    
+                    <a href="{{ route('admin.about.edit') }}" class="{{ request()->routeIs('admin.about.*') ? 'active' : '' }}">About Us</a>
+                    
+                    <a href="{{ route('admin.posts.index') }}" class="{{ request()->routeIs('admin.posts.*') ? 'active' : '' }}">News</a>
+                    
+                    <a href="{{ route('admin.contact.edit') }}" class="{{ request()->routeIs('admin.contact.*') ? 'active' : '' }}">Contact Us</a>
+
+                    <a href="{{ route('admin.users.index') }}" class="{{ request()->routeIs('admin.users.*') ? 'active' : '' }}">Akun Admin</a>
                 </nav>
             </div>
             

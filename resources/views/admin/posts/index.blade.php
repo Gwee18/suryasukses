@@ -11,9 +11,10 @@
             <small class="text-muted">Menampilkan {{ $posts->firstItem() ?? 0 }} - {{ $posts->lastItem() ?? 0 }} dari total {{ $posts->total() }} berita</small>
         </div>
         <div class="d-flex gap-2">
-            <form action="{{ route('admin.posts.index') }}" method="GET" class="d-flex">
-                <input type="text" name="search" class="form-control form-control-sm me-2" placeholder="Cari judul..." value="{{ request('search') }}">
+            <form action="{{ route('admin.posts.index') }}" method="GET" class="d-flex gap-2">
+                <input type="text" name="search" class="form-control form-control-sm" placeholder="Cari judul..." value="{{ request('search') }}">
                 <button type="submit" class="btn btn-sm btn-outline-secondary">Cari</button>
+                <a href="{{ route('admin.posts.index') }}" class="btn btn-sm btn-outline-secondary">Reset</a>
             </form>
             <a href="{{ route('admin.posts.create') }}" class="btn btn-danger btn-sm text-nowrap">
                 + Tambah Berita
@@ -49,7 +50,6 @@
                         </td>
                         <td>{{ $post->published_at ? $post->published_at->format('d M Y') : 'Draft' }}</td>
                         <td>
-                            <a href="{{ route('news.detail', $post->slug) }}" target="_blank" class="btn btn-sm btn-outline-info">Preview</a>
                             <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-sm btn-outline-primary">Edit</a>
                             <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus berita ini?')">
                                 @csrf

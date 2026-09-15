@@ -45,37 +45,41 @@
                 </div>
                 <div class="col-md-9">
                     <div class="content-top cont_career">
+                        @php $subHeading = ''; @endphp
+                        @if($subHeading !== '')
+                            <h4>{{ $subHeading }}</h4>
+                        @endif
                         <h3>Our Values</h3>
-                        <img src="{{ asset('assets/images/about/3b5fb3dfb6_OPS6411.jpg') }}" alt="Our Values" class="img img-fluid pb-5">
+                        <img src="{{ asset('assets/images/' . ($value->image ?? 'about/3b5fb3dfb6_OPS6411.jpg')) }}" alt="Our Values" class="img img-fluid pb-5">
                         
                         <div class="lists_row_csn">
                             <div class="row">
                                 <div class="col-md-6 col-6">
                                     <div class="items pb-3">
-                                        <h5>Partnerships</h5>
+                                        <h5>{{ $value->partnership_title ?? 'Partnerships' }}</h5>
                                         <div class="py-2"></div>
-                                        <p>We recognize the importance of strong, sustainable partnerships throughout all aspects of our business - we view our employees, customers, suppliers, and communities as our partners.</p>
+                                        <p>{!! nl2br(e($value->partnership_text)) !!}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-6">
                                     <div class="items pb-3">
-                                        <h5>Excellence</h5>
+                                        <h5>{{ $value->excellence_title ?? 'Excellence' }}</h5>
                                         <div class="py-2"></div>
-                                        <p>We pursue excellence in all that we do by optimizing our processes, enhancing our sustainability initiatives, and by providing the highest quality products and services to our customers. We believe in continuous training and development for our employees so that we can deliver excellence to our customers.</p>
+                                        <p>{!! nl2br(e($value->excellence_text)) !!}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-6">
                                     <div class="items pb-3">
-                                        <h5>Growth</h5>
+                                        <h5>{{ $value->growth_title ?? 'Growth' }}</h5>
                                         <div class="py-2"></div>
-                                        <p>Strategic growth is imperative for our business. Growth comes in many forms - financial growth, customer growth, employee growth and development, product growth and innovation, and the global growth of our Company.</p>
+                                        <p>{!! nl2br(e($value->growth_text)) !!}</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-6">
                                     <div class="items pb-3">
-                                        <h5>Safety</h5>
+                                        <h5>{{ $value->safety_title ?? 'Safety' }}</h5>
                                         <div class="py-2"></div>
-                                        <p>Our number one value. We relentlessly pursue safety in all we do. We maintain high standards to ensure our facilities are safe and environmentally conscious.</p>
+                                        <p>{!! nl2br(e($value->safety_text)) !!}</p>
                                     </div>
                                 </div>
                             </div>
@@ -87,6 +91,13 @@
         </div>
     </section>
 
+    @php
+        $vidUrl = 'https://www.youtube.com/embed/Aj2C4Xp-GMM?autoplay=1';
+        $vidTitle = 'SAP Corporate Profile Video';
+        $vidSubtitle = 'Sharing our passion, realizing your ideas and visions.';
+    @endphp
+
+    @if($vidUrl !== '')
     <section class="home-corp-video">
         <div class="home-corp-container">
             <div class="home-corp-video-inner">
@@ -94,8 +105,8 @@
                     <source src="{{ asset('assets/videos/videoplayback.webm') }}" type="video/webm">
                 </video>
                 <div class="home-corp-content">
-                    <h2 class="home-corp-title">SAP Corporate Profile Video</h2>
-                    <p class="home-corp-subtitle">Sharing our passion, realizing your ideas and visions.</p>
+                    <h2 class="home-corp-title">{{ $vidTitle }}</h2>
+                    <p class="home-corp-subtitle">{{ $vidSubtitle }}</p>
                     <button class="home-corp-play" data-bs-toggle="modal" data-bs-target="#videoModal">
                         <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         <span>Play Video</span>
@@ -111,12 +122,13 @@
             <div class="modal-content bg-transparent border-0">
                 <div class="modal-body p-0">
                     <div class="ratio ratio-16x9">
-                        <iframe id="youtubeIframe" src="" data-src="https://www.youtube.com/embed/Aj2C4Xp-GMM" title="YouTube video" allow="encrypted-media" allowfullscreen></iframe>
+                        <iframe id="youtubeIframe" src="" data-src="{{ $vidUrl }}" title="YouTube video" allow="encrypted-media" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    @endif
 
 @endsection
 
