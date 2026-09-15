@@ -22,18 +22,30 @@ class HomeController extends Controller
     public function update(Request $request)
     {
         $validated = $request->validate([
-            'hero_title' => 'nullable|string',
+            'hero_title' => 'nullable|string|max:255',
             'hero_text' => 'nullable|string',
-            'cards' => 'array',
+            'hero_bg' => 'nullable|file|mimes:jpeg,png,jpg,webp,mp4,webm|max:20480',
+            'cards' => 'nullable|array',
             'sliders' => 'array',
             'delete_slider_images' => 'array',
         ]);
 
         $home = Home::first() ?? new Home();
-        $home->fill([
+        $homeData = [
             'hero_title' => $validated['hero_title'] ?? null,
             'hero_text' => $validated['hero_text'] ?? null,
-        ]);
+        ];
+
+        if ($request->hasFile('hero_bg')) {
+            $file = $request->file('hero_bg');
+            if ($file->isValid()) {
+                $filename = time() . '_hero_bg_' . uniqid() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('assets/images/home/'), $filename);
+                $homeData['hero_bg'] = 'home/' . $filename;
+            }
+        }
+
+        $home->fill($homeData);
         $home->save();
 
         if (isset($validated['cards']) && is_array($validated['cards'])) {

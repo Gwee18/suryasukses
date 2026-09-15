@@ -10,7 +10,7 @@
 
     <section class="home-hero">
         @php
-            $heroBg = $page->content['hero_bg'] ?? null;
+            $heroBg = $home->hero_bg ?? null;
             $isBgVideo = !$heroBg || Str::endsWith(strtolower($heroBg), ['.mp4', '.webm']);
         @endphp
         

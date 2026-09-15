@@ -20,6 +20,66 @@
                 <label class="form-label fw-bold">Teks Hero (Sub-judul) <span class="text-danger">*</span></label>
                 <textarea class="form-control" name="hero_text" rows="3" required>{{ $home->hero_text }}</textarea>
             </div>
+            
+            <div class="mb-4 p-3 border bg-light rounded" style="max-width: 600px;">
+                <label class="form-label fw-bold d-block mb-3"><i class="fas fa-image me-2"></i>Background Hero (Gambar/Video)</label>
+                <div class="text-start">
+                    @php
+                        $hasBg = isset($home->hero_bg) && $home->hero_bg != '';
+                        $isVid = $hasBg ? Str::endsWith(strtolower($home->hero_bg), ['.mp4', '.webm']) : true;
+                        
+                        $imgSrc = $hasBg && !$isVid ? asset('assets/images/' . $home->hero_bg) : '';
+                        $vidSrc = $hasBg && $isVid ? asset('assets/images/' . $home->hero_bg) : asset('assets/videos/videoplayback.webm');
+                    @endphp
+
+                    <!-- wadah preview background -->
+                    <video id="preview_hero_video" src="{{ $vidSrc }}" controls class="img-thumbnail shadow-sm mb-3 {{ $isVid ? 'd-block' : 'd-none' }}" style="max-height: 250px; width: auto;"></video>
+                    <img id="preview_hero_img" src="{{ $imgSrc }}" class="img-thumbnail shadow-sm mb-3 {{ $isVid ? 'd-none' : 'd-block' }}" style="max-height: 250px; width: auto;">
+                    
+                    <button type="button" class="btn btn-primary btn-sm" onclick="document.getElementById('input_hero_bg').click()">
+                        <i class="fas fa-upload me-2"></i>Ubah Background
+                    </button>
+                    <input type="file" id="input_hero_bg" class="d-none" name="hero_bg" accept="image/*,video/mp4,video/webm" onchange="previewHeroMedia(this)">
+                </div>
+            </div>
+
+            <!-- Script Preview Live -->
+            <script>
+                function previewHeroMedia(input) {
+                    if (input.files && input.files[0]) {
+                        var file = input.files[0];
+                        var reader = new FileReader();
+                        
+                        // Cek tipe file
+                        var isVideo = file.type.startsWith('video/');
+                        
+                        // Referensi elemen DOM
+                        var imgPreview = document.getElementById('preview_hero_img');
+                        var videoPreview = document.getElementById('preview_hero_video');
+                        
+                        // Toggle tampilan berdasar tipe file
+                        if (isVideo) {
+                            imgPreview.classList.remove('d-block');
+                            imgPreview.classList.add('d-none');
+                            
+                            videoPreview.classList.remove('d-none');
+                            videoPreview.classList.add('d-block');
+                            
+                            reader.onload = function(e) { videoPreview.src = e.target.result; }
+                        } else {
+                            videoPreview.classList.remove('d-block');
+                            videoPreview.classList.add('d-none');
+                            
+                            imgPreview.classList.remove('d-none');
+                            imgPreview.classList.add('d-block');
+                            
+                            reader.onload = function(e) { imgPreview.src = e.target.result; }
+                        }
+                        
+                        reader.readAsDataURL(file);
+                    }
+                }
+            </script>
 
             <div class="mb-4">
                 <h5 class="fw-bold mb-3">Slider</h5>
