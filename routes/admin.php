@@ -16,9 +16,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
         
         // Dashboard
-        Route::get('/dashboard', function () {
-            return view('admin.dashboard'); // We will create this view next
-        })->name('dashboard');
+        Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
         // CRUD Posts
         Route::resource('posts', PostController::class);

@@ -226,35 +226,33 @@
 
         function renderGrid() {
             let html = '';
-            for(let i=0; i<MAX_CARDS; i++) {
-                if (i < cardsData.length) {
-                    let card = cardsData[i];
-                    
-                    // Fetch current preview image from the DOM component
-                    let imgElem = $('#card-image-upload-' + card.domIndex).find('img');
-                    let imgSrc = imgElem.attr('src') || 'https://placehold.co/600x400?text=Foto';
+            for(let i=0; i<cardsData.length; i++) {
+                let card = cardsData[i];
+                
+                // Fetch current preview image from the DOM component
+                let imgElem = $('#card-image-upload-' + card.domIndex).find('img');
+                let imgSrc = imgElem.attr('src') || 'https://placehold.co/600x400?text=Foto';
 
-                    html += `
-                    <div class="card-slot filled">
-                        <img src="${imgSrc}">
-                        <div class="card-title">${card.title || 'Tanpa Judul'}</div>
-                        <div class="card-overlay">
-                            <button type="button" class="btn btn-sm btn-light" onclick="openModal(${i})"><i class="fas fa-edit"></i> Edit</button>
-                            <button type="button" class="btn btn-sm btn-danger" onclick="deleteCard(${i})"><i class="fas fa-trash"></i> Hapus</button>
-                        </div>
-                    </div>`;
-                } else if (i === cardsData.length) {
-                    // Render "Add" box at the current tail
-                    html += `
-                    <div class="card-slot add-new" onclick="openModal(-1)">
-                        <i class="fas fa-camera fa-2x mb-2"></i>
-                        <span>Tambah foto</span>
-                    </div>`;
-                } else {
-                    // Empty slot
-                    html += `<div class="card-slot empty"></div>`;
-                }
+                html += `
+                <div class="card-slot filled">
+                    <img src="${imgSrc}">
+                    <div class="card-title">${card.title || 'Tanpa Judul'}</div>
+                    <div class="card-overlay">
+                        <button type="button" class="btn btn-sm btn-light" onclick="openModal(${i})"><i class="fas fa-edit"></i> Edit</button>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="deleteCard(${i})"><i class="fas fa-trash"></i> Hapus</button>
+                    </div>
+                </div>`;
             }
+            
+            // Add the "Add New" button only if we haven't reached MAX_CARDS
+            if (cardsData.length < MAX_CARDS) {
+                html += `
+                <div class="card-slot add-new" onclick="openModal(-1)">
+                    <i class="fas fa-camera fa-2x mb-2"></i>
+                    <span>Tambah foto</span>
+                </div>`;
+            }
+            
             $('#cards-grid').html(html);
         }
 
