@@ -22,7 +22,18 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
+
+    /**
+     * Head Admin adalah satu-satunya akun yang boleh menghapus akun admin lain.
+     * Ditentukan lewat kolom `role`, bukan hardcode email, tapi kolom itu
+     * diisi otomatis untuk admin@suryasukses.test lewat migration.
+     */
+    public function isHeadAdmin(): bool
+    {
+        return $this->role === 'head_admin';
+    }
 
     /**
      * The attributes that should be hidden for serialization.

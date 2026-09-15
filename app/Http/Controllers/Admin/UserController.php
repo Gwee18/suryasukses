@@ -52,6 +52,9 @@ class UserController extends Controller
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
+            // Semua akun baru otomatis jadi Co-Admin.
+            // Hanya admin@suryasukses.test (Head Admin) yang boleh menghapus akun.
+            'role' => 'co_admin',
         ]);
 
         return redirect()->route('admin.users.index')->with('success', 'Akun admin berhasil ditambahkan.');
@@ -93,12 +96,18 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        if ($user->id === Auth::id()) {
-            return redirect()->route('admin.users.index')->with('error', 'Anda tidak bisa menghapus akun Anda sendiri saat sedang login.');
+        // Hanya Head Admin (admin@suryasukses.test) yang boleh menghapus akun.
+        if (!Auth::user()->isHeadAdmin()) {
+            return redirect()->route('admin.users.index')->with('error', 'Hanya Head Admin yang dapat menghapus akun admin.');
         }
 
-        if (User::count() <= 1) {
-            return redirect()->route('admin.users.index')->with('error', 'Minimal harus ada satu akun admin.');
+        // Akun Head Admin tidak boleh dihapus oleh siapa pun, termasuk dirinya sendiri.
+        if ($user->isHeadAdmin()) {
+            return redirect()->route('admin.users.index')->with('error', 'Akun Head Admin tidak dapat dihapus.');
+        }
+
+        if ($user->id === Auth::id()) {
+            return redirect()->route('admin.users.index')->with('error', 'Anda tidak bisa menghapus akun Anda sendiri saat sedang login.');
         }
 
         $user->delete();
