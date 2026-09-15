@@ -27,7 +27,9 @@
                         <th width="25%">Email</th>
                         <th width="15%">Role</th>
                         <th width="15%">Terdaftar</th>
-                        <th width="20%">Aksi</th>
+                        @if(Auth::user()->isHeadAdmin())
+                            <th width="20%">Aksi</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -48,20 +50,20 @@
                                 @endif
                             </td>
                             <td>{{ $user->created_at?->format('d M Y') }}</td>
-                            <td>
-                                <div class="d-flex gap-2">
-                                    @if(Auth::user()->isHeadAdmin())
+                            @if(Auth::user()->isHeadAdmin())
+                                <td>
+                                    <div class="d-flex gap-2">
                                         <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-outline-primary">Edit</a>
-                                    @endif
-                                    @if(Auth::user()->isHeadAdmin() && !$user->isHeadAdmin())
-                                        <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus akun admin ini?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-outline-danger">Hapus</button>
-                                        </form>
-                                    @endif
-                                </div>
-                            </td>
+                                        @if(!$user->isHeadAdmin())
+                                            <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus akun admin ini?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-outline-danger">Hapus</button>
+                                            </form>
+                                        @endif
+                                    </div>
+                                </td>
+                            @endif
                         </tr>
                     @empty
                         <tr>

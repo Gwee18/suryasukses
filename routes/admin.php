@@ -17,7 +17,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
         
         // Dashboard
         Route::get('/dashboard', function () {
-            return view('admin.dashboard'); // We will create this view next
+            return view('admin.dashboard', [
+                'totalPosts' => \App\Models\Post::count(),
+                'totalProducts' => \App\Models\Product::count(),
+                'totalMarkets' => \App\Models\Market::count(),
+                'totalUsers' => \App\Models\User::count(),
+                'latestPosts' => \App\Models\Post::latest()->take(5)->get(),
+            ]);
         })->name('dashboard');
 
         // CRUD Posts
