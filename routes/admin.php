@@ -53,5 +53,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Contact Page Setting Route
         Route::get('/contact', [\App\Http\Controllers\Admin\ContactPageController::class, 'edit'])->name('contact.edit');
         Route::put('/contact', [\App\Http\Controllers\Admin\ContactPageController::class, 'update'])->name('contact.update');
+
+        // Admin Accounts CRUD (multi akun admin)
+        Route::resource('users', \App\Http\Controllers\Admin\UserController::class)->except(['show']);
     });
 });
