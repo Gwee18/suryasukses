@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // Hitung total data
         $totalPosts = Post::count();
@@ -20,7 +20,7 @@ class DashboardController extends Controller
         $totalUsers = User::count();
 
         // Ambil 5 berita terbaru
-        $latestPosts = Post::latest()->take(5)->get();
+        $latestPosts = Post::orderBy('published_at', 'desc')->take(5)->get();
 
         return view('admin.dashboard', compact(
             'totalPosts', 

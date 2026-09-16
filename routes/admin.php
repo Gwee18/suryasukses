@@ -16,15 +16,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
         
         // Dashboard
-        Route::get('/dashboard', function () {
-            return view('admin.dashboard', [
-                'totalPosts' => \App\Models\Post::count(),
-                'totalProducts' => \App\Models\Product::count(),
-                'totalMarkets' => \App\Models\Market::count(),
-                'totalUsers' => \App\Models\User::count(),
-                'latestPosts' => \App\Models\Post::latest()->take(5)->get(),
-            ]);
-        })->name('dashboard');
+        Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
 
         // CRUD Posts
         Route::resource('posts', PostController::class);

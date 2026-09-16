@@ -137,7 +137,7 @@
                         <tr>
                             <th style="width: 50px;">No</th>
                             <th>Judul Berita</th>
-                            <th style="width: 150px;">Tanggal Dibuat</th>
+                            <th style="width: 150px;">Tanggal Publish</th>
                             <th style="width: 100px;" class="text-center">Aksi</th>
                         </tr>
                     </thead>
@@ -146,7 +146,7 @@
                         <tr>
                             <td>{{ $index + 1 }}</td>
                             <td class="fw-medium text-dark">{{ Str::limit($post->title, 55) }}</td>
-                            <td>{{ $post->created_at->translatedFormat('d M Y') }}</td>
+                            <td>{{ $post->published_at ? $post->published_at->translatedFormat('d M Y') : 'Draft' }}</td>
                             <td class="text-center">
                                 <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-sm btn-light border shadow-sm">
                                     Edit
